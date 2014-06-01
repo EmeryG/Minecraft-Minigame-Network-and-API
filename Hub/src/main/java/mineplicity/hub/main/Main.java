@@ -1,8 +1,17 @@
 package mineplicity.hub.main;
 
+<<<<<<< HEAD:Hub/src/main/java/main/Main.java
+import commands.*;
+
+import listeners.DamageEvent;
+import listeners.PlayerHunger;
+
+=======
 import mineplicity.hub.listeners.DamageEvent;
 import mineplicity.hub.listeners.PlayerHunger;
+>>>>>>> 95f28d07056e6f5ac5c3217b723c0fbbef9a5ac0:Hub/src/main/java/mineplicity/hub/main/Main.java
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,7 +25,11 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin {
 
+    public static FileConfiguration config;
+
     public void onEnable() {
+
+        config = getConfig();
 
         //Registering Events
         DamageEvent de = new DamageEvent();
@@ -25,6 +38,14 @@ public class Main extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(de, this);
         pm.registerEvents(ph, this);
+
+        //Commands
+        getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
+        getCommand("message").setExecutor(new MessageCommand());
+        getCommand("setspawn").setExecutor(new SetSpawn());
+        getCommand("report").setExecutor(new Reporter());
+        getCommand("reports").setExecutor(new Reporter());
+        getCommand("timelock").setExecutor(new TimeLockCommand());
 
         //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();
@@ -40,4 +61,13 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is now disabled.");
 
     }
+<<<<<<< HEAD
+=======
+
+    public void remoteSaveConfig() {
+
+        saveConfig();
+
+    }
+>>>>>>> 2be72359f22ce87957b985b635072f2abaf04071
 }

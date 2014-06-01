@@ -1,0 +1,23 @@
+name: Hub
+version: 0.1
+main: com.mineplicity.essentials.EssentialsMain
+commands:
+ weatherlock:
+  permission: Hub.weatherlock
+  description: Allows you to lock the weather and to change it
+  aliases: [wl]
+ message:
+  description: Allows you to message your friends
+  usage: /message <Playername> <message>
+ setspawn:
+  description: Set spawn
+  permission: Hub.setspawn
+ report:
+  description: Report rule breakers
+  usage: /report <YourReportHere>
+ reports:
+  description: Report players that are breaking rules
+ timelock:
+  description: Disable or enable time lock
+  aliases: [tl]
+  usage: /timelock <on/off/setlock> [LockTime]
