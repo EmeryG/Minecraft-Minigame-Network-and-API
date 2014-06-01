@@ -44,10 +44,7 @@ public class Disabler implements Listener {
     @EventHandler
     public void onCreatureSpawnEvent(CreatureSpawnEvent e){
         if(Main.config.getBoolean("disabler.mobSpawn")){
-            if(e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) || e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM)){
-                e.setCancelled(false);
-            }
-            else{
+            if(!(e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) || e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM))){
                 e.setCancelled(true);
             }
         }
