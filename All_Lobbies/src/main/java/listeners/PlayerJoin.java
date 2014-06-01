@@ -1,5 +1,6 @@
 package listeners;
 
+import main.InfinitePotionEffect;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +14,7 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e) {
-        if(e instanceof Player) {
+        if (e instanceof Player) {
             Player p = (Player) e;
             p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
             p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));
