@@ -1,20 +1,14 @@
 package mineplicity.hub.main;
 
-import commands.*;
-
-import listeners.DamageEvent;
-import listeners.PlayerHunger;
-
 import mineplicity.hub.commands.*;
-import mineplicity.hub.listeners.DamageEvent;
-import mineplicity.hub.listeners.PlayerDeath;
-import mineplicity.hub.listeners.PlayerHunger;
-import mineplicity.hub.listeners.PlayerJoin;
+import mineplicity.hub.listeners.*;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,7 +32,6 @@ public class Main extends JavaPlugin {
         PlayerDeath pd = new PlayerDeath();
         WeatherChange wc = new WeatherChange();
         Disabler d = new Disabler();
-        TimeLock tl = new TimeLock();
 
 
         PluginManager pm = Bukkit.getPluginManager();
@@ -46,6 +39,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(ph, this);
         pm.registerEvents(pj, this);
         pm.registerEvents(pd, this);
+        pm.registerEvents(wc, this);
+        pm.registerEvents(d, this);
 
         //Commands
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
@@ -59,6 +54,10 @@ public class Main extends JavaPlugin {
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
+
+        //
+        BukkitRunnable timeLock = new TimeLock();
+        timeLock.runTaskTimer(this, 20L, 0L);
 
     }
 
