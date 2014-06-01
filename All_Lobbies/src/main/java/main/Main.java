@@ -1,3 +1,5 @@
+package main;
+
 import listeners.DamageEvent;
 import listeners.PlayerHunger;
 import org.bukkit.Bukkit;
