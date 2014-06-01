@@ -40,5 +40,4 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is now disabled.");
 
     }
-
 }
