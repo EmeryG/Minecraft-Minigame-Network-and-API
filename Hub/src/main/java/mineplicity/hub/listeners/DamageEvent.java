@@ -1,5 +1,10 @@
 package mineplicity.hub.listeners;
 
+import mineplicity.hub.main.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,8 +21,14 @@ public class DamageEvent implements Listener {
         if(event instanceof Player) {
             Player p = (Player) event;
             if(event.getCause() == EntityDamageEvent.DamageCause.VOID) {
+                FileConfiguration config = Main.config;
+                int x = config.getInt("Spawn.x");
+                int y = config.getInt("Spawn.y");
+                int z = config.getInt("Spawn.z");
+                World world = Bukkit.getWorld("world");
+
                 event.setCancelled(true);
-                p.setHealth(0);
+                p.teleport(new Location(world, x, y, z));
             }
             event.setCancelled(true);
         }
