@@ -1,21 +1,15 @@
 package mineplicity.hub.main;
 
-<<<<<<< HEAD
 import commands.*;
 
 import listeners.DamageEvent;
 import listeners.PlayerHunger;
 
-=======
 import mineplicity.hub.commands.*;
->>>>>>> 75f2b15c1c9d9983cf316c1135ee556991d36e67
 import mineplicity.hub.listeners.DamageEvent;
 import mineplicity.hub.listeners.PlayerDeath;
 import mineplicity.hub.listeners.PlayerHunger;
-<<<<<<< HEAD
-=======
 import mineplicity.hub.listeners.PlayerJoin;
->>>>>>> 75f2b15c1c9d9983cf316c1135ee556991d36e67
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -75,10 +69,7 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is now disabled.");
 
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 75f2b15c1c9d9983cf316c1135ee556991d36e67
     public void remoteSaveConfig() {
 
         saveConfig();
