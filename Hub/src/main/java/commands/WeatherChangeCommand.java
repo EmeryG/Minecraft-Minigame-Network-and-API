@@ -12,11 +12,12 @@ import org.bukkit.entity.Player;
 /**
  * Created by Ali on 01/06/2014.
  */
-public class WeatherChangeCommand implements CommandExecutor{
+public class WeatherChangeCommand implements CommandExecutor {
 
     FileConfiguration config = Main.config;
+
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel,String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
         Player player = (Player) sender;
         Main main = new Main();
         World world = player.getWorld();
@@ -54,6 +55,7 @@ public class WeatherChangeCommand implements CommandExecutor{
         }
         return false;
     }
+
     private void setWeather(String string, World world) {
         //Gets config before it is altered
         boolean oldEnabled = config.getBoolean("WeatherLock.enabled");

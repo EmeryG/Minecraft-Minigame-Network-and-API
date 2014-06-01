@@ -16,7 +16,7 @@ public class SetSpawn implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(label.equalsIgnoreCase("setspawn")){
+        if (label.equalsIgnoreCase("setspawn")) {
             Main main = new Main();
             FileConfiguration config = Main.config;
             Player player = (Player) sender;
