@@ -1,7 +1,7 @@
-package main;
+package mineplicity.hub.main;
 
-import listeners.DamageEvent;
-import listeners.PlayerHunger;
+import mineplicity.hub.listeners.DamageEvent;
+import mineplicity.hub.listeners.PlayerHunger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;

@@ -1,6 +1,6 @@
-package listeners;
+package mineplicity.hub.listeners;
 
-import main.InfinitePotionEffect;
+import mineplicity.hub.main.InfinitePotionEffect;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
