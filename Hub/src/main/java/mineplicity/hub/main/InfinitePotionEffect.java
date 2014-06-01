@@ -1,4 +1,4 @@
-package main;
+package mineplicity.hub.main;
 
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;

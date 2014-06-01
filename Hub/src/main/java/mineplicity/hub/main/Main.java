@@ -1,10 +1,15 @@
-package main;
+package mineplicity.hub.main;
 
+<<<<<<< HEAD:Hub/src/main/java/main/Main.java
 import commands.*;
 
 import listeners.DamageEvent;
 import listeners.PlayerHunger;
 
+=======
+import mineplicity.hub.listeners.DamageEvent;
+import mineplicity.hub.listeners.PlayerHunger;
+>>>>>>> 95f28d07056e6f5ac5c3217b723c0fbbef9a5ac0:Hub/src/main/java/mineplicity/hub/main/Main.java
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
