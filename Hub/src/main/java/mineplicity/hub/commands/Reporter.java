@@ -1,4 +1,4 @@
-package commands;
+package mineplicity.hub.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

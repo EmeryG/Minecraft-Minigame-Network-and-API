@@ -1,4 +1,4 @@
-package commands;
+package mineplicity.hub.commands;
 
 import main.Main;
 
