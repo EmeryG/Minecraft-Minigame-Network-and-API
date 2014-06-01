@@ -16,6 +16,7 @@ public class DamageEvent implements Listener {
             Player p = (Player) event;
             if(event.getCause() == EntityDamageEvent.DamageCause.VOID) {
                 event.setCancelled(true);
+
             }
             event.setCancelled(true);
         }

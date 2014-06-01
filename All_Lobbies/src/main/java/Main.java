@@ -14,8 +14,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin {
 
-
-
     public void onEnable() {
 
         //Registering Events
@@ -26,7 +24,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(de, this);
         pm.registerEvents(ph, this);
 
-        //Printing to Console
+        //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
@@ -35,7 +33,7 @@ public class Main extends JavaPlugin {
 
     public void onDisable() {
 
-        //Printing to Console
+        //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is now disabled.");
 

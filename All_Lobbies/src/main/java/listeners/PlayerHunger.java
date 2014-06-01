@@ -13,7 +13,10 @@ public class PlayerHunger implements Listener {
     @EventHandler
     public void onPLH(FoodLevelChangeEvent event) {
         if (event instanceof Player) {
+            Player p = (Player) event;
             event.setCancelled(true);
+            p.setFoodLevel(20);
+            p.setHealth(20);
         }
     }
 
