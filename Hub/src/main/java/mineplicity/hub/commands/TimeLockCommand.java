@@ -1,12 +1,11 @@
 package mineplicity.hub.commands;
 
-import main.Main;
 
+import mineplicity.hub.main.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Created by Ali on 01/06/2014.

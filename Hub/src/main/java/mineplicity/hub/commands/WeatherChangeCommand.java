@@ -1,6 +1,6 @@
 package mineplicity.hub.commands;
 
-import main.Main;
+import mineplicity.hub.main.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
