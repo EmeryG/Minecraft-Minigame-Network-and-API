@@ -1,15 +1,10 @@
 package mineplicity.hub.main;
 
-<<<<<<< HEAD:Hub/src/main/java/main/Main.java
-import commands.*;
-
-import listeners.DamageEvent;
-import listeners.PlayerHunger;
-
-=======
+import mineplicity.hub.commands.*;
 import mineplicity.hub.listeners.DamageEvent;
+import mineplicity.hub.listeners.PlayerDeath;
 import mineplicity.hub.listeners.PlayerHunger;
->>>>>>> 95f28d07056e6f5ac5c3217b723c0fbbef9a5ac0:Hub/src/main/java/mineplicity/hub/main/Main.java
+import mineplicity.hub.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -34,10 +29,18 @@ public class Main extends JavaPlugin {
         //Registering Events
         DamageEvent de = new DamageEvent();
         PlayerHunger ph = new PlayerHunger();
+        PlayerJoin pj = new PlayerJoin();
+        PlayerDeath pd = new PlayerDeath();
+        WeatherChange wc = new WeatherChange();
+        Disabler d = new Disabler();
+        TimeLock tl = new TimeLock();
+
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(de, this);
         pm.registerEvents(ph, this);
+        pm.registerEvents(pj, this);
+        pm.registerEvents(pd, this);
 
         //Commands
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
@@ -61,13 +64,9 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is now disabled.");
 
     }
-<<<<<<< HEAD
-=======
-
     public void remoteSaveConfig() {
 
         saveConfig();
 
     }
->>>>>>> 2be72359f22ce87957b985b635072f2abaf04071
 }
