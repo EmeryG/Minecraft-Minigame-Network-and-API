@@ -25,7 +25,7 @@ public class DamageEvent implements Listener {
                 int x = config.getInt("Spawn.x");
                 int y = config.getInt("Spawn.y");
                 int z = config.getInt("Spawn.z");
-                World world = Bukkit.getWorld("world");
+                World world = Bukkit.getWorld(config.getString("Spawn.world"));
 
                 p.teleport(new Location(world, x, y, z));
             }
