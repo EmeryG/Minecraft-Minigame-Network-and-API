@@ -34,6 +34,7 @@ public class Main extends JavaPlugin {
         PlayerDeath pd = new PlayerDeath();
         WeatherChange wc = new WeatherChange();
         Disabler d = new Disabler();
+        DoubleJump dj = new DoubleJump(this);
 
 
         PluginManager pm = Bukkit.getPluginManager();
@@ -42,6 +43,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(pd, this);
         pm.registerEvents(wc, this);
         pm.registerEvents(d, this);
+        pm.registerEvents(dj, this);
 
         //Commands
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
