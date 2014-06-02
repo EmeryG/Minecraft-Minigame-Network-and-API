@@ -1,4 +1,4 @@
-package mineplicity.hubapi.main.database;
+package mineplicity.hub.database;
 
 import com.mongodb.*;
 import com.mongodb.DB;

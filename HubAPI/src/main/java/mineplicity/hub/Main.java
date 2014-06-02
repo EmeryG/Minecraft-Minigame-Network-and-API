@@ -1,4 +1,4 @@
-package mineplicity.hubapi.main;
+package mineplicity.hub;
 
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
