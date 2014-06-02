@@ -1,6 +1,7 @@
 package mineplicity.hub.listeners;
 
 import mineplicity.hub.main.Main;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +21,7 @@ public class Disabler implements Listener {
         //If attacker is OP or has mineplicity.nopvpBypass permission node, they will deal damage
         if(!player.hasPermission("bukkit.command.op") || !player.hasPermission("hub.nopvpBypass")){
             e.setCancelled(true);
-            player.sendMessage("No PvP allowed");
+            player.sendMessage(ChatColor.DARK_RED + "No PvP allowed");
         }
     }
     //When player tries to build
@@ -38,7 +39,7 @@ public class Disabler implements Listener {
     //When player food bar change event
     @EventHandler
     public void onPlayerFoodBarChange(FoodLevelChangeEvent e){
-        e.setCancelled(false);
+        e.setCancelled(true);
     }
 
     @EventHandler
