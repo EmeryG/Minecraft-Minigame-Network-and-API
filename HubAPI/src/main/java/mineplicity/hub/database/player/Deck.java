@@ -1,4 +1,4 @@
-package mineplicity.hub.database;
+package mineplicity.hub.database.player;
 
 import lombok.Getter;
 import lombok.Setter;

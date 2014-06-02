@@ -1,4 +1,4 @@
-package mineplicity.hub.database;
+package mineplicity.hub.database.player;
 
 import com.mongodb.*;
 import com.mongodb.DB;
@@ -13,11 +13,11 @@ import java.util.UUID;
  * Time: 3:52 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Database {
+public class PlayerDatabase {
 
     DB db;
 
-    public Database() {
+    public PlayerDatabase() {
         try {
             MongoClient mongoClient = new MongoClient("localhost", 1234);
             db = mongoClient.getDB("Players");
