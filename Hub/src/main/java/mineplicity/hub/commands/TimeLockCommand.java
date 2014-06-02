@@ -14,32 +14,34 @@ public class TimeLockCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (label.equalsIgnoreCase("timelock") || label.equalsIgnoreCase("tl")) {
-            FileConfiguration config = Main.config;
-            Main main = new Main();
-            if (args.length == 1) {
-                if (args[0].equals("off")) {
-                    config.set("TimeLock.enabled", false);
-                    main.remoteSaveConfig();
-                    sender.sendMessage("Time lock disabled");
-                    return true;
-                } else if (args[0].equals("on")) {
-                    config.set("TimeLock.enabled", true);
-                    main.remoteSaveConfig();
-                    sender.sendMessage("Time lock enabled");
-                    return true;
+            if (sender.hasPermission("hub.timelock")) {
+                FileConfiguration config = Main.config;
+                Main main = new Main();
+                if (args.length == 1) {
+                    if (args[0].equals("off")) {
+                        config.set("TimeLock.enabled", false);
+                        main.remoteSaveConfig();
+                        sender.sendMessage("Time lock disabled");
+                        return true;
+                    } else if (args[0].equals("on")) {
+                        config.set("TimeLock.enabled", true);
+                        main.remoteSaveConfig();
+                        sender.sendMessage("Time lock enabled");
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else if (args.length == 2) {
+                    if (args[0].equalsIgnoreCase("setlock")) {
+                        long lockTime = Long.parseLong(args[1]);
+                        config.set("TimeLock.lockedtime", processLockTime(lockTime));
+                        main.remoteSaveConfig();
+                        sender.sendMessage("Time locked at " + convertToClock(lockTime));
+                        return true;
+                    }
                 } else {
                     return false;
                 }
-            } else if (args.length == 2) {
-                if (args[0].equalsIgnoreCase("setlock")) {
-                    long lockTime = Long.parseLong(args[1]);
-                    config.set("TimeLock.lockedtime", processLockTime(lockTime));
-                    main.remoteSaveConfig();
-                    sender.sendMessage("Time locked at " + convertToClock(lockTime));
-                    return true;
-                }
-            } else {
-                return false;
             }
         }
         return false;

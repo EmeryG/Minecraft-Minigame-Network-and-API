@@ -58,7 +58,7 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
 
-        //
+        //Runnable
         BukkitRunnable timeLock = new TimeLock();
         timeLock.runTaskTimer(this, 20L, 0L);
 

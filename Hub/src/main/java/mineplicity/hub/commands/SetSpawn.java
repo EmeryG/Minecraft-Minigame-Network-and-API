@@ -17,18 +17,20 @@ public class SetSpawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (label.equalsIgnoreCase("setspawn")) {
-            Main main = new Main();
-            FileConfiguration config = Main.config;
-            Player player = (Player) sender;
-            double x = player.getLocation().getBlockX();
-            double y = player.getLocation().getBlockY();
-            double z = player.getLocation().getBlockZ();
-            String world = player.getWorld().toString();
-            config.set("Spawn.x", x);
-            config.set("Spawn.y", y);
-            config.set("Spawn.z", z);
-            config.set("Spawn.world", world);
-            main.saveConfig();
+            if (sender.hasPermission("hub.setspawn")) {
+                Main main = new Main();
+                FileConfiguration config = Main.config;
+                Player player = (Player) sender;
+                double x = player.getLocation().getBlockX();
+                double y = player.getLocation().getBlockY();
+                double z = player.getLocation().getBlockZ();
+                String world = player.getWorld().toString();
+                config.set("Spawn.x", x);
+                config.set("Spawn.y", y);
+                config.set("Spawn.z", z);
+                config.set("Spawn.world", world);
+                main.saveConfig();
+            }
         }
         return false;
     }
