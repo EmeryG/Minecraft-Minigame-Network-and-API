@@ -1,6 +1,6 @@
 name: Hub
 version: 0.1
-main: com.mineplicity.essentials.EssentialsMain
+main: mineplicity.hub.main.Main
 commands:
  weatherlock:
   permission: Hub.weatherlock

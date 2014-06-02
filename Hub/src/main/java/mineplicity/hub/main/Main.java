@@ -30,7 +30,6 @@ public class Main extends JavaPlugin {
 
         //Registering Events
         DamageEvent de = new DamageEvent();
-        PlayerHunger ph = new PlayerHunger();
         PlayerJoin pj = new PlayerJoin();
         PlayerDeath pd = new PlayerDeath();
         WeatherChange wc = new WeatherChange();
@@ -39,7 +38,6 @@ public class Main extends JavaPlugin {
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(de, this);
-        pm.registerEvents(ph, this);
         pm.registerEvents(pj, this);
         pm.registerEvents(pd, this);
         pm.registerEvents(wc, this);

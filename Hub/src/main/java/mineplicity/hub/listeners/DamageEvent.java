@@ -18,16 +18,15 @@ public class DamageEvent implements Listener {
 
     @EventHandler
     public void onEDE(EntityDamageEvent event) {
-        if(event instanceof Player) {
-            Player p = (Player) event;
-            if(event.getCause() == EntityDamageEvent.DamageCause.VOID) {
+        if (event.getEntity() instanceof Player) {
+            Player p = (Player) event.getEntity();
+            if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
                 FileConfiguration config = Main.config;
                 int x = config.getInt("Spawn.x");
                 int y = config.getInt("Spawn.y");
                 int z = config.getInt("Spawn.z");
                 World world = Bukkit.getWorld("world");
 
-                event.setCancelled(true);
                 p.teleport(new Location(world, x, y, z));
             }
             event.setCancelled(true);

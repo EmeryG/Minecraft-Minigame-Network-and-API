@@ -14,10 +14,8 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e) {
-        if (e instanceof Player) {
             Player p = (Player) e;
             p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
             p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));
-        }
     }
 }
