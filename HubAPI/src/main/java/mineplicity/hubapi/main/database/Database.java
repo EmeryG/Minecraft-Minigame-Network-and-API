@@ -1,10 +1,8 @@
 package mineplicity.hubapi.main.database;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import lombok.Getter;
-import mineplicity.hubapi.main.Main;
+import com.mongodb.*;
 import java.net.UnknownHostException;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +13,6 @@ import java.net.UnknownHostException;
  */
 public class Database {
 
-    @Getter
     DB players;
 
     public Database() {
@@ -26,5 +23,29 @@ public class Database {
         } catch(UnknownHostException e) {
 
         }
+    }
+
+    public PowPlayer getPlayer(UUID id) {
+        DBCursor search = players.getCollection("Players").find(new BasicDBObject("uuid", id.toString()));
+        DBObject player = null;
+
+        while(search.hasNext()) {
+            DBObject current = search.next();
+            if(current.get("uuid").equals(id)) {
+                player = current;
+                break;
+            }
+        }
+
+        if(player.equals(null)) {
+            return null;
+        } else {
+            PowPlayer p = new PowPlayer();
+            return p;
+        }
+    }
+
+    public void savePlayer(PowPlayer p) {
+
     }
 }
