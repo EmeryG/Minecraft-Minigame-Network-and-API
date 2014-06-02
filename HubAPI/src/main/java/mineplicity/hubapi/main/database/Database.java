@@ -3,7 +3,6 @@ package mineplicity.hubapi.main.database;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import lombok.Getter;
-import mineplicity.hubapi.main.Main;
 import java.net.UnknownHostException;
 
 /**

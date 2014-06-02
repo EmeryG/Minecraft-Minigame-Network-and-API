@@ -21,9 +21,12 @@ public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
 
+    public Main plugin;
+
     public void onEnable() {
 
         config = getConfig();
+        plugin = this;
 
         //Registering Events
         DamageEvent de = new DamageEvent();
@@ -70,8 +73,6 @@ public class Main extends JavaPlugin {
     }
 
     public void remoteSaveConfig() {
-
         saveConfig();
-
     }
 }
