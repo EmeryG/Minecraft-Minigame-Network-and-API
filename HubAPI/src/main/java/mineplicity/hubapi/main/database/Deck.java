@@ -3,9 +3,8 @@ package mineplicity.hubapi.main.database;
 /**
  * Created by Ervin on 6/1/2014.
  */
-public enum Deck {
-
-    public enum get {
+public class Deck {
+    public enum cards {
         X2,
         X4,
         X6,
