@@ -17,12 +17,18 @@ public class Deck {
     Card card3 = Card.FIREBALL;
 
     public enum Card {
-        X2,
-        X4,
-        X6,
-        INVERSE,
-        STEAL,
-        PICK,
-        FIREBALL
+        X2("X2"),
+        X4("X4"),
+        X6("X6"),
+        INVERSE("Inverse"),
+        STEAL("Steal"),
+        PICK("Pick"),
+        FIREBALL("Fireball");
+
+        private final String Stringilized;
+
+        Card(String stringilized) {
+            Stringilized = stringilized;
+        }
     }
 }
