@@ -1,0 +1,17 @@
+WeatherLock:
+  enabled: true
+Spawn:
+  x: 100
+  y: 70
+  z: 100
+Disabler:
+  pvp: false
+  build: false
+Messager:
+  SenderPrefix: '&4'
+  Divider: '&f'
+  ReciverPrefix: '&7'
+  MessageColor: '&6'
+TimeLock:
+  enabled: true
+  lockedtime: 550
