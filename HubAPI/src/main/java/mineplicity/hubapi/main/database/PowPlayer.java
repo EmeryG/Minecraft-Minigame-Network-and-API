@@ -15,4 +15,6 @@ public class PowPlayer {
 
     @Getter @Setter
     String rank;
+
+    public Deck cards;
 }
