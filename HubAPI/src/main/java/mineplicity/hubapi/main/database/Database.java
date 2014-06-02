@@ -33,7 +33,7 @@ public class Database {
 
         while(search.hasNext()) {
             DBObject current = search.next();
-            if(current.get("uuid").equals(id)) {
+            if(current.get("uuid").toString().equals(id)) {
                 player = current;
                 break;
             }
@@ -43,6 +43,8 @@ public class Database {
             return null;
         } else {
             PowPlayer p = new PowPlayer();
+            p.setId(id);
+            p.setCoins(Integer.parseInt(player.get("coins").toString()));
             return p;
         }
     }

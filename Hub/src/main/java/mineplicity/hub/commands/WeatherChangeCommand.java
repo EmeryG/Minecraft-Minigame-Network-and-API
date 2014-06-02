@@ -23,32 +23,34 @@ public class WeatherChangeCommand implements CommandExecutor {
         World world = player.getWorld();
         if (cmdLabel.equalsIgnoreCase("weatherlock")
                 || cmdLabel.equalsIgnoreCase("wl")) {
-            if (args.length < 1 || args.length > 2) {
-                player.sendMessage("Invalid arguments. Either /wl <disabe/enable> or /wl set <sun/rain>");
-            }
-            if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("disable")) {
-                    player.sendMessage(ChatColor.GREEN + "WeatherLock has been disabled");
-                    config.set("WeatherLock.enabled", false);
-                    main.remoteSaveConfig();
-                } else if (args[0].equalsIgnoreCase("enable")) {
-                    player.sendMessage(ChatColor.GREEN + "WeatherLock has been enabled");
-                    config.set("WeatherLock.enabled", true);
-                    main.remoteSaveConfig();
+            if (sender.hasPermission("hub.weatherlock")) {
+                if (args.length < 1 || args.length > 2) {
+                    player.sendMessage("Invalid arguments. Either /wl <disabe/enable> or /wl set <sun/rain>");
                 }
+                if (args.length == 1) {
+                    if (args[0].equalsIgnoreCase("disable")) {
+                        player.sendMessage(ChatColor.GREEN + "WeatherLock has been disabled");
+                        config.set("WeatherLock.enabled", false);
+                        main.remoteSaveConfig();
+                    } else if (args[0].equalsIgnoreCase("enable")) {
+                        player.sendMessage(ChatColor.GREEN + "WeatherLock has been enabled");
+                        config.set("WeatherLock.enabled", true);
+                        main.remoteSaveConfig();
+                    }
 
-            } else if (args.length == 2) {
-                if (args[0].toString().equalsIgnoreCase("set")) {
-                    //The player only entered the weather so we default to players current world
-                    System.out.println("Set works");
-                    if (args[1].equals("sun")) {
-                        setWeather("sun", world);
+                } else if (args.length == 2) {
+                    if (args[0].toString().equalsIgnoreCase("set")) {
+                        //The player only entered the weather so we default to players current world
+                        System.out.println("Set works");
+                        if (args[1].equals("sun")) {
+                            setWeather("sun", world);
 
-                    } else if (args[1].equals("rain")) {
-                        setWeather("rain", world);
+                        } else if (args[1].equals("rain")) {
+                            setWeather("rain", world);
 
-                    } else {
-                        player.sendMessage("Invalid weather type");
+                        } else {
+                            player.sendMessage("Invalid weather type");
+                        }
                     }
                 }
             }
