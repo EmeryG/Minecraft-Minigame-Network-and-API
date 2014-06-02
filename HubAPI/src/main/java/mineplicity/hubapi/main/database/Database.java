@@ -1,6 +1,8 @@
 package mineplicity.hubapi.main.database;
 
 import com.mongodb.*;
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
 import java.net.UnknownHostException;
 import java.util.UUID;
 
