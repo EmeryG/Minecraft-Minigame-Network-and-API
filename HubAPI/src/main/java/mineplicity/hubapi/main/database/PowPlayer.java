@@ -13,8 +13,5 @@ public class PowPlayer {
     @Getter @Setter
     int coins;
 
-    @Getter @Setter
-    String rank;
-
-    public Deck cards;
+    public Deck cards = new Deck();
 }
