@@ -35,12 +35,8 @@ public class PlayerDatabase {
         while (search.hasNext()) {
             DBObject current = search.next();
             if (current.get("uuid").toString().equals(id)) {
-                while (search.hasNext()) {
-                    DBObject current = search.next();
-                    if (current.get("uuid").toString().equals(id)) {
                         player = current;
                         break;
-                    }
                 }
 
                 if (player.equals(null)) {
@@ -57,6 +53,8 @@ public class PlayerDatabase {
                         return p;
                     }
                 }
+            }
+        }
 
             public void savePlayer (PowPlayer p){
                 UUID id = p.getId();
@@ -66,9 +64,6 @@ public class PlayerDatabase {
                 while (search.hasNext()) {
                     DBObject current = search.next();
                     if (current.get("uuid").toString().equals(id)) {
-                        while (search.hasNext()) {
-                            DBObject current = search.next();
-                            if (current.get("uuid").toString().equals(id)) {
                                 player = current;
                                 break;
                             }
