@@ -23,7 +23,7 @@ public class PlayerDatabase {
             db = mongoClient.getDB("Players");
 
         } catch(UnknownHostException e) {
-
+        	System.out.println("Unknown host.");
         }
     }
 
