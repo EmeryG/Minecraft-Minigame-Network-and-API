@@ -3,6 +3,7 @@ package mineplicity.hub.database.player;
 import com.mongodb.*;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+
 import java.net.UnknownHostException;
 import java.util.UUID;
 
@@ -22,8 +23,13 @@ public class PlayerDatabase {
             MongoClient mongoClient = new MongoClient("localhost", 1234);
             db = mongoClient.getDB("Players");
 
+<<<<<<< HEAD
         } catch(UnknownHostException e) {
         	System.out.println("Unknown host.");
+=======
+        } catch (UnknownHostException e) {
+
+>>>>>>> 050646a6912ead6bc88e637892e1c0da811f5d02
         }
     }
 
@@ -31,22 +37,22 @@ public class PlayerDatabase {
         DBCursor search = db.getCollection("Players").find(new BasicDBObject("uuid", id.toString()));
         DBObject player = null;
 
-        while(search.hasNext()) {
+        while (search.hasNext()) {
             DBObject current = search.next();
-            if(current.get("uuid").toString().equals(id)) {
+            if (current.get("uuid").toString().equals(id)) {
                 player = current;
                 break;
             }
         }
 
-        if(player.equals(null)) {
+        if (player.equals(null)) {
             return null;
         } else {
             PowPlayer p = new PowPlayer();
             p.setId(id);
             p.setCoins(Integer.parseInt(player.get("coins").toString()));
-            String[] cs = new String[] {player.get("cards").toString()};
-            p.cards.setCards(new Deck.Card[] {Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])});
+            String[] cs = new String[]{player.get("cards").toString()};
+            p.cards.setCards(new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])});
             return p;
         }
     }
@@ -56,24 +62,24 @@ public class PlayerDatabase {
         DBCursor search = db.getCollection("Players").find(new BasicDBObject("uuid", id.toString()));
         DBObject player = null;
 
-        while(search.hasNext()) {
+        while (search.hasNext()) {
             DBObject current = search.next();
-            if(current.get("uuid").toString().equals(id)) {
+            if (current.get("uuid").toString().equals(id)) {
                 player = current;
                 break;
             }
         }
 
-        if(!(Integer.parseInt(player.get("coins").toString()) == p.getCoins())) {
+        if (!(Integer.parseInt(player.get("coins").toString()) == p.getCoins())) {
             player.removeField("coins");
             player.put("coins", p.getCoins());
             db.getCollection("Players").save(player);
         }
 
-        String[] cs = new String[] {player.get("cards").toString()};
-        Deck.Card[] cards = new Deck.Card[] {Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])};
+        String[] cs = new String[]{player.get("cards").toString()};
+        Deck.Card[] cards = new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])};
 
-        if(!(cards[0] == p.cards.getCard1()
+        if (!(cards[0] == p.cards.getCard1()
                 && cards[1] == p.cards.getCard2()
                 && cards[2] == p.cards.getCard3())) {
 
