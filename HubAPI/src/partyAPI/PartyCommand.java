@@ -22,13 +22,20 @@ public class PartyCommand implements CommandExecutor{
 			return true;
 		}
 		Player p = (Player) sender;
-			if (args.length == 0) {
-				p.sendMessage(ChatColor.RED + "/party invite <Player>");
-				p.sendMessage(ChatColor.RED + "/party kick <Player>");
-				p.sendMessage(ChatColor.RED + "/party accept");
-				p.sendMessage(ChatColor.RED + "/party leave");
-				p.sendMessage(ChatColor.RED + "/party disband");
-				return true;
+			if (args.length == 0 || ) {
+                if(PartyManger.getParty(p) != null) {
+                    if(PartyManger.getParty(p).isLeader(p)) {
+                        p.sendMessage(ChatColor.RED + "/party invite <Player>");
+                        p.sendMessage(ChatColor.RED + "/party kick <Player>");
+                        p.sendMessage(ChatColor.RED + "/party accept");
+                        p.sendMessage(ChatColor.RED + "/party leave");
+                        p.sendMessage(ChatColor.RED + "/party disband");
+                        return true;
+                    }else{
+                        p.sendMessage(ChatColor.RED + "/party accept");
+                        p.sendMessage(ChatColor.RED + "/party leave");
+                    }
+                }
 			}
 
 			if (args[0].equalsIgnoreCase("invite")) {
@@ -131,6 +138,38 @@ public class PartyCommand implements CommandExecutor{
 				p.sendMessage(ChatColor.RED + "You are not in a party!");
 				return true;
 			}
+        if(args[0].equalsIgnoreCase("message")){
+            if(args.length > 2) {
+                Party party = PartyManger.getParty(p);
+                if (party != null) {
+                    if (party.isLeader(p)) {
+                        String message;
+                        for (int i = 2; i < args.length; i++) {
+                            message += args[1];
+                        }
+                        party.messageParty
+                        return true;
+                    }
+                    p.sendMessage(ChatColor.RED + "You cant do that!");
+                    return true;
+                }
+                p.sendMessage(ChatColor.RED + "You are not in a party!");
+                return true;
+            }
+        }
+
+        if(args[0].equalsIgnoreCase("merge")){
+            if(args.length == 2){
+                Party party = PartyManger.getParty(p);
+                Player targetLeader = Bukkit.getPlayer(args[1]);
+                if(party.isLeader(p){
+                    party.mergeParties(party, PartyManger.getParty(targetLeader));
+                    party.messageParty(party);
+                }
+                p.sendMessage(ChatColor.RED + "You cant do that!");
+                return true;
+            }
+        }
 		return true;
 	}
 

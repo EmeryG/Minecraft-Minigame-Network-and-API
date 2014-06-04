@@ -36,6 +36,12 @@ public class Party {
 	public void removePlayer(Player player){
 		players.remove(player);
 	}
+
+    public void messageParty(Party party){
+        for (Player t : party.getPlayers()) {
+            t.sendMessage(ChatColor.YELLOW + "Leader:" + party.getLeader().getDisplayName() + " : " + message);
+        }
+    }
 	
 	public boolean isLeader(Player player){
 		return player == leader;
