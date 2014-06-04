@@ -1,14 +1,19 @@
 package mineplicity.hub.main;
 
+import java.util.HashMap;
+
 import mineplicity.hub.commands.*;
 import mineplicity.hub.listeners.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import partyAPI.PartyCommand;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +25,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
+    
+    public static HashMap<Player, Player> invites = new HashMap<Player, Player>();
 
     public Main plugin;
 
@@ -46,6 +53,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(dj, this);
 
         //Commands
+        getCommand("party").setExecutor(new PartyCommand());
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
         getCommand("message").setExecutor(new MessageCommand());
         getCommand("setspawn").setExecutor(new SetSpawn());
