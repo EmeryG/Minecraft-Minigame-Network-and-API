@@ -1,0 +1,6 @@
+name: Hub
+version: 0.1
+main: minplicity.hub.Main
+commands:
+ party:
+  description: The party command!

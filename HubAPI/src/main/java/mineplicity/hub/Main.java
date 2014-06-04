@@ -1,5 +1,6 @@
 package mineplicity.hub;
 
+import mineplicity.hub.partyAPI.PartyCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -22,6 +23,8 @@ public class Main extends JavaPlugin {
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
+
+        getCommand("party").setExecutor(new PartyCommand());
 
     }
 
