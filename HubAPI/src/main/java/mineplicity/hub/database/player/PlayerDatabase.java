@@ -48,12 +48,11 @@ public class PlayerDatabase {
                         p.setCoins(Integer.parseInt(player.get("coins").toString()));
                         String[] cs = new String[]{player.get("cards").toString()};
                         p.cards.setCards(new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])});
-                        String[] cs = new String[]{player.get("cards").toString()};
-                        p.cards.setCards(new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])});
                         return p;
                     }
                 }
             }
+            return null;
         }
 
             public void savePlayer (PowPlayer p){
@@ -80,10 +79,6 @@ public class PlayerDatabase {
                             Deck.Card[] cards = new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])};
 
                             if (!(cards[0] == p.cards.getCard1()
-                            String[] cs = new String[]{player.get("cards").toString()};
-                            Deck.Card[] cards = new Deck.Card[]{Deck.Card.valueOf(cs[0]), Deck.Card.valueOf(cs[1]), Deck.Card.valueOf(cs[2])};
-
-                            if (!(cards[0] == p.cards.getCard1()
                                     && cards[1] == p.cards.getCard2()
                                     && cards[2] == p.cards.getCard3())) {
 
@@ -97,3 +92,4 @@ public class PlayerDatabase {
                             }
                         }
                     }
+    }
