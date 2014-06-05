@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PartyChatChannel implements Listener{
 
-    ArrayList<Player> pChatPlayers = new ArrayList<Player>();
+    public static ArrayList<Player> pChatPlayers = new ArrayList<Player>();
 
     //Player chat event
     @EventHandler

@@ -170,6 +170,28 @@ public class PartyCommand implements CommandExecutor {
             }
         }
 
+        if(args[0].equalsIgnoreCase("chat")){
+            Party party = PartyManager.getParty(p);
+            if(party != null) {
+                if (args[1].equalsIgnoreCase("on")) {
+                    PartyChatChannel.pChatPlayers.add(p);
+                    p.sendMessage(ChatColor.GREEN + "Party Chat Enabled");
+                    return true;
+
+                } else if (args[1].equalsIgnoreCase("off")) {
+                    PartyChatChannel.pChatPlayers.remove(p);
+                    p.sendMessage(ChatColor.GREEN + "Party Chat Disabled");
+                    return true;
+
+
+                } else {
+                    p.sendMessage(ChatColor.RED + "/party chat < On/Off >");
+                    return true;
+                }
+            }
+            p.sendMessage(ChatColor.RED + "You are not in a party");
+        }
+
         return true;
     }
 
