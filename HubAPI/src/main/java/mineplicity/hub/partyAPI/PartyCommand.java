@@ -1,6 +1,4 @@
-package partyAPI;
-
-import mineplicity.hub.main.Main;
+package mineplicity.hub.partyAPI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,7 +12,7 @@ public class PartyCommand implements CommandExecutor{
 	/*
 	 * This package was created by Erez!
 	 */
-	
+
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (!(sender instanceof Player)) {
@@ -51,7 +49,7 @@ public class PartyCommand implements CommandExecutor{
 							p.sendMessage(ChatColor.RED + "You cant invite yourself.");
 							return true;
 						}
-						Main.invites.put(t, p);
+                        Party.invites.put(t, p);
 						t.sendMessage(p.getDisplayName() + ChatColor.GREEN  + " Sent you a party request!. To join type /party accept");
 						p.sendMessage(ChatColor.GREEN + "You invited " + ChatColor.RESET + t.getDisplayName());
 						return true;

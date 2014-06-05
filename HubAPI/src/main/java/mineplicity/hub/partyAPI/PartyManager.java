@@ -1,4 +1,4 @@
-package partyAPI;
+package mineplicity.hub.partyAPI;
 
 import java.util.ArrayList;
 
