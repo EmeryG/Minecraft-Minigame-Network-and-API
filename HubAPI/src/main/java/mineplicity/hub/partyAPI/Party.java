@@ -3,6 +3,8 @@ package mineplicity.hub.partyAPI;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import lilypad.client.connect.api.Connect;
+import lilypad.client.connect.api.request.impl.RedirectRequest;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 

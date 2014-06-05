@@ -169,6 +169,7 @@ public class PartyCommand implements CommandExecutor {
                 return true;
             }
         }
+        
         return true;
     }
 
