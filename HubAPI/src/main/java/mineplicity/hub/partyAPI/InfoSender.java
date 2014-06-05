@@ -6,23 +6,27 @@ import mineplicity.hub.Main;
 /**
  * Created by Ervin on 6/4/2014.
  */
-public class InfoSender implements Runnable {
+public class InfoSender {
 
-    public Main plugin;
+    // public Main plugin;
 
-    public void run() {
-        try {
+    // public void run() {
+    //     try {
 
-            //TODO: Finish the request, let Torn do this please. Please ignore until then
+    //         //TODO: Finish the request, let Torn do this please. Please ignore until then
 
-            Party party =
+    //         Party party =
 
-            MessageRequest r = new MessageRequest();
-            plugin.getBukkitConnect().request(r);
+    //         MessageRequest r = new MessageRequest();
+    //         plugin.getBukkitConnect().request(r);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
+    
+    public sendPartyInfo(Party party) {
+        
     }
 
 }
