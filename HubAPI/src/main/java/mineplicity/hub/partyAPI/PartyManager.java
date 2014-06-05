@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class PartyManager {
 
-    private static ArrayList<Party> partys = new ArrayList<Party>();
+    public static ArrayList<Party> partys = new ArrayList<Party>();
 
     public static void addParty(Player leader) {
         Party party = new Party(leader);
