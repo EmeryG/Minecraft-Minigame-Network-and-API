@@ -28,19 +28,17 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
 
-        //Printing to Console Infomation
+        //Printing to Console Information
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
 
-<<<<<<< HEAD
         plugin = this;
 
         config = getConfig();
-=======
+
         getCommand("party").setExecutor(new PartyCommand());
 
->>>>>>> 70bbaab8c28e64700c03226e890b58407688a22d
     }
 
     public void onDisable() {

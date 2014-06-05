@@ -146,7 +146,7 @@ public class PartyCommand implements CommandExecutor {
                         for (int i = 2; i < args.length; i++) {
                             message += args[1];
                         }
-                        party.messageParty(party, "");
+                        party.messageParty(party, message);
                         return true;
                     }
                     p.sendMessage(ChatColor.RED + "You cant do that!");

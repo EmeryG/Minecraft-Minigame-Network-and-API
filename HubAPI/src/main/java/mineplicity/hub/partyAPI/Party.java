@@ -14,6 +14,7 @@ public class Party {
     HashMap<Player, ArrayList<Player>> party = new HashMap<Player, ArrayList<Player>>();
     Player leader;
 
+
     public Party(Player leader) {
         this.leader = leader;
         players.add(leader);
