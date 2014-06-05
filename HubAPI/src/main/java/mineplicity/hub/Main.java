@@ -6,6 +6,7 @@ import lilypad.client.connect.api.result.FutureResultListener;
 import lilypad.client.connect.api.result.StatusCode;
 import lilypad.client.connect.api.result.impl.RedirectResult;
 import org.bukkit.ChatColor;
+import mineplicity.hub.partyAPI.PartyCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -32,9 +33,14 @@ public class Main extends JavaPlugin {
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
 
+<<<<<<< HEAD
         plugin = this;
 
         config = getConfig();
+=======
+        getCommand("party").setExecutor(new PartyCommand());
+
+>>>>>>> 70bbaab8c28e64700c03226e890b58407688a22d
     }
 
     public void onDisable() {
