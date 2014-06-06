@@ -8,11 +8,17 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class PartyCommand implements CommandExecutor {
 
 	/*
      * This package was created by Erez!
 	 */
+
+    public Map<Player, HashMap<Integer,Integer>> allVotes = new HashMap<Player, HashMap<Integer,Integer>>();
 
     @SuppressWarnings("deprecation")
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -137,6 +143,29 @@ public class PartyCommand implements CommandExecutor {
             p.sendMessage(ChatColor.RED + "You are not in a party!");
             return true;
         }
+
+        if(args[0].equalsIgnoreCase("vote")){
+            Party party = PartyManager.getParty(p);
+            if(party != null && party.isLeader(p)){
+                if(args[1].equalsIgnoreCase("create")){
+                    setupPartyVoting(party);
+                    return true;
+                }else if(args[1].equalsIgnoreCase("close")){
+                    closePartyVoting(party);
+                    return true;
+                }
+                p.sendMessage(ChatColor.RED + "The leader can't vote!");
+            }if(party != null){
+                try{
+                castPartyVote(p, party, Integer.parseInt(args[1]));
+                }
+                catch(NumberFormatException e){
+                    p.sendMessage(ChatColor.RED + "WTF bro, put in a number!");
+                }
+            }
+
+        }
+
         if (args[0].equalsIgnoreCase("message")) {
             if (args.length > 2) {
                 Party party = PartyManager.getParty(p);
@@ -153,19 +182,6 @@ public class PartyCommand implements CommandExecutor {
                     return true;
                 }
                 p.sendMessage(ChatColor.RED + "You are not in a party!");
-                return true;
-            }
-        }
-
-        if (args[0].equalsIgnoreCase("merge")) {
-            if (args.length == 2) {
-                Party party = PartyManager.getParty(p);
-                Player targetLeader = Bukkit.getPlayer(args[1]);
-                if (party.isLeader(p)) {
-                    PartyManager.mergeParties(party, PartyManager.getParty(targetLeader));
-                    party.messageParty(party, "");
-                }
-                p.sendMessage(ChatColor.RED + "You cant do that!");
                 return true;
             }
         }
@@ -193,6 +209,22 @@ public class PartyCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+    public void setupPartyVoting(Party party) {
+        Player leader = party.getLeader();
+        allVotes.put(leader, party.votes);
+    }
+
+    public void castPartyVote(Player player, Party party, int i){
+
+        int oldVote = party.votes.get(i);
+        party.votes.replace(i, oldVote, oldVote+1);
+    }
+
+    public void closePartyVoting(Party party) {
+        allVotes.remove(party.getLeader());
+        party.messageParty(party, ChatColor.DARK_BLUE + "Minigame vote is now close");
     }
 
 }
