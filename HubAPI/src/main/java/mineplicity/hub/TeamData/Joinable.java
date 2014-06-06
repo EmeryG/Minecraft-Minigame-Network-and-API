@@ -10,6 +10,16 @@ import org.bukkit.entity.Player;
 public interface Joinable {
 
     /**
+     * Will return the player's team data who's
+     * name matches the parameters.  It is possible
+     * to retrieve the Player entity through the TeamPlayer
+     * class.
+     *
+     * @param Name
+     * @return org.bukkit.entity.Player
+     */
+    public TeamPlayer getTeamPlayer(String Name);
+    /**
      * Will return all players inside of this
      * joinable team.
      *
@@ -23,9 +33,9 @@ public interface Joinable {
      * UUID in the parameters.
      *
      * @param uuid
-     * @return
+     * @return False if the player is already in a group.
      */
-    public int invitePlayer(UUID uuid);
+    public boolean addPlayer(UUID uuid);
 
     /**
      * If the player is inside the group, they will
@@ -35,7 +45,7 @@ public interface Joinable {
      * @throws java.lang.NullPointerException
      * @return
      */
-    public boolean kickPlayer(UUID uuid) throws NullPointerException;
+    public boolean kickPlayer(UUID uuid);
 
     /**
      * Sets this team's leader to the online player
@@ -45,7 +55,7 @@ public interface Joinable {
      * @throws java.lang.NullPointerException
      * @return
      */
-    public boolean setLeader(UUID uuid) throws NullPointerException;
+    public boolean setLeader(UUID uuid);
 
     /**
      * Get the Player who is the leader of the team.

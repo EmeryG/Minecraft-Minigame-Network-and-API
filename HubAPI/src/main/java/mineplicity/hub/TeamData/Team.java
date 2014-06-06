@@ -3,7 +3,11 @@ package mineplicity.hub.TeamData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.lang.Runnable;
 import java.util.UUID;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author Blackeiled
@@ -30,23 +34,48 @@ public enum Team implements Joinable {
      */
     RAID("RAID", 20);
 
+    private static List<Team> teams = new ArrayList<>();
+    private List<TeamPlayer> teamPlayers = new ArrayList<>();
     private final Integer maxPlayers;
     private final String type;
 
     public class TeamPlayer implements Invitable {
-
+        protected PendingInvitation pendingInvitation;
         private final String uuid;
         private final String name;
+        private boolean leader = false;
+        private boolean moderator = false;
+        private Date;
+        private invitation = 0;
 
         public TeamPlayer(UUID uuid)    {
             this.uuid = Bukkit.getPlayer(uuid).getUniqueId().toString();
             name = Bukkit.getPlayer(uuid).getName();
         }
 
-        @Override
-        public int invite() {
+        public int acceptInvite()   {
+            return 1;
+        }
+
+        public int declineInvite()  {
+            return -1;
+        }
+
+        public void invitePlayer() {
             return 0;
         }
+
+        public class PendingInvitation implements Runnable {
+
+            public void run()   {
+
+            }
+
+            public PendingInvitation()  {
+
+            }
+        }
+
     }
 
     private Team(String Type, Integer maxJoinable)  {
@@ -54,7 +83,14 @@ public enum Team implements Joinable {
         maxPlayers = maxJoinable;
     }
 
-    //
+    private Team()   {
+
+    }
+
+
+    public static Team getTeam(int i)   {
+        return Team.teams.get(i);
+    }
 
     /**
      *
@@ -65,27 +101,34 @@ public enum Team implements Joinable {
     //
 
     @Override
-    public Player[] getPlayers() {
-        return new Player[0];
+    public TeamPlayer[] getPlayers() {
+        return this.teamPlayers.toArray();
     }
 
     @Override
-    public int invitePlayer(UUID uuid) {
-        return 0;
+    public boolean addPlayer(UUID uuid) {
+        if(getPlayers().length >= maxPlayers()) return false;
+        Iterator<Team> iterator = teams.iterator();
+        while(iterator.hasNext())    {
+            if(iterator.next().hasPlayer(uuid)) return false;
+        }
+        this.teamPlayers().add(uuid);
+        return true;
+        }
+
+    @Override
+    public boolean kickPlayer(UUID uuid)  {
+        for(int i = 0; i < getPlayers().length; i++) { return getPlayers()[i].uuid.equals(uuid.toString()); }
+        return true;
     }
 
     @Override
-    public boolean kickPlayer(UUID uuid) throws NullPointerException {
+    public boolean setLeader(UUID uuid)  {
         return false;
     }
 
     @Override
-    public boolean setLeader(UUID uuid) throws NullPointerException {
-        return false;
-    }
-
-    @Override
-    public Player getLeader() {
+    public TeamPlayer getLeader() {
         return null;
     }
 
