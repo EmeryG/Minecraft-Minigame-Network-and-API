@@ -27,14 +27,6 @@ public class PartyManager {
         return null;
     }
 
-    public static void mergeParties(Party merger, Party mergedTo) {
-        for (Player p : merger.getPlayers()) {
-            mergedTo.addPlayer(p);
-            merger.removePlayer(p);
-        }
-        disbandParty(merger);
-    }
-
     public static void disbandParty(Party party) {
         deleteParty(party);
     }
