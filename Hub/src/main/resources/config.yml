@@ -15,3 +15,4 @@ Messager:
 TimeLock:
   enabled: true
   lockedtime: 550
+News: ["test", "test", "test", "test", "test", "test", "test", "test", "test", "test"]

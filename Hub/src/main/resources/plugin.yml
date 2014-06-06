@@ -21,3 +21,5 @@ commands:
   description: Disable or enable time lock
   aliases: [tl]
   usage: /timelock <on/off/setlock> [LockTime]
+ addnews:
+  description: Add news to boss bar
