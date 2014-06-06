@@ -1,6 +1,7 @@
 name: Hub
 version: 0.1
 main: mineplicity.hub.main.Main
+authors: Ali, Emery, Torn, Erez
 commands:
  weatherlock:
   permission: Hub.weatherlock
