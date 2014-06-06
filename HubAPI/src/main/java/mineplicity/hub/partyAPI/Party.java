@@ -14,6 +14,7 @@ public class Party {
     HashMap<Player, ArrayList<Player>> party = new HashMap<Player, ArrayList<Player>>();
     Player leader;
     HashMap<Integer, Integer> votes = new HashMap<Integer, Integer>();
+    HashMap<Integer, String> voteDisplayNames = new HashMap<Integer, String>();
 
 
     public Party(Player leader) {

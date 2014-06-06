@@ -3,14 +3,21 @@ package mineplicity.hub.partyAPI;
 import mineplicity.hub.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.bukkit.inventory.Inventory;
+
+import org.bukkit.inventory.ItemStack;
+
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.*;
 
 public class PartyCommand implements CommandExecutor {
 
@@ -19,6 +26,7 @@ public class PartyCommand implements CommandExecutor {
 	 */
 
     public Map<Player, HashMap<Integer,Integer>> allVotes = new HashMap<Player, HashMap<Integer,Integer>>();
+    public List<Player> votedPlayers = new ArrayList<Player>();
 
     @SuppressWarnings("deprecation")
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -154,15 +162,21 @@ public class PartyCommand implements CommandExecutor {
                     closePartyVoting(party);
                     return true;
                 }
-                p.sendMessage(ChatColor.RED + "The leader can't vote!");
-            }if(party != null){
-                try{
-                castPartyVote(p, party, Integer.parseInt(args[1]));
-                }
-                catch(NumberFormatException e){
-                    p.sendMessage(ChatColor.RED + "WTF bro, put in a number!");
+                p.sendMessage(ChatColor.RED + "Leader can't vote!");
+                return true;
+            }
+            if(party != null && args.length == 2){
+                if(!votedPlayers.contains(p)) {
+                    int oldValue = party.votes.get(Integer.parseInt(args[1]));
+                    party.votes.replace(Integer.parseInt(args[1]), oldValue, oldValue + 1);
+                    p.sendMessage(ChatColor.GREEN + "Your vote has been cast!");
+                    return true;
+                }else{
+                    p.sendMessage(ChatColor.RED + "You have already voted!");
+                    return true;
                 }
             }
+            p.sendMessage(ChatColor.RED + "Invalid arguments! Please use /party vote <Minigame Number>");
 
         }
 
@@ -214,17 +228,61 @@ public class PartyCommand implements CommandExecutor {
     public void setupPartyVoting(Party party) {
         Player leader = party.getLeader();
         allVotes.put(leader, party.votes);
-    }
-
-    public void castPartyVote(Player player, Party party, int i){
-
-        int oldVote = party.votes.get(i);
-        party.votes.replace(i, oldVote, oldVote+1);
+        openPollCreationGUI(party, leader);
     }
 
     public void closePartyVoting(Party party) {
         allVotes.remove(party.getLeader());
-        party.messageParty(party, ChatColor.DARK_BLUE + "Minigame vote is now close");
+        party.messageParty(party, ChatColor.DARK_BLUE + "Minigame voting is now closed");
+        int winnerId = 0;
+        int highestVotes = 0;
+        for(int i = 0; i <= 5; i++){
+            if(party.votes.get(i) > highestVotes){
+                winnerId = i;
+                highestVotes = party.votes.get(i);
+            }
+        }
+        party.messageParty(party, ChatColor.DARK_BLUE + "The minigame that won is: " + ChatColor.BOLD + party.voteDisplayNames.get(winnerId));
     }
 
+    private void openPollCreationGUI(Party party, Player p) {
+        FileConfiguration config = Main.config;
+        int a = config.getInt("Minigames.Amount");
+        Inventory inv = Bukkit.createInventory(null, (a / 9 + 1 * 9), ChatColor.DARK_AQUA + "Create Poll");
+        for (int i = 1; i <= config.getInt("Minigames.Amount"); i++) {
+            Material jazz = Material.getMaterial(config.getString("Minigames." + i + ".item"));
+
+            ItemStack is = new ItemStack(jazz);
+            ItemMeta im = is.getItemMeta();
+
+            List<String> lore = new ArrayList<String>();
+
+            lore.add("§4Not chosen");
+
+
+            im.setLore(lore);
+            im.setDisplayName(config.getString("Minigames."+i));
+            is.setItemMeta(im);
+
+            inv.addItem(is);
+        }
+        p.openInventory(inv);
+    }
+
+    public static void beginVoting(List<ItemStack> is, Party party) {
+        party.messageParty(party, ChatColor.DARK_AQUA + "Minigame voting has begun!!!");
+        List<Player> targets = party.getPlayers();
+        for(Player t : targets){
+            t.sendMessage(ChatColor.BOLD + "#1: "+ is.get(0).getItemMeta().getDisplayName());
+            t.sendMessage(ChatColor.BOLD + "#2: "+ is.get(1).getItemMeta().getDisplayName());
+            t.sendMessage(ChatColor.BOLD + "#3: "+ is.get(2).getItemMeta().getDisplayName());
+            t.sendMessage(ChatColor.BOLD + "#4: "+ is.get(3).getItemMeta().getDisplayName());
+            t.sendMessage(ChatColor.BOLD + "#5: "+ is.get(4).getItemMeta().getDisplayName());
+        }
+        int i = 0;
+        for(ItemStack itemstack : is) {
+            party.voteDisplayNames.put(i, itemstack.getItemMeta().getDisplayName());
+            i++;
+        }
+    }
 }
