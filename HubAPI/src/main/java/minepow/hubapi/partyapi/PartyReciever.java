@@ -8,4 +8,11 @@ package minepow.hubapi.partyapi;
  * To change this template use File | Settings | File Templates.
  */
 public class PartyReciever {
+
+    public static void RecieveMessage(String message){
+
+
+
+    }
+
 }
