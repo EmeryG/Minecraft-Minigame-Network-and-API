@@ -34,6 +34,15 @@ public class EconomyManager {
 		return false;
 	}
 	
+	public static void payForPlayer(Player player, Player target, int money){
+		if (canAfford(player, money)){
+			removeMoney(player, money);
+			addMoney(target, money);
+			return;
+		}
+		return;
+	}
+	
 	public static void removeMoney(Player player, int money) {
 
 		if (!players.containsKey(player)) {
