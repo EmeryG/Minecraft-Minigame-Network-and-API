@@ -18,6 +18,14 @@ public class ServerConnections extends Thread{
     public void run() {
 
 
+        for(String s : Main.plugin.getConfig().getStringList("Servers")){
+
+            String[] s1 = s.split(":");
+            String IP = s1[0];
+            int Port = Integer.valueOf(s1[1]);
+
+        }
+
 
         try{
 
