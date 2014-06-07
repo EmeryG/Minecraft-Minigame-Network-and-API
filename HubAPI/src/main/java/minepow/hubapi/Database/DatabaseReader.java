@@ -2,6 +2,11 @@ package minepow.hubapi.database;
 
 import com.rethinkdb.RethinkDB;
 import com.rethinkdb.RethinkDBConnection;
+import com.rethinkdb.model.MapObject;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,5 +26,11 @@ abstract public class DatabaseReader {
 
         r.db("MinePow");
         con.use("MinePow");
+    }
+
+    public int getMoney(UUID player) {
+        List<Map<String,Object>> results = (List<Map<String,Object>>) r.table("Players").filter(r.row().field("uuid")
+                .eq(player.toString())).pluck("money").run(con);
+        return Integer.parseInt(results.get(0).get("money").toString());
     }
 }
