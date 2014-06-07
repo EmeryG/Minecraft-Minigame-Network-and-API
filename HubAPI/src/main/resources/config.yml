@@ -6,3 +6,10 @@ Minigames:
  3: "420"
  4: "69"
  5: "GAYFAG"
+
+#ip of server and a port that isn't in use. This will have to be added to the other servers config
+Port: 1000
+
+#add every server except this one with the port you specified in the other config
+Servers:
+    - "ip:port"
