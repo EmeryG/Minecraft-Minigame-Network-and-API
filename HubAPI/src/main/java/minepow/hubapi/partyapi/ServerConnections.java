@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Connor Peticca on 6/6/2014.
  */
-public class ServerConnections extends Thread{
+public class ServerConnections extends Thread {
 
     public static ServerSocket ServerSock;
     public static ArrayList<Socket> Connections = new ArrayList<Socket>();
@@ -17,6 +17,7 @@ public class ServerConnections extends Thread{
     @Override
     public void run() {
 
+<<<<<<< HEAD
 
         for(String s : Main.plugin.getConfig().getStringList("Servers")){
 
@@ -28,25 +29,28 @@ public class ServerConnections extends Thread{
 
 
         try{
+=======
+        try {
+>>>>>>> e614f71d84b5ed7a5fb1d2ffc12c0d279342992f
 
             ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
             Socket Sock;
 
-            while (true){
+            while (true) {
 
                 do {
 
                     Sock = ServerSock.accept();
-                    if(!Connections.contains(Sock)){Connections.add(Sock);}
+                    if (!Connections.contains(Sock)) {
+                        Connections.add(Sock);
+                    }
 
-                }while (Sock == null);
-
+                } while (Sock == null);
 
 
             }
 
-        }catch (Exception e){}
-
-
+        } catch (Exception e) {
+        }
     }
 }
