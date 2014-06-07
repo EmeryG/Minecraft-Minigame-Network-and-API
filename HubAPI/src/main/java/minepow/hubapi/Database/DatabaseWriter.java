@@ -2,6 +2,7 @@ package minepow.hubapi.database;
 
 import com.rethinkdb.RethinkDB;
 import com.rethinkdb.RethinkDBConnection;
+import com.rethinkdb.model.MapObject;
 
 import java.util.UUID;
 
@@ -25,7 +26,8 @@ abstract public class DatabaseWriter {
         con.use("MinePow");
     }
 
-    public void updateMoney(UUID player) {
-
+    public void updateMoney(UUID player, int money) {
+        r.table("Players").filter(r.table("uuid").eq(player.toString()))
+                .update(new MapObject().with(("money"), money));
     }
 }
