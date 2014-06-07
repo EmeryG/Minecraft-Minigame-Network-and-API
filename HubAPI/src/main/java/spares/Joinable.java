@@ -1,4 +1,4 @@
-package minepow.hubapi.partyapi;
+package spares;
 
 import java.util.UUID;
 

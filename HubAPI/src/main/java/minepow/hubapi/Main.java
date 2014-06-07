@@ -21,7 +21,13 @@ import java.util.Map;
  */
 public class Main extends JavaPlugin {
 
-    public static Map<Player, Player> invites = new HashMap<Player, Player>();
+    public void onDisable() {
+
+        //Printing to Console Infomation
+        PluginDescriptionFile pluginFile = this.getDescription();
+        getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now disabled.");
+
+    }
 
     public void onEnable() {
 
@@ -29,14 +35,6 @@ public class Main extends JavaPlugin {
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
-
-    }
-
-    public void onDisable() {
-
-        //Printing to Console Infomation
-        PluginDescriptionFile pluginFile = this.getDescription();
-        getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now disabled.");
 
     }
 
