@@ -32,20 +32,29 @@ public class PartyCommands implements CommandExecutor {
             Player player = (Player) sender;
 
             if (args[0].equalsIgnoreCase("create")) {
-                Party party = new Party(player);
+                PartySender.partyCreate(player);
+                return true;
             } else if (args[0].equalsIgnoreCase("disband")) {
-                Party party = PartyManager.getParty(player);
-                PartyManager.deleteParty(party);
+                if(PartyManager.getParty(player) != null) {
+                    PartySender.partyDisband(PartyManager.getParty(player));
+                    return true;
+                } else {
+                    return false;
+                }
             } else if (args[0].equalsIgnoreCase("invite")) {
-                Player target = Bukkit.getPlayer(args[1]);
-                invites.put(target, PartyManager.getParty(player));
+                PartySender.partyInvite();
+                return true;
             } else if (args[0].equalsIgnoreCase("join")) {
-                Party party = invites.get(player);
-                party.addMember(player);
-                invites.remove(player);
+                PartySender.partyJoin();
+                return true;
             } else if (args[0].equalsIgnoreCase("leave")) {
-                Party party = PartyManager.getParty(player);
-                party.deleteMember(player);
+                PartySender.partyLeave();
+                return true;
+            } else if (args[0].equalsIgnoreCase("chat")) {
+                PartySender.partyChat();
+                return true;
+            } else {
+                return true;
             }
         }
         return false;

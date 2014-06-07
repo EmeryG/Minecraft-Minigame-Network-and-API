@@ -17,37 +17,20 @@ public class ServerConnections extends Thread {
     @Override
     public void run() {
 
-<<<<<<< HEAD
         for(String s : Main.plugin.getConfig().getStringList("Servers")){
-=======
+
+        }
         for (String s : Main.plugin.getConfig().getStringList("Servers")) {
->>>>>>> d5675efc75772950937b04f9c292ec65ff243051
 
             String[] s1 = s.split(":");
             String IP = s1[0];
             int Port = Integer.valueOf(s1[1]);
 
         }
-<<<<<<< HEAD
         try {
-=======
-
-        try {
-<<<<<<< HEAD
-            try {
->>>>>>> d5675efc75772950937b04f9c292ec65ff243051
 
                 ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
                 Socket Sock;
-
-                while (true) {
-
-                    do {
-=======
->>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
-
-            ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
-            Socket Sock;
 
             while (true) {
 

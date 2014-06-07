@@ -11,62 +11,46 @@ import org.bukkit.OfflinePlayer;
  */
 public class PartySender {
 
-    public void partyDisband(Party party) {
+    static public void partyDisband(Party party) {
 
         DataTransferListener.sendData("d=" + Party.getLeader().getName());
 
     }
 
-<<<<<<< HEAD
-    public void partyCreate(OfflinePlayer leader) {
-        
-=======
-    public void partyCreate(OfflinePlayer party) {
+    static public void partyCreate(OfflinePlayer leader) {
 
         DataTransferListener.sendData("c=" + Party.getLeader().getName());
 
->>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
     }
 
-    public void partyInvite(OfflinePlayer p, Party party) {
+    static public void partyInvite(OfflinePlayer p, Party party) {
 
         DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
 
     }
 
-    public void partyJoin(OfflinePlayer p, Party party) {
+    static public void partyJoin(OfflinePlayer p, Party party) {
 
         DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
 
     }
 
-    public void partyAccept(OfflinePlayer p) {
+    static public void partyAccept(OfflinePlayer p) {
 
         DataTransferListener.sendData("a=" + p.getName());
 
     }
 
-    public void partyLeave(OfflinePlayer p) {
+    static public void partyLeave(OfflinePlayer p) {
 
         DataTransferListener.sendData("i=" + p.getName());
 
     }
-<<<<<<< HEAD
-    //DataTransferListener.sendMessage(message);
-=======
-
-<<<<<<< HEAD
     //DataTransferListener.sendMessage(message);
 
-=======
-    public void partyChat(OfflinePlayer p, Party party, String text) {
+    static public void partyChat(OfflinePlayer p, Party party, String text) {
 
         DataTransferListener.sendData("c=" + p.getName() + " t=" + text);
 
     }
-<<<<<<< HEAD
->>>>>>> d5675efc75772950937b04f9c292ec65ff243051
-=======
->>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
->>>>>>> abfeddc5fbc35e0a0982b24d61c08337c061f117
 }
