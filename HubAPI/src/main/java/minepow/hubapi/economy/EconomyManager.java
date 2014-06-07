@@ -7,7 +7,11 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import minepow.hubapi.Main;
+<<<<<<< HEAD
 
+=======
+import minepow.hubapi.database.DatabaseWriter;
+>>>>>>> FETCH_HEAD
 import org.bukkit.entity.Player;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -23,8 +27,7 @@ abstract public class EconomyManager {
 
     public static HashMap<UUID, Integer> players = new HashMap<UUID, Integer>();
 
-    //still need to sync to database
-    public static void save(){
+    public static void dump(){
 
         try{
 
@@ -66,6 +69,7 @@ abstract public class EconomyManager {
 
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
+        minepow.hubapi.database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
 
     }
 
@@ -105,6 +109,7 @@ abstract public class EconomyManager {
         if (futureMoney >= 0) {
         	//removing and updating the list
             players.put(player.getUniqueId(), currentMoney - money);
+            DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney - money);
             return true;
         }
 
