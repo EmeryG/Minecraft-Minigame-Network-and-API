@@ -32,16 +32,16 @@ public class PartyCommands implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase("create")) {
                 PartySender.partyCreate(player);
-                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CREATE"));
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CREATE").replaceAll("§","&"));
                 return true;
 
             } else if (args[0].equalsIgnoreCase("disband")) {
                 if(PartyManager.getParty(player) != null) {
                     PartySender.partyDisband(player);
-                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND"));
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND").replaceAll("§","&"));
                     return true;
                 } else {
-                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND_ERROR"));
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND_ERROR").replaceAll("§","&"));
                     return false;
                 }
 
@@ -50,7 +50,7 @@ public class PartyCommands implements CommandExecutor {
                 OfflinePlayer party = PartyManager.getParty(player).getLeader();
                 if(party != null) {
                     PartySender.partyInvite(target, party);
-                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_INVITE"));
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_INVITE").replaceAll("§","&"));
                     return true;
                 }
 
@@ -58,7 +58,7 @@ public class PartyCommands implements CommandExecutor {
                 Party currentParty = PartyManager.getParty(player);
                 if(currentParty == null) {
                     PartySender.partyAccept(player);
-                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_JOIN"));
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_JOIN").replaceAll("§","&"));
                     return true;
                 }
 
@@ -66,7 +66,7 @@ public class PartyCommands implements CommandExecutor {
                 Party party = PartyManager.getParty(player);
                 if(party != null) {
                     PartySender.partyLeave(player);
-                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_LEAVE"));
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_LEAVE").replaceAll("§","&"));
                     return true;
                 }
 
@@ -77,12 +77,12 @@ public class PartyCommands implements CommandExecutor {
                     message += args[i];
                 }
                 PartySender.partyChat(player, message);
-                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CHAT"));
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CHAT").replaceAll("§","&"));
                 return true;
 
             } else if(args[0].equalsIgnoreCase("kick")){
                 PartySender.partyKick(player);
-                player.sendMessage(Main.plugin.getConfig().getString("PARTY_KICK"));
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_KICK").replaceAll("§","&"));
             } else {
                 return true;
             }
