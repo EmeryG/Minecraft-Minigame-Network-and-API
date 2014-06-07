@@ -21,37 +21,25 @@ public class PartyReciever {
 
     void partyCreate(OfflinePlayer leader) {
 
-        DataTransferListener.sendData("c=" + Party.getLeader().getName());
+    }
+
+    void partyInvite(OfflinePlayer p, OfflinePlayer leader) {
 
     }
 
-    void partyInvite(OfflinePlayer p, Party party) {
-
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
-
-    }
-
-    void partyJoin(OfflinePlayer p, Party party) {
-
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
+    void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
 
     }
 
     void partyAccept(OfflinePlayer p) {
 
-        DataTransferListener.sendData("a=" + p.getName());
-
     }
 
     void partyLeave(OfflinePlayer p) {
 
-        DataTransferListener.sendData("i=" + p.getName());
-
     }
 
-    void partyChat(OfflinePlayer p, Party party, String text) {
-
-        DataTransferListener.sendData("c=" + p.getName() + " t=" + text);
+    void partyChat(OfflinePlayer p, OfflinePlayer leader, String text) {
 
     }
 }
