@@ -17,10 +17,15 @@ public class PartySender {
 
     }
 
+<<<<<<< HEAD
+    public void partyCreate(OfflinePlayer leader) {
+        
+=======
     public void partyCreate(OfflinePlayer party) {
 
         DataTransferListener.sendData("c=" + Party.getLeader().getName());
 
+>>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
     }
 
     public void partyInvite(OfflinePlayer p, Party party) {
@@ -50,10 +55,18 @@ public class PartySender {
     //DataTransferListener.sendMessage(message);
 =======
 
+<<<<<<< HEAD
+    //DataTransferListener.sendMessage(message);
+
+=======
     public void partyChat(OfflinePlayer p, Party party, String text) {
 
         DataTransferListener.sendData("c=" + p.getName() + " t=" + text);
 
     }
+<<<<<<< HEAD
 >>>>>>> d5675efc75772950937b04f9c292ec65ff243051
+=======
+>>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
+>>>>>>> abfeddc5fbc35e0a0982b24d61c08337c061f117
 }
