@@ -9,6 +9,7 @@ import java.util.UUID;
 
 
 import minepow.hubapi.Main;
+import minepow.hubapi.database.DatabaseWriter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -57,7 +58,6 @@ abstract public class EconomyManager {
         if (!players.containsKey(player.getUniqueId())) {
         	//adding him if he is not in the List
             players.put(player.getUniqueId(), money);
-            minepow.hubapi.database.DatabaseWriter.
             return;
         }
 
@@ -66,6 +66,7 @@ abstract public class EconomyManager {
 
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
+        minepow.hubapi.database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
 
     }
 
@@ -105,6 +106,7 @@ abstract public class EconomyManager {
         if (futureMoney >= 0) {
         	//removing and updating the list
             players.put(player.getUniqueId(), currentMoney - money);
+            DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney - money);
             return true;
         }
 
