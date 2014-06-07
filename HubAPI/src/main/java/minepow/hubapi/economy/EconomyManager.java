@@ -63,7 +63,7 @@ abstract public class EconomyManager {
 
         
         int currentMoney = players.get(player.getUniqueId());
-        
+
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
 

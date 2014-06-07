@@ -26,12 +26,12 @@ abstract public class DatabaseWriter {
         con.use("MinePow");
     }
 
-    public void updateMoney(UUID player, int money) {
+    public static void updateMoney(UUID player, int money) {
         r.table("Players").filter(r.row().field("uuid").eq(player.toString()))
                 .update(new MapObject().with(("money"), money)).run(con);
     }
 
-    public void addPlayer(UUID player, int money) {
+    public static void addPlayer(UUID player, int money) {
         r.table("Players").insert(
                         new MapObject().with("uuid", player.toString()),
                         new MapObject().with("money", money)
