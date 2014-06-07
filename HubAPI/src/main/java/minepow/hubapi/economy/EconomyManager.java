@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import minepow.hubapi.Main;
-import minepow.hubapi.Database.DatabaseWriter;
+import minepow.hubapi.database.DatabaseWriter;
 
 import org.bukkit.entity.Player;
 import org.bukkit.util.io.BukkitObjectInputStream;
@@ -66,7 +66,7 @@ abstract public class EconomyManager {
 
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
-        minepow.hubapi.Database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
+        minepow.hubapi.database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
 
     }
 
