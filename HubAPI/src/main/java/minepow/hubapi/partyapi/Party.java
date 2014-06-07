@@ -17,20 +17,19 @@ public class Party {
     public Player leader;
     public List<Player> members = new ArrayList<Player>();
 
-    public Party(Player leader){
+    public Party(Player leader) {
         this.leader = leader;
     }
 
-    public Player getLeader(){
+    public Player getLeader() {
         return leader;
     }
 
-    public List<Player> getMembers(){
+    public List<Player> getMembers() {
         return members;
     }
 
-    public void addMembers(Player player){
+    public void addMembers(Player player) {
         members.add(player);
     }
-
 }

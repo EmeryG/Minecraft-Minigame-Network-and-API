@@ -34,13 +34,13 @@ public class Main extends JavaPlugin {
 
     }
 
-    public Connect getBukkitConnect() {
+    public Connect getConnect() {
         return (Connect) Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
     }
 
     public void redirectRequest(String server, final Player player) {
         try {
-            Connect c = getBukkitConnect();
+            Connect c = getConnect();
             c.request(new RedirectRequest(server, player.getName())).registerListener(new FutureResultListener<RedirectResult>() {
                 public void onResult(RedirectResult redirectResult) {
                     if (redirectResult.getStatusCode() == StatusCode.SUCCESS) {

@@ -1,5 +1,7 @@
 package minepow.hubapi.partyapi;
 
+import lilypad.client.connect.api.request.impl.MessageRequest;
+import minepow.hubapi.Main;
 import org.bukkit.entity.Player;
 
 /**
@@ -11,8 +13,12 @@ import org.bukkit.entity.Player;
  */
 public class PartySender {
 
-    public void partyDisband(Party party) {
+    public void partyDisband(Party party, String message) {
 
+        String partyName = party.getLeader().toString();
+
+        MessageRequest r = new MessageRequest(, "PartyAPI", partyName);
+        Main.getBukkitConnect().request(r);
     }
 
     public void partyCreate(Party party) {
@@ -32,6 +38,6 @@ public class PartySender {
     }
 
     public void partyChat() {
-        
+
     }
 }
