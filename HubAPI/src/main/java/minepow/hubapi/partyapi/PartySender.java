@@ -46,7 +46,6 @@ public class PartySender {
         DataTransferListener.sendData("l=" + p.getName());
 
     }
-    //DataTransferListener.sendMessage(message);
 
     static public void partyChat(OfflinePlayer p, OfflinePlayer leader, String text) {
 
