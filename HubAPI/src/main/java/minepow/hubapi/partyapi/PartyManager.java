@@ -1,5 +1,9 @@
 package minepow.hubapi.partyapi;
 
+import org.bukkit.OfflinePlayer;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Emery
@@ -8,4 +12,21 @@ package minepow.hubapi.partyapi;
  * To change this template use File | Settings | File Templates.
  */
 public class PartyManager {
+    // All the parties.
+    List<Party> parties = new ArrayList<Party>();
+
+    // Checks if the player si in the party and if they are it sends the party. Returns null otherwise.
+    public Party getParty(OfflinePlayer member) {
+        for(Party party : parties) {
+            if(party.getMembers().contains(member)) {
+                return party;
+            }
+        }
+        return null;
+    }
+
+    // Adds a party
+    public void addParty(OfflinePlayer leader) {
+        parties.add(new Party(leader));
+    }
 }

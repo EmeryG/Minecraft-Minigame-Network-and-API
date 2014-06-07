@@ -1,5 +1,7 @@
 package minepow.hubapi.partyapi;
 
+import org.bukkit.command.CommandExecutor;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Emery
@@ -8,4 +10,5 @@ package minepow.hubapi.partyapi;
  * To change this template use File | Settings | File Templates.
  */
 public class PartyCommands {
+
 }
