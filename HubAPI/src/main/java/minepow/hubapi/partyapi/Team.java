@@ -1,7 +1,6 @@
-package mineplicity.hub.TeamData;
+package minepow.hubapi.partyapi;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 import java.lang.Runnable;
 import java.util.UUID;
@@ -15,9 +14,9 @@ import java.util.Iterator;
  */
 
 /**
- * Creates a Team class with a preset and unchangeable
+ * Creates a minepow.hubapi.partyapi.Team class with a preset and unchangeable
  * type and maximum amount of players that can join the
- * Team of that type.
+ * minepow.hubapi.partyapi.Team of that type.
  */
 public enum Team implements Joinable {
 

@@ -1,4 +1,4 @@
-package mineplicity.hub.TeamData;
+package minepow.hubapi.partyapi;
 
 import java.util.UUID;
 import org.bukkit.entity.Player;

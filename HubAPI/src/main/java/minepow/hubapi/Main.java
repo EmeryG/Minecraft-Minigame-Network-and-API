@@ -1,4 +1,4 @@
-package mineplicity.hub;
+package minepow.hubapi;
 
 import lilypad.client.connect.api.Connect;
 import lilypad.client.connect.api.request.impl.RedirectRequest;
@@ -6,7 +6,7 @@ import lilypad.client.connect.api.result.FutureResultListener;
 import lilypad.client.connect.api.result.StatusCode;
 import lilypad.client.connect.api.result.impl.RedirectResult;
 import org.bukkit.ChatColor;
-import mineplicity.hub.partyAPI.PartyCommand;
+import minepow.hub.database.partyAPI.PartyCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
