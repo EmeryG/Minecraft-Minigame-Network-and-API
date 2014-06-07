@@ -13,12 +13,12 @@ import org.bukkit.entity.Player;
  */
 public class PartySender {
 
-    public void partyDisband(Party party, String message) {
+    public void partyDisband(Party party) {
 
-        String partyName = party.getLeader().toString();
+        /* String partyName = party.getLeader().toString();
 
         MessageRequest r = new MessageRequest(, "PartyAPI", partyName);
-        Main.getBukkitConnect().request(r);
+        Main.getBukkitConnect().request(r); */
     }
 
     public void partyCreate(Party party) {
