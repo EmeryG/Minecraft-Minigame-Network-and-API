@@ -11,27 +11,27 @@ import org.bukkit.OfflinePlayer;
  */
 public class PartySender {
 
-    static public void partyDisband(Party party) {
+    static public void partyDisband(OfflinePlayer leader) {
 
-        DataTransferListener.sendData("d=" + Party.getLeader().getName());
+        DataTransferListener.sendData("d=" + leader.getName());
 
     }
 
     static public void partyCreate(OfflinePlayer leader) {
 
-        DataTransferListener.sendData("c=" + Party.getLeader().getName());
+        DataTransferListener.sendData("c=" + leader.getName());
 
     }
 
-    static public void partyInvite(OfflinePlayer p, Party party) {
+    static public void partyInvite(OfflinePlayer p, OfflinePlayer leader) {
 
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
+        DataTransferListener.sendData("i=" + p.getName() + " l=" + leader.getName());
 
     }
 
-    static public void partyJoin(OfflinePlayer p, Party party) {
+    static public void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
 
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + Party.getLeader().getName());
+        DataTransferListener.sendData("i=" + p.getName() + " l=" + leader.getName());
 
     }
 
@@ -54,9 +54,9 @@ public class PartySender {
 
     }
 
-    static public void partyKick(OfflinePlayer p, Party party){
+    static public void partyKick(OfflinePlayer p, OfflinePlayer leader){
 
-        DataTransferListener.sendData("k=" + p.getName() + "l=" + Party.getLeader().getName());
+        DataTransferListener.sendData("k=" + p.getName() + "l=" + leader.getName());
 
     }
 }

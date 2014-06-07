@@ -13,12 +13,9 @@ public class PartyReciever {
 
     public static void RecieveMessage(String message){
 
-
     }
 
     void partyDisband(OfflinePlayer leader) {
-
-
 
     }
 
