@@ -44,9 +44,6 @@ public class PartyCommands implements CommandExecutor {
             }else if (args[0].equalsIgnoreCase("leave")) {
                 Party party = PartyManager.getParty(player);
                 party.deleteMember(player);
-            }
-
-        }
         return false;
     }
 }
