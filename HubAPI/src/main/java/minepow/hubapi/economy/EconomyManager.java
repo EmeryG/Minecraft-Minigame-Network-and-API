@@ -1,8 +1,17 @@
 package minepow.hubapi.economy;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
+import java.util.HashMap;
+import java.util.UUID;
+
+
+import minepow.hubapi.Main;
 import org.bukkit.entity.Player;
+import org.bukkit.util.io.BukkitObjectInputStream;
+import org.bukkit.util.io.BukkitObjectOutputStream;
 
 /**
  * Created with Eclipse.
@@ -13,22 +22,50 @@ import org.bukkit.entity.Player;
 
 abstract public class EconomyManager {
 
-    public static HashMap<Player, Integer> players = new HashMap<Player, Integer>();
+    public static HashMap<UUID, Integer> players = new HashMap<UUID, Integer>();
+
+    //still need to sync to database
+    public static void save(){
+
+        try{
+
+            BukkitObjectOutputStream boos = new BukkitObjectOutputStream(new FileOutputStream(new File(Main.plugin.getDataFolder(), "Econonmy.dat")));
+            boos.writeObject(players);
+            boos.flush();
+            boos.close();
+
+        }catch(Exception e){}
+
+    }
+
+    //still need to sync to database
+    public static void load(){
+
+        try{
+
+            BukkitObjectInputStream bois = new BukkitObjectInputStream(new FileInputStream(new File(Main.plugin.getDataFolder(), "Econonmy.dat")));
+            players = (HashMap<UUID, Integer>) bois.readObject();
+            bois.close();
+
+
+        }catch(Exception e){}
+
+    }
 
     public static void addMoney(Player player, int money) {
 
     	//checking if the player is in the players List
-        if (!players.containsKey(player)) {
+        if (!players.containsKey(player.getUniqueId())) {
         	//adding him if he is not in the List
-            players.put(player, money);
+            players.put(player.getUniqueId(), money);
             return;
         }
 
         
-        int currentMoney = players.get(player);
+        int currentMoney = players.get(player.getUniqueId());
         
         //adding the money and updating the list
-        players.put(player, currentMoney + money);
+        players.put(player.getUniqueId(), currentMoney + money);
 
     }
 
@@ -56,18 +93,18 @@ abstract public class EconomyManager {
     public static boolean removeMoney(Player player, int money) {
     	
     	//checking if the player is in the players List
-        if (!players.containsKey(player)) {
+        if (!players.containsKey(player.getUniqueId())) {
             return false;
         }
 
         
-        int currentMoney = players.get(player);
+        int currentMoney = players.get(player.getUniqueId());
         int futureMoney = currentMoney - money;
 
         //checking if it wont be a "-number" in the player bank
         if (futureMoney >= 0) {
         	//removing and updating the list
-            players.put(player, currentMoney - money);
+            players.put(player.getUniqueId(), currentMoney - money);
             return true;
         }
 
@@ -76,8 +113,8 @@ abstract public class EconomyManager {
 
     public static int getCurrentMoney(Player player) {
     	//checking if the player is in the players List
-        if (players.containsKey(player)) {
-            return players.get(player);
+        if (players.containsKey(player.getUniqueId())) {
+            return players.get(player.getUniqueId());
         }
         return 0;
     }
