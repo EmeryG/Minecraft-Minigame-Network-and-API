@@ -6,18 +6,22 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class EconomyCommands implements CommandExecutor{
+public class EconomyCommands implements CommandExecutor {
 
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "Only player can do this command!");
-			return true;
-		}
-        Player p = (Player) sender;
-        if (label.equalsIgnoreCase("money") || label.equalsIgnoreCase("balance")) {
-            p.sendMessage(ChatColor.RED + "Current PowMoney: " + ChatColor.RESET + EconomyManager.getCurrentMoney(p));
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Only player can do this command!");
             return true;
         }
-        return true;
-	}
+        Player p = (Player) sender;
+
+        if (args[0].equalsIgnoreCase("create")) {
+            return true;
+        } else if (label.equalsIgnoreCase("")) {
+
+        }
+        return false;
+    }
 }
