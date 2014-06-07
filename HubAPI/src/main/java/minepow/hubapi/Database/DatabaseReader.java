@@ -17,10 +17,10 @@ import java.util.UUID;
  */
 abstract public class DatabaseReader {
 
-    RethinkDBConnection con;
-    RethinkDB r;
+    static RethinkDBConnection con;
+    static RethinkDB r;
 
-    public void init() {
+    public static void init() {
         r = RethinkDB.r;
         con = RethinkDB.r.connect("localhost", 2000);
 
@@ -28,7 +28,7 @@ abstract public class DatabaseReader {
         con.use("MinePow");
     }
 
-    public int getMoney(UUID player) {
+    public static int getMoney(UUID player) {
         List<Map<String,Object>> results = (List<Map<String,Object>>) r.table("Players").filter(r.row().field("uuid")
                 .eq(player.toString())).pluck("money").run(con);
         return Integer.parseInt(results.get(0).get("money").toString());
