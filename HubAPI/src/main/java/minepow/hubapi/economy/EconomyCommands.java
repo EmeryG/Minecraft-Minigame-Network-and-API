@@ -15,6 +15,7 @@ public class EconomyCommands implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        
             if (args.length == 0) {
                 p.sendMessage(ChatColor.RED + "/money balance");
                 p.sendMessage(ChatColor.RED + "/money pay <Amount> <Player>");
