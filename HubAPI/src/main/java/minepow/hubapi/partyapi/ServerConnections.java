@@ -17,8 +17,6 @@ public class ServerConnections extends Thread {
     @Override
     public void run() {
 
-<<<<<<< HEAD
-
         for(String s : Main.plugin.getConfig().getStringList("Servers")){
 
             String[] s1 = s.split(":");
@@ -26,12 +24,7 @@ public class ServerConnections extends Thread {
             int Port = Integer.valueOf(s1[1]);
 
         }
-
-
-        try{
-=======
         try {
->>>>>>> e614f71d84b5ed7a5fb1d2ffc12c0d279342992f
 
             ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
             Socket Sock;
