@@ -1,5 +1,8 @@
 package minepow.hubapi.database;
 
+import com.rethinkdb.RethinkDB;
+import com.rethinkdb.RethinkDBConnection;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Emery
@@ -8,4 +11,12 @@ package minepow.hubapi.database;
  * To change this template use File | Settings | File Templates.
  */
 public class DatabaseReader {
+
+    public void database() {
+        RethinkDB r = RethinkDB.r;
+        RethinkDBConnection con = r.connect();
+
+        r.db("MinePow").tableCreate("Players");
+        con.use("MinePow");
+    }
 }
