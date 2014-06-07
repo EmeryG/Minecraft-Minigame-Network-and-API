@@ -62,12 +62,12 @@ public class PartyCommands implements CommandExecutor {
                     return true;
                 }
             } else if (args[0].equalsIgnoreCase("chat")) {
-                Party party = PartyManager.getParty(player);
+                OfflinePlayer leader = PartyManager.getParty(player).getLeader();
                 String message = "";
                 for(int i = 1; i < args.length; i++) {
                     message += args[i];
                 }
-                PartySender.partyChat(player, party, message);
+                PartySender.partyChat(player, leader, message);
                 return true;
             } else if(args[0].equalsIgnoreCase("kick")){
                 PartySender.partyKick(player);
