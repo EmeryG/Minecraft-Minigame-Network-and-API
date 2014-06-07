@@ -10,7 +10,7 @@ import java.net.Socket;
 /**
  * Created by Connor Peticca on 6/6/2014.
  */
-public class DataTransferListener extends Thread {
+abstract public class DataTransferListener extends Thread {
 
     // Listens for server data
     @Override

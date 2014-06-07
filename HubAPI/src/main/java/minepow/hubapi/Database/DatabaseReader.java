@@ -10,7 +10,7 @@ import com.rethinkdb.RethinkDBConnection;
  * Time: 9:56 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DatabaseReader {
+abstract public class DatabaseReader {
 
     RethinkDBConnection con;
     RethinkDB r;

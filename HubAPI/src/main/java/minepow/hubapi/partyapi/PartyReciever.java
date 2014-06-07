@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
  * Time: 6:44 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PartyReciever {
+abstract public class PartyReciever {
 
     public static void RecieveMessage(String message) {
         if (message.startsWith("d=")) {

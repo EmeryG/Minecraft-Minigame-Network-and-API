@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Connor Peticca on 6/6/2014.
  */
-public class ServerConnections extends Thread {
+abstract public class ServerConnections extends Thread {
 
     public static ServerSocket ServerSock;
     public static ArrayList<Socket> Connections = new ArrayList<Socket>();

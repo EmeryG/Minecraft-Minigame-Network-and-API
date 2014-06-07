@@ -14,7 +14,7 @@ import java.util.Map;
  * Time: 6:43 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PartyManager {
+abstract public class PartyManager {
     // All the parties.
     static List<Party> parties = new ArrayList<Party>();
     static Map<OfflinePlayer,OfflinePlayer> invites = new HashMap<OfflinePlayer, OfflinePlayer>();

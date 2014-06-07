@@ -3,6 +3,8 @@ package minepow.hubapi.database;
 import com.rethinkdb.RethinkDB;
 import com.rethinkdb.RethinkDBConnection;
 
+import java.util.UUID;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Emery
@@ -10,10 +12,10 @@ import com.rethinkdb.RethinkDBConnection;
  * Time: 9:55 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DatabaseWriter {
+abstract public class DatabaseWriter {
 
-    RethinkDBConnection con;
-    RethinkDB r;
+    static RethinkDBConnection con;
+    static RethinkDB r;
 
     static public void init() {
         r = RethinkDB.r;
@@ -23,5 +25,7 @@ public class DatabaseWriter {
         con.use("MinePow");
     }
 
-    public void wr
+    public void updateMoney(UUID player) {
+
+    }
 }

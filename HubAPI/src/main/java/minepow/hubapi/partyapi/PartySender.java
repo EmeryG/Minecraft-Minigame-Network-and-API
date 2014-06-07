@@ -10,7 +10,7 @@ import org.bukkit.OfflinePlayer;
  * Time: 6:44 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PartySender {
+abstract public class PartySender {
 
     static public void partyDisband(OfflinePlayer leader) {
 

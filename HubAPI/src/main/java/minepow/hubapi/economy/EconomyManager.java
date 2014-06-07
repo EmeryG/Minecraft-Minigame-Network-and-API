@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
  * Time: 5:00 PM
  */
 
-public class EconomyManager {
+abstract public class EconomyManager {
 
     public static HashMap<Player, Integer> players = new HashMap<Player, Integer>();
 
