@@ -19,8 +19,7 @@ public class DatabaseWriter {
         r = RethinkDB.r;
         con = RethinkDB.r.connect("localhost", 2000);
 
-        r.db("MinePow").tableCreate("Players");
+        r.db("MinePow");
         con.use("MinePow");
-
     }
 }
