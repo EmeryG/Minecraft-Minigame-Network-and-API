@@ -32,12 +32,15 @@ public class Party {
         return members;
     }
 
-    public static void addMember(OfflinePlayer player)
-    {
+    public static void addMember(OfflinePlayer player) {
         members.add(player);
     }
 
     public static void addMembers(OfflinePlayer player) {
         members.add(player);
+    }
+
+    public void deleteMember(OfflinePlayer player) {
+        members.remove(player);
     }
 }
