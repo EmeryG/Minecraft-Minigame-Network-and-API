@@ -33,11 +33,11 @@ public class DataTransferListener extends Thread {
         }
     }
 
-    public static void sendData(String message){
+    public static void sendData(String message) {
 
-        try{
+        try {
 
-            for (Socket Sock : ServerConnections.Connections){
+            for (Socket Sock : ServerConnections.Connections) {
 
                 PrintWriter pw;
 
@@ -45,8 +45,7 @@ public class DataTransferListener extends Thread {
                 pw.println(message);
 
             }
-
-        }catch (Exception e){}
-
+        } catch (Exception e) {
+        }
     }
 }

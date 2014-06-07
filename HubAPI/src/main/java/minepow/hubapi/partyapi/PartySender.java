@@ -1,9 +1,6 @@
 package minepow.hubapi.partyapi;
 
-import lilypad.client.connect.api.request.impl.MessageRequest;
-import minepow.hubapi.Main;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,31 +11,53 @@ import org.bukkit.entity.Player;
  */
 public class PartySender {
 
-    public void partyDisband(Party party) {
+    static public void partyDisband(OfflinePlayer leader) {
+
+        DataTransferListener.sendData("d=" + leader.getName());
 
     }
 
-    public void partyCreate(OfflinePlayer party) {
+    static public void partyCreate(OfflinePlayer leader) {
+
+        DataTransferListener.sendData("c=" + leader.getName());
 
     }
 
-    public void partyInvite(OfflinePlayer p, Party party) {
+    static public void partyInvite(OfflinePlayer p, OfflinePlayer leader) {
+
+        DataTransferListener.sendData("i=" + p.getName() + ";" + leader.getName());
 
     }
 
-    public void partyJoin(OfflinePlayer p, Party party) {
+    static public void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
+
+        DataTransferListener.sendData("j=" + p.getName() + ";" + leader.getName());
 
     }
 
-    public void partyLeave(OfflinePlayer p, Party party) {
+    static public void partyAccept(OfflinePlayer p) {
+
+        DataTransferListener.sendData("a=" + p.getName());
 
     }
 
-    public void partyChat(OfflinePlayer p, Party party) {
+    static public void partyLeave(OfflinePlayer p) {
+
+        DataTransferListener.sendData("l=" + p.getName());
 
     }
 
 
-    //DataTransferListener.sendMessage(message);
+    static public void partyChat(OfflinePlayer p, String text) {
+
+        DataTransferListener.sendData("chat=" + p.getName() + ";" + text);
+
+    }
+
+    static public void partyKick(OfflinePlayer p) {
+
+        DataTransferListener.sendData("k=" + p.getName());
+
+    }
 
 }

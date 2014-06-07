@@ -1,8 +1,11 @@
 package minepow.hubapi.partyapi;
 
 import org.bukkit.OfflinePlayer;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,10 +16,11 @@ import java.util.List;
  */
 public class PartyManager {
     // All the parties.
-    List<Party> parties = new ArrayList<Party>();
+    static List<Party> parties = new ArrayList<Party>();
+    static Map<OfflinePlayer,OfflinePlayer> invites = new HashMap<OfflinePlayer, OfflinePlayer>();
 
     // Checks if the player si in the party and if they are it sends the party. Returns null otherwise.
-    public Party getParty(OfflinePlayer member) {
+    public static Party getParty(OfflinePlayer member) {
         for(Party party : parties) {
             if(party.getMembers().contains(member)) {
                 return party;
@@ -26,7 +30,11 @@ public class PartyManager {
     }
 
     // Adds a party
-    public void addParty(OfflinePlayer leader) {
+    public static void addParty(OfflinePlayer leader) {
         parties.add(new Party(leader));
+    }
+
+    public static void deleteParty(Party party){
+        parties.remove(party);
     }
 }

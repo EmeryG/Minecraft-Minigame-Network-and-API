@@ -1,11 +1,16 @@
 package minepow.hubapi.partyapi;
 
+import minepow.hubapi.Main;
+import org.bukkit.Bukkit;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,28 +19,69 @@ import org.bukkit.event.Listener;
  * Time: 6:44 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PartyCommands implements CommandExecutor,  Listener {
+
+public class PartyCommands implements CommandExecutor {
+
+    public Map<Player, Party> invites = new HashMap<Player, Party>();
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender instanceof Player) {
-            if(cmd.getName().equalsIgnoreCase("chat")) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (label.equalsIgnoreCase("party") || label.equalsIgnoreCase("p")) {
+
+            Player player = (Player) sender;
+
+            if (args[0].equalsIgnoreCase("create")) {
+                PartySender.partyCreate(player);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CREATE"));
                 return true;
-            } else if(cmd.getName().equalsIgnoreCase("create")) {
+            } else if (args[0].equalsIgnoreCase("disband")) {
+                if(PartyManager.getParty(player) != null) {
+                    PartySender.partyDisband(player);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND"));
+                    return true;
+                } else {
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND_ERROR"));
+                    return false;
+                }
+            } else if (args[0].equalsIgnoreCase("invite")) {
+                Player target = Bukkit.getPlayer(args[1]);
+                OfflinePlayer party = PartyManager.getParty(player).getLeader();
+                if(party != null) {
+                    PartySender.partyInvite(target, party);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_INVITE"));
+                    return true;
+                }
+            } else if (args[0].equalsIgnoreCase("join")) {
+                Party currentParty = PartyManager.getParty(player);
+                OfflinePlayer leader = PartyManager.getParty(player).getLeader();
+                if(currentParty == null) {
+                    PartySender.partyJoin(player, leader);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_JOIN"));
+                    return true;
+                }
+            } else if (args[0].equalsIgnoreCase("leave")) {
+                Party party = PartyManager.getParty(player);
+                if(party != null) {
+                    PartySender.partyLeave(player);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_LEAVE"));
+                    return true;
+                }
+            } else if (args[0].equalsIgnoreCase("chat")) {
+                OfflinePlayer leader = PartyManager.getParty(player).getLeader();
+                String message = "";
+                for(int i = 1; i < args.length; i++) {
+                    message += args[i];
+                }
+                PartySender.partyChat(player, message);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CHAT"));
                 return true;
-            } else if(cmd.getName().equalsIgnoreCase("disband")) {
-                return true;
-            } else if(cmd.getName().equalsIgnoreCase("leave")) {
-                return true;
-            } else if(cmd.getName().equalsIgnoreCase("join")) {
-                return true;
-            } else if(cmd.getName().equalsIgnoreCase("invite")) {
-                return true;
+            } else if(args[0].equalsIgnoreCase("kick")){
+                PartySender.partyKick(player);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_KICK"));
             } else {
-                return false;
+                return true;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 }

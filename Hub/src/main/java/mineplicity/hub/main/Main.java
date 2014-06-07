@@ -2,11 +2,22 @@ package mineplicity.hub.main;
 
 import java.util.HashMap;
 
-import mineplicity.hub.commands.*;
-import mineplicity.hub.listeners.*;
-
+import mineplicity.hub.commands.MessageCommand;
+import mineplicity.hub.commands.Reporter;
+import mineplicity.hub.commands.SetSpawn;
+import mineplicity.hub.commands.TimeLockCommand;
+import mineplicity.hub.commands.WeatherChangeCommand;
+import mineplicity.hub.listeners.DamageEvent;
+import mineplicity.hub.listeners.Disabler;
+import mineplicity.hub.listeners.DoubleJump;
+import mineplicity.hub.listeners.PlayerDeath;
+import mineplicity.hub.listeners.PlayerJoin;
+import mineplicity.hub.listeners.WeatherChange;
 import mineplicity.hub.news.NewsCommand;
 import mineplicity.hub.news.NewsListener;
+import minepow.hubapi.economy.EconomyCommands;
+import minepow.hubapi.partyapi.PartyCommands;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -14,8 +25,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import partyAPI.PartyCommand;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,7 +36,7 @@ import partyAPI.PartyCommand;
 public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
-    
+
     public static HashMap<Player, Player> invites = new HashMap<Player, Player>();
 
     public Main plugin;
@@ -57,7 +66,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(nl, this);
 
         //Commands
-        getCommand("party").setExecutor(new PartyCommand());
+        getCommand("money").setExecutor(new EconomyCommands());
+        getCommand("party").setExecutor(new PartyCommands());
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
         getCommand("message").setExecutor(new MessageCommand());
         getCommand("setspawn").setExecutor(new SetSpawn());
