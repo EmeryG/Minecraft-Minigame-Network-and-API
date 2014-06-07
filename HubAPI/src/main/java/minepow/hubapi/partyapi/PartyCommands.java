@@ -67,7 +67,7 @@ public class PartyCommands implements CommandExecutor {
                 for(int i = 1; i < args.length; i++) {
                     message += args[i];
                 }
-                PartySender.partyChat(player, party, message);
+                PartySender.partyChat(player, party.getLeader(), message);
                 return true;
             } else {
                 return true;
