@@ -1,4 +1,4 @@
-package minepow.hubapi.partyapi;
+package spares;
 
 import org.bukkit.Bukkit;
 
@@ -14,9 +14,9 @@ import java.util.Iterator;
  */
 
 /**
- * Creates a minepow.hubapi.partyapi.Team class with a preset and unchangeable
+ * Creates a spares.Team class with a preset and unchangeable
  * type and maximum amount of players that can join the
- * minepow.hubapi.partyapi.Team of that type.
+ * spares.Team of that type.
  */
 public enum Team implements Joinable {
 
