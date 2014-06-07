@@ -37,5 +37,7 @@ public class Party {
         members.add(player);
     }
 
-    public void deleteMember(OfflinePlayer player){ members.remove(player);}
+    public void deleteMember(OfflinePlayer player) {
+        members.remove(player);
+    }
 }
