@@ -5,6 +5,8 @@ import java.util.HashMap;
 import mineplicity.hub.commands.*;
 import mineplicity.hub.listeners.*;
 
+import mineplicity.hub.news.NewsCommand;
+import mineplicity.hub.news.NewsListener;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -42,6 +44,7 @@ public class Main extends JavaPlugin {
         WeatherChange wc = new WeatherChange();
         Disabler d = new Disabler();
         DoubleJump dj = new DoubleJump(this);
+        NewsListener nl = new NewsListener();
 
 
         PluginManager pm = Bukkit.getPluginManager();
@@ -51,6 +54,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(wc, this);
         pm.registerEvents(d, this);
         pm.registerEvents(dj, this);
+        pm.registerEvents(nl, this);
 
         //Commands
         getCommand("party").setExecutor(new PartyCommand());
@@ -60,6 +64,7 @@ public class Main extends JavaPlugin {
         getCommand("report").setExecutor(new Reporter());
         getCommand("reports").setExecutor(new Reporter());
         getCommand("timelock").setExecutor(new TimeLockCommand());
+        getCommand("addnews").setExecutor(new NewsCommand());
 
         //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();

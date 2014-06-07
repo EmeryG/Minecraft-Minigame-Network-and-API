@@ -15,7 +15,7 @@ public class NewsCommand implements CommandExecutor{
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         if(label.equalsIgnoreCase("addnews")){
             String message = "";
-            for(int i = 0; i < args.length; i++){
+            for(int i = 1; i < args.length; i++){
                 message += args[i];
             }
             addNews(message, Integer.parseInt(args[0]));
@@ -26,5 +26,7 @@ public class NewsCommand implements CommandExecutor{
 
     public void addNews(String message, int number) {
         config.set("News."+number, message);
+        Main main = new Main();
+        main.saveConfig();
     }
 }
