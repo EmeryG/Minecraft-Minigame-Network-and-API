@@ -24,8 +24,7 @@ abstract public class EconomyManager {
 
     public static HashMap<UUID, Integer> players = new HashMap<UUID, Integer>();
 
-    //still need to sync to database
-    public static void save(){
+    public static void dump(){
 
         try{
 
@@ -58,6 +57,7 @@ abstract public class EconomyManager {
         if (!players.containsKey(player.getUniqueId())) {
         	//adding him if he is not in the List
             players.put(player.getUniqueId(), money);
+            minepow.hubapi.database.DatabaseWriter.
             return;
         }
 
