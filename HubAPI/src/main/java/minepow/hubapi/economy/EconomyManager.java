@@ -53,11 +53,11 @@ public class EconomyManager {
         return false;
     }
 
-    public static void removeMoney(Player player, int money) {
+    public static boolean removeMoney(Player player, int money) {
     	
     	//checking if the player is in the players List
         if (!players.containsKey(player)) {
-            return;
+            return false;
         }
 
         
@@ -68,10 +68,10 @@ public class EconomyManager {
         if (futureMoney >= 0) {
         	//removing and updating the list
             players.put(player, currentMoney - money);
-            return;
+            return true;
         }
 
-        return;
+        return false;
     }
 
     public static int getCurrentMoney(Player player) {
