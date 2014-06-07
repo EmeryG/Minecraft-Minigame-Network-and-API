@@ -1,4 +1,4 @@
-package minepow.hubapi.Database;
+package minepow.hubapi.database;
 
 /**
  * Created with IntelliJ IDEA.
