@@ -3,6 +3,7 @@ package mineplicity.hub.listeners;
 import mineplicity.hub.main.Main;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,6 +23,7 @@ public class Disabler implements Listener {
         if(!player.hasPermission("bukkit.command.op") || !player.hasPermission("hub.nopvpBypass")){
             e.setCancelled(true);
             player.sendMessage(ChatColor.DARK_RED + "No PvP allowed");
+            player.playSound(player.getLocation(), Sound.ITEM_BREAK, 10, 1);
         }
     }
     //When player tries to build
