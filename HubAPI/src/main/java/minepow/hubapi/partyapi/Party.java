@@ -1,6 +1,8 @@
 package minepow.hubapi.partyapi;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,27 +15,30 @@ import java.util.List;
  */
 public class Party {
 
-    // List of Playersm leader included
+    // List of Players leader included
     OfflinePlayer leader;
     List<OfflinePlayer> members = new ArrayList<OfflinePlayer>();
 
-    public Party(OfflinePlayer leader){
+    public Party(OfflinePlayer leader) {
         this.leader = leader;
-
         // The leader is a member, so we add to the members.
-        members.add(leader);
+        this.addMember(leader);
     }
 
-    public OfflinePlayer getLeader(){
+    public OfflinePlayer getLeader() {
         return leader;
     }
 
-    public List<OfflinePlayer> getMembers(){
+    public List<OfflinePlayer> getMembers() {
         return members;
     }
 
-    public void addMembers(OfflinePlayer player){
+    public void addMember(OfflinePlayer player)
+    {
         members.add(player);
     }
 
+    public void addMembers(OfflinePlayer player) {
+        members.add(player);
+    }
 }

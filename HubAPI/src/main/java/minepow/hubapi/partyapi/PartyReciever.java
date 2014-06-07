@@ -9,10 +9,15 @@ package minepow.hubapi.partyapi;
  */
 public class PartyReciever {
 
+<<<<<<< HEAD
     public static void RecieveMessage(String message){
 
 
 
     }
 
+=======
+
+
+>>>>>>> 7013c91ea8c032ceb9b85da932ae11bdf35d5fb8
 }

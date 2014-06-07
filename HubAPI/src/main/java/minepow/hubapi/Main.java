@@ -8,14 +8,10 @@ import lilypad.client.connect.api.result.impl.RedirectResult;
 import minepow.hubapi.partyapi.ServerConnections;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.Plugin;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -45,13 +41,13 @@ public class Main extends JavaPlugin {
 
     }
 
-    public Connect getBukkitConnect() {
+    public Connect getConnect() {
         return (Connect) Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
     }
 
     public void redirectRequest(String server, final Player player) {
         try {
-            Connect c = getBukkitConnect();
+            Connect c = getConnect();
             c.request(new RedirectRequest(server, player.getName())).registerListener(new FutureResultListener<RedirectResult>() {
                 public void onResult(RedirectResult redirectResult) {
                     if (redirectResult.getStatusCode() == StatusCode.SUCCESS) {
