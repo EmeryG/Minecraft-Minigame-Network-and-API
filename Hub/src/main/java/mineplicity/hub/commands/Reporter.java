@@ -31,7 +31,7 @@ public class Reporter implements CommandExecutor {
             Main.config.set("Report.Messages", reports);
 
         }else if(strings[0].equalsIgnoreCase("list")){
-            Main.config.getList("Reports.Messages");
+            Main.config.getList("Report.Messages");
         }
 
 
