@@ -1,5 +1,6 @@
 package minepow.hubapi.partyapi;
 
+import minepow.hubapi.partyapi.sockets.DataTransferListener;
 import org.bukkit.OfflinePlayer;
 
 /**

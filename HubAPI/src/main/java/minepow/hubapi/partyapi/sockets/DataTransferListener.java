@@ -1,4 +1,6 @@
-package minepow.hubapi.partyapi;
+package minepow.hubapi.partyapi.sockets;
+
+import minepow.hubapi.partyapi.PartyReciever;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
