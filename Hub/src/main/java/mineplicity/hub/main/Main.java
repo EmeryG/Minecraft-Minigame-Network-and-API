@@ -15,6 +15,7 @@ import mineplicity.hub.listeners.PlayerJoin;
 import mineplicity.hub.listeners.WeatherChange;
 import mineplicity.hub.news.NewsCommand;
 import mineplicity.hub.news.NewsListener;
+import minepow.hubapi.economy.EconomyCommands;
 import minepow.hubapi.partyapi.PartyCommands;
 
 import org.bukkit.Bukkit;
@@ -65,6 +66,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(nl, this);
 
         //Commands
+        getCommand("money").setExecutor(new EconomyCommands());
         getCommand("party").setExecutor(new PartyCommands());
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
         getCommand("message").setExecutor(new MessageCommand());
