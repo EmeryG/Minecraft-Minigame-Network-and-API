@@ -12,19 +12,19 @@ import org.bukkit.OfflinePlayer;
 public class PartyReciever {
 
     public static void RecieveMessage(String message){
-        if(message.startsWith("d")) {
+        if(message.startsWith("d=")) {
+            if(message.remov
+        } else if(message.startsWith("c=")) {
 
-        } else if(message.startsWith("c")) {
+        } else if(message.startsWith("i=")) {
 
-        } else if(message.startsWith("i")) {
+        } else if(message.startsWith("j=")) {
 
-        } else if(message.startsWith("j")) {
+        } else if(message.startsWith("a=")) {
 
-        } else if(message.startsWith("a")) {
+        } else if(message.startsWith("l=")) {
 
-        } else if(message.startsWith("l")) {
-
-        } else if(message.startsWith("chat")) {
+        } else if(message.startsWith("chat=")) {
 
         }
     }
