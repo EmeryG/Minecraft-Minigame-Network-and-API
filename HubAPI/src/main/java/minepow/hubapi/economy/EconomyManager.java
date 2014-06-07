@@ -3,13 +3,12 @@ package minepow.hubapi.economy;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
 import java.util.HashMap;
 import java.util.UUID;
 
-
 import minepow.hubapi.Main;
-import minepow.hubapi.database.DatabaseWriter;
+import minepow.hubapi.Database.DatabaseWriter;
+
 import org.bukkit.entity.Player;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -39,7 +38,8 @@ abstract public class EconomyManager {
     }
 
     //still need to sync to database
-    public static void load(){
+    @SuppressWarnings("unchecked")
+	public static void load(){
 
         try{
 
@@ -66,7 +66,7 @@ abstract public class EconomyManager {
 
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
-        minepow.hubapi.database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
+        minepow.hubapi.Database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
 
     }
 
