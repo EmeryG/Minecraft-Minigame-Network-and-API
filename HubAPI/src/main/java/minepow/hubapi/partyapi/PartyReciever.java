@@ -13,6 +13,7 @@ import org.bukkit.OfflinePlayer;
 public class PartyReciever {
 
     public static void RecieveMessage(String message){
+<<<<<<< HEAD
         if(message.startsWith("d=")) {
             message = message.substring(2);
             partyDisband(Bukkit.getOfflinePlayer(message));
