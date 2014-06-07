@@ -14,10 +14,6 @@ import org.bukkit.entity.Player;
  */
 public class PartySender {
 
-<<<<<<< HEAD
-
-
-=======
     public void partyDisband(Party party) {
 
     }
@@ -41,5 +37,4 @@ public class PartySender {
     public void partyChat(OfflinePlayer p, Party party) {
 
     }
->>>>>>> 7013c91ea8c032ceb9b85da932ae11bdf35d5fb8
 }
