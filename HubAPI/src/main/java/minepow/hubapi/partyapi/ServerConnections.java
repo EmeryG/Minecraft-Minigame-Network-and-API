@@ -32,8 +32,8 @@ public class ServerConnections extends Thread {
         try {
 =======
 
-
         try {
+<<<<<<< HEAD
             try {
 >>>>>>> d5675efc75772950937b04f9c292ec65ff243051
 
@@ -43,18 +43,24 @@ public class ServerConnections extends Thread {
                 while (true) {
 
                     do {
+=======
+>>>>>>> ff5b8676bbbe93f936ef7508572fb2a25cc48bff
 
-                        Sock = ServerSock.accept();
-                        if (!Connections.contains(Sock)) {
-                            Connections.add(Sock);
-                        }
+            ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
+            Socket Sock;
 
-                    } while (Sock == null);
+            while (true) {
 
+                do {
 
-                }
+                    Sock = ServerSock.accept();
+                    if (!Connections.contains(Sock)) {
+                        Connections.add(Sock);
+                    }
 
-            } catch (Exception e) {
+                } while (Sock == null);
             }
+        } catch (Exception e) {
         }
     }
+}

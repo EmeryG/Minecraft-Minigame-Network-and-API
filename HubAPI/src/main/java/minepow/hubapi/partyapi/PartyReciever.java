@@ -11,5 +11,7 @@ public class PartyReciever {
 
     public static void RecieveMessage(String message){
 
+
+
     }
 }
