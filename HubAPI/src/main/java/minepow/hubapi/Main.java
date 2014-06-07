@@ -5,6 +5,7 @@ import lilypad.client.connect.api.request.impl.RedirectRequest;
 import lilypad.client.connect.api.result.FutureResultListener;
 import lilypad.client.connect.api.result.StatusCode;
 import lilypad.client.connect.api.result.impl.RedirectResult;
+import minepow.hubapi.economy.EconomyManager;
 import minepow.hubapi.partyapi.sockets.ServerConnections;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,6 +23,8 @@ public class Main extends JavaPlugin {
     public static Plugin plugin;
 
     public void onDisable() {
+
+        EconomyManager.dump();
 
         //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();
