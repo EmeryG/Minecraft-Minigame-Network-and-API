@@ -2,6 +2,7 @@ package minepow.hubapi.partyapi;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 
 /**
  * Created with IntelliJ IDEA.
@@ -83,14 +84,24 @@ public class PartyReciever {
     }
 
     static void partyLeave(OfflinePlayer p) {
-
+        Party party = PartyManager.getParty(p);
+        if(party != null){
+            party.deleteMember(p);
+        }
     }
 
     static void partyChat(OfflinePlayer p, String text) {
-
+        Party party = PartyManager.getParty(p);
+        for(OfflinePlayer player : party.getMembers()){
+            if(player.isOnline()) {
+                Player oPlayer = (Player) player;
+                oPlayer.sendMessage(text);
+            }
+        }
     }
 
     static void partyKick(OfflinePlayer p) {
-
+        Party party = PartyManager.getParty(p);
+        party.deleteMember(p);
     }
 }
