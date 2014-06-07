@@ -53,4 +53,10 @@ public class PartySender {
         DataTransferListener.sendData("c=" + p.getName() + " t=" + text);
 
     }
+
+    static public void partyKick(OfflinePlayer p, Party party){
+
+        DataTransferListener.sendData("k=" + p.getName() + "l=" + Party.getLeader().getName());
+
+    }
 }
