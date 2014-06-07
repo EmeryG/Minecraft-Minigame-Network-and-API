@@ -5,7 +5,7 @@ import lilypad.client.connect.api.request.impl.RedirectRequest;
 import lilypad.client.connect.api.result.FutureResultListener;
 import lilypad.client.connect.api.result.StatusCode;
 import lilypad.client.connect.api.result.impl.RedirectResult;
-import minepow.hubapi.partyapi.ServerConnections;
+import minepow.hubapi.partyapi.sockets.ServerConnections;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

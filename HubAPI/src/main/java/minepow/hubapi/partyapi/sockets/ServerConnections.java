@@ -1,4 +1,4 @@
-package minepow.hubapi.partyapi;
+package minepow.hubapi.partyapi.sockets;
 
 import minepow.hubapi.Main;
 
