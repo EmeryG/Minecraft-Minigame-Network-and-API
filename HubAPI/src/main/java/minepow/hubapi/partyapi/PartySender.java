@@ -25,13 +25,13 @@ public class PartySender {
 
     static public void partyInvite(OfflinePlayer p, OfflinePlayer leader) {
 
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + leader.getName());
+        DataTransferListener.sendData("i=" + p.getName() + ";" + leader.getName());
 
     }
 
     static public void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
 
-        DataTransferListener.sendData("j=" + p.getName() + " l=" + leader.getName());
+        DataTransferListener.sendData("j=" + p.getName() + ";" + leader.getName());
 
     }
 
@@ -49,7 +49,7 @@ public class PartySender {
 
     static public void partyChat(OfflinePlayer p, String text) {
 
-        DataTransferListener.sendData("chat=" + p.getName() + " t=" + text);
+        DataTransferListener.sendData("chat=" + p.getName() + ";" + text);
 
     }
 
