@@ -17,9 +17,7 @@ public class ServerConnections extends Thread {
     @Override
     public void run() {
 
-<<<<<<< HEAD
-
-        for(String s : Main.plugin.getConfig().getStringList("Servers")){
+        for (String s : Main.plugin.getConfig().getStringList("Servers")) {
 
             String[] s1 = s.split(":");
             String IP = s1[0];
@@ -27,11 +25,7 @@ public class ServerConnections extends Thread {
 
         }
 
-
-        try{
-=======
         try {
->>>>>>> e614f71d84b5ed7a5fb1d2ffc12c0d279342992f
 
             ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
             Socket Sock;
@@ -46,10 +40,7 @@ public class ServerConnections extends Thread {
                     }
 
                 } while (Sock == null);
-
-
             }
-
         } catch (Exception e) {
         }
     }

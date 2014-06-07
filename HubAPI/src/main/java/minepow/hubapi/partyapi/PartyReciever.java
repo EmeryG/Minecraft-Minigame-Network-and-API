@@ -11,8 +11,7 @@ public class PartyReciever {
 
     public static void RecieveMessage(String message){
 
-        //do your shit here if you need pro hacks ask me
+
 
     }
-
 }
