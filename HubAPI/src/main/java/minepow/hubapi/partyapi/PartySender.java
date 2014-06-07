@@ -18,8 +18,8 @@ public class PartySender {
 
     }
 
-    public void partyCreate(OfflinePlayer party) {
-
+    public void partyCreate(OfflinePlayer leader) {
+        
     }
 
     public void partyInvite(OfflinePlayer p, Party party) {
@@ -37,9 +37,7 @@ public class PartySender {
     public void partyChat(OfflinePlayer p, Party party) {
 
     }
-<<<<<<< HEAD
 
     //DataTransferListener.sendMessage(message);
-=======
->>>>>>> e614f71d84b5ed7a5fb1d2ffc12c0d279342992f
+
 }
