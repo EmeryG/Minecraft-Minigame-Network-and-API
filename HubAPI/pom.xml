@@ -25,9 +25,9 @@
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>2.12.2</version>
+            <groupId>com.rethinkdb</groupId>
+            <artifactId>rethink-java-driver</artifactId>
+            <version>0.2</version>
         </dependency>
         <dependency>
             <groupId>lilypad.client.connect</groupId>
@@ -41,8 +41,12 @@
             <url>http://repo.bukkit.org/content/groups/public/</url>
         </repository>
         <repository>
-            <id>mongo-java-driver</id>
-            <url>http://mvnrepository.com/artifact/org.mongodb/mongo-java-driver</url>
+            <id>rethinkjava-mvn-repo</id>
+            <url>https://raw.github.com/dkhenry/rethinkjava/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
         </repository>
         <repository>
             <id>network-repo</id>
