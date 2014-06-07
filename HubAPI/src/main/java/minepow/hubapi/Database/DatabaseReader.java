@@ -13,10 +13,12 @@ import com.rethinkdb.RethinkDBConnection;
 public class DatabaseReader {
 
     public void database() {
+
         RethinkDB r = RethinkDB.r;
-        RethinkDBConnection con = r.connect();
+        RethinkDBConnection con = r.connect("localhost", 2000);
 
         r.db("MinePow").tableCreate("Players");
         con.use("MinePow");
+
     }
 }
