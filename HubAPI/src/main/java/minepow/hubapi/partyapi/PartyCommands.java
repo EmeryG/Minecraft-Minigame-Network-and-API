@@ -69,6 +69,8 @@ public class PartyCommands implements CommandExecutor {
                 }
                 PartySender.partyChat(player, party, message);
                 return true;
+            } else if(args[0].equalsIgnoreCase("kick")){
+                PartySender.partyKick(player);
             } else {
                 return true;
             }
