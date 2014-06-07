@@ -20,6 +20,7 @@ public class PartyCommands implements CommandExecutor,  Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
             if(cmd.getName().equalsIgnoreCase("chat")) {
+                Par
                 return true;
             } else if(cmd.getName().equalsIgnoreCase("create")) {
                 return true;

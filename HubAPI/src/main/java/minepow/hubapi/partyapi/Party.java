@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Party {
 
-    // List of Playersm leader included
+    // List of Players leader included
     OfflinePlayer leader;
     List<OfflinePlayer> members = new ArrayList<OfflinePlayer>();
 
