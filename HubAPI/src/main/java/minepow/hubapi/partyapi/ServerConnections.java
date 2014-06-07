@@ -25,28 +25,23 @@ public class ServerConnections extends Thread {
 
         }
 
-
         try {
-            try {
 
-                ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
-                Socket Sock;
+            ServerSock = new ServerSocket(Main.plugin.getConfig().getInt("Port"));
+            Socket Sock;
 
-                while (true) {
+            while (true) {
 
-                    do {
+                do {
 
-                        Sock = ServerSock.accept();
-                        if (!Connections.contains(Sock)) {
-                            Connections.add(Sock);
-                        }
+                    Sock = ServerSock.accept();
+                    if (!Connections.contains(Sock)) {
+                        Connections.add(Sock);
+                    }
 
-                    } while (Sock == null);
-
-
-                }
-
-            } catch (Exception e) {
+                } while (Sock == null);
             }
+        } catch (Exception e) {
         }
     }
+}
