@@ -15,7 +15,7 @@ public class DatabaseWriter {
     RethinkDBConnection con;
     RethinkDB r;
 
-    static public void init() {
+    public static void init() {
         r = RethinkDB.r;
         con = RethinkDB.r.connect("localhost", 2000);
 
