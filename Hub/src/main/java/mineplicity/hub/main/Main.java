@@ -27,7 +27,7 @@ import partyAPI.PartyCommand;
 public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
-    
+
     public static HashMap<Player, Player> invites = new HashMap<Player, Player>();
 
     public Main plugin;
