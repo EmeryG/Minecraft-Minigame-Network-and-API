@@ -15,8 +15,8 @@ import java.util.List;
 public class Party {
 
     // List of Players leader included
-    OfflinePlayer leader;
-    List<OfflinePlayer> members = new ArrayList<OfflinePlayer>();
+    static OfflinePlayer leader;
+    static List<OfflinePlayer> members = new ArrayList<OfflinePlayer>();
 
     public Party(OfflinePlayer leader) {
         this.leader = leader;
@@ -24,16 +24,19 @@ public class Party {
         this.addMember(leader);
     }
 
-    public OfflinePlayer getLeader() {
+    public static OfflinePlayer getLeader() {
         return leader;
     }
 
-    public List<OfflinePlayer> getMembers() {
+    public static List<OfflinePlayer> getMembers() {
         return members;
     }
 
-    public void addMember(OfflinePlayer player)
-    {
+    public static void addMember(OfflinePlayer player) {
+        members.add(player);
+    }
+
+    public static void addMembers(OfflinePlayer player) {
         members.add(player);
     }
 
