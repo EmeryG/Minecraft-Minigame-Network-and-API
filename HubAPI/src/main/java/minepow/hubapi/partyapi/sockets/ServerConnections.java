@@ -14,6 +14,7 @@ public class ServerConnections extends Thread {
     public static ServerSocket ServerSock;
     public static ArrayList<Socket> Connections = new ArrayList<Socket>();
 
+    // Maintains connections
     @Override
     public void run() {
 

@@ -30,12 +30,6 @@ public class PartySender {
 
     }
 
-    static public void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
-
-        DataTransferListener.sendData("j=" + p.getName() + ";" + leader.getName());
-
-    }
-
     static public void partyAccept(OfflinePlayer p) {
 
         DataTransferListener.sendData("a=" + p.getName());

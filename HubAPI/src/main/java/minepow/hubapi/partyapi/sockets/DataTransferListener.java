@@ -12,6 +12,7 @@ import java.net.Socket;
  */
 public class DataTransferListener extends Thread {
 
+    // Listens for server data
     @Override
     public void run() {
 
@@ -35,6 +36,7 @@ public class DataTransferListener extends Thread {
         }
     }
 
+    // Sends data to all servers
     public static void sendData(String message) {
 
         try {

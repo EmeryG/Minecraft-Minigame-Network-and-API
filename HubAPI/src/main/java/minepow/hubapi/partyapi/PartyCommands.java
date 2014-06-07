@@ -34,6 +34,7 @@ public class PartyCommands implements CommandExecutor {
                 PartySender.partyCreate(player);
                 player.sendMessage(Main.plugin.getConfig().getString("PARTY_CREATE"));
                 return true;
+
             } else if (args[0].equalsIgnoreCase("disband")) {
                 if(PartyManager.getParty(player) != null) {
                     PartySender.partyDisband(player);
@@ -43,6 +44,7 @@ public class PartyCommands implements CommandExecutor {
                     player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND_ERROR"));
                     return false;
                 }
+
             } else if (args[0].equalsIgnoreCase("invite")) {
                 Player target = Bukkit.getPlayer(args[1]);
                 OfflinePlayer party = PartyManager.getParty(player).getLeader();
@@ -51,14 +53,15 @@ public class PartyCommands implements CommandExecutor {
                     player.sendMessage(Main.plugin.getConfig().getString("PARTY_INVITE"));
                     return true;
                 }
-            } else if (args[0].equalsIgnoreCase("join")) {
+
+            } else if (args[0].equalsIgnoreCase("accept")) {
                 Party currentParty = PartyManager.getParty(player);
-                OfflinePlayer leader = PartyManager.getParty(player).getLeader();
                 if(currentParty == null) {
-                    PartySender.partyJoin(player, leader);
+                    PartySender.partyAccept(player);
                     player.sendMessage(Main.plugin.getConfig().getString("PARTY_JOIN"));
                     return true;
                 }
+
             } else if (args[0].equalsIgnoreCase("leave")) {
                 Party party = PartyManager.getParty(player);
                 if(party != null) {
@@ -66,6 +69,7 @@ public class PartyCommands implements CommandExecutor {
                     player.sendMessage(Main.plugin.getConfig().getString("PARTY_LEAVE"));
                     return true;
                 }
+
             } else if (args[0].equalsIgnoreCase("chat")) {
                 OfflinePlayer leader = PartyManager.getParty(player).getLeader();
                 String message = "";
@@ -75,6 +79,7 @@ public class PartyCommands implements CommandExecutor {
                 PartySender.partyChat(player, message);
                 player.sendMessage(Main.plugin.getConfig().getString("PARTY_CHAT"));
                 return true;
+
             } else if(args[0].equalsIgnoreCase("kick")){
                 PartySender.partyKick(player);
                 player.sendMessage(Main.plugin.getConfig().getString("PARTY_KICK"));

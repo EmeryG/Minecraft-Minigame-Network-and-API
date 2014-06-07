@@ -36,10 +36,6 @@ public class Party {
         members.add(player);
     }
 
-    public static void addMembers(OfflinePlayer player) {
-        members.add(player);
-    }
-
     public void deleteMember(OfflinePlayer player) {
         members.remove(player);
     }
