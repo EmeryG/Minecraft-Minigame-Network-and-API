@@ -1,11 +1,12 @@
 package minepow.hubapi.partyapi;
 
 import java.util.UUID;
+
 import org.bukkit.entity.Player;
 
 /**
  * @author Blackveiled
- * Created by Blackeiled (Adam Canfield) on 6/6/2014.
+ *         Created by Blackeiled (Adam Canfield) on 6/6/2014.
  */
 public interface Joinable {
 
@@ -18,7 +19,8 @@ public interface Joinable {
      * @param Name
      * @return org.bukkit.entity.Player
      */
-    public TeamPlayer getTeamPlayer(String Name);
+    public Team.TeamPlayer getTeamPlayer(String Name);
+
     /**
      * Will return all players inside of this
      * joinable team.
@@ -42,8 +44,8 @@ public interface Joinable {
      * be kicked from the group.
      *
      * @param uuid
-     * @throws java.lang.NullPointerException
      * @return
+     * @throws java.lang.NullPointerException
      */
     public boolean kickPlayer(UUID uuid);
 
@@ -52,13 +54,14 @@ public interface Joinable {
      * whose UUID matches the provided parameters.
      *
      * @param uuid
-     * @throws java.lang.NullPointerException
      * @return
+     * @throws java.lang.NullPointerException
      */
     public boolean setLeader(UUID uuid);
 
     /**
      * Get the Player who is the leader of the team.
+     *
      * @return
      */
     public Player getLeader();

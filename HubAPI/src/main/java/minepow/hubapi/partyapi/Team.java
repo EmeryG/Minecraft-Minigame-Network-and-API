@@ -45,18 +45,18 @@ public enum Team implements Joinable {
         private boolean leader = false;
         private boolean moderator = false;
         private Date;
-        private invitation = 0;
+        private invitation=0;
 
-        public TeamPlayer(UUID uuid)    {
+        public TeamPlayer(UUID uuid) {
             this.uuid = Bukkit.getPlayer(uuid).getUniqueId().toString();
             name = Bukkit.getPlayer(uuid).getName();
         }
 
-        public int acceptInvite()   {
+        public int acceptInvite() {
             return 1;
         }
 
-        public int declineInvite()  {
+        public int declineInvite() {
             return -1;
         }
 
@@ -66,39 +66,36 @@ public enum Team implements Joinable {
 
         public class PendingInvitation implements Runnable {
 
-            public void run()   {
+            public void run() {
 
             }
 
-            public PendingInvitation()  {
+            public PendingInvitation() {
 
             }
         }
 
     }
 
-    private Team(String Type, Integer maxJoinable)  {
+    private Team(String Type, Integer maxJoinable) {
         type = Type;
         maxPlayers = maxJoinable;
     }
 
-    private Team()   {
+    private Team() {
 
     }
 
 
-    public static Team getTeam(int i)   {
+    public static Team getTeam(int i) {
         return Team.teams.get(i);
     }
 
     /**
-     *
-     *  ABSTRACT METHODS TO OVERRIDE
-     *
+     * ABSTRACT METHODS TO OVERRIDE
      */
 
     //
-
     @Override
     public TeamPlayer[] getPlayers() {
         return this.teamPlayers.toArray();
@@ -106,23 +103,25 @@ public enum Team implements Joinable {
 
     @Override
     public boolean addPlayer(UUID uuid) {
-        if(getPlayers().length >= maxPlayers()) return false;
+        if (getPlayers().length >= maxPlayers()) return false;
         Iterator<Team> iterator = teams.iterator();
-        while(iterator.hasNext())    {
-            if(iterator.next().hasPlayer(uuid)) return false;
+        while (iterator.hasNext()) {
+            if (iterator.next().hasPlayer(uuid)) return false;
         }
         this.teamPlayers().add(uuid);
-        return true;
-        }
-
-    @Override
-    public boolean kickPlayer(UUID uuid)  {
-        for(int i = 0; i < getPlayers().length; i++) { return getPlayers()[i].uuid.equals(uuid.toString()); }
         return true;
     }
 
     @Override
-    public boolean setLeader(UUID uuid)  {
+    public boolean kickPlayer(UUID uuid) {
+        for (int i = 0; i < getPlayers().length; i++) {
+            return getPlayers()[i].uuid.equals(uuid.toString());
+        }
+        return true;
+    }
+
+    @Override
+    public boolean setLeader(UUID uuid) {
         return false;
     }
 
