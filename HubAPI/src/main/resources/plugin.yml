@@ -1,7 +1,11 @@
 name: Hub
 version: 0.1
+<<<<<<< HEAD
 main: minplicity.hub.Main
 authors: Adam
+=======
+main: minplicity.hub.minepow.hubapi.Main
+>>>>>>> 88fc7fb5e84bc93f67b38e461ac34c4c4891bbd6
 commands:
  party:
   description: The party command!

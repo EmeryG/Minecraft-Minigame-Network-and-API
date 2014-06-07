@@ -1,12 +1,12 @@
-package mineplicity.hub;
+package minepow.hubapi;
 
 import lilypad.client.connect.api.Connect;
 import lilypad.client.connect.api.request.impl.RedirectRequest;
 import lilypad.client.connect.api.result.FutureResultListener;
 import lilypad.client.connect.api.result.StatusCode;
 import lilypad.client.connect.api.result.impl.RedirectResult;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import mineplicity.hub.partyAPI.PartyCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -23,22 +23,12 @@ public class Main extends JavaPlugin {
 
     public static Map<Player, Player> invites = new HashMap<Player, Player>();
 
-    public static FileConfiguration config;
-
-    public Main plugin;
-
     public void onEnable() {
 
         //Printing to Console Information
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is written by " + pluginFile.getAuthors() + " is now enabled.");
         getLogger().info(pluginFile.getName() + " version " + pluginFile.getVersion() + " is now enabled.");
-
-        plugin = this;
-
-        config = getConfig();
-
-        getCommand("party").setExecutor(new PartyCommand());
 
     }
 
@@ -51,7 +41,7 @@ public class Main extends JavaPlugin {
     }
 
     public Connect getBukkitConnect() {
-        return (Connect) plugin.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
+        return (Connect) Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
     }
 
     public void redirectRequest(String server, final Player player) {

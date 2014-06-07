@@ -1,13 +1,25 @@
-package mineplicity.hub.TeamData;
+package minepow.hubapi.partyapi;
 
 import java.util.UUID;
+
 import org.bukkit.entity.Player;
 
 /**
  * @author Blackveiled
- * Created by Blackeiled (Adam Canfield) on 6/6/2014.
+ *         Created by Blackeiled (Adam Canfield) on 6/6/2014.
  */
 public interface Joinable {
+
+    /**
+     * Will return the player's team data who's
+     * name matches the parameters.  It is possible
+     * to retrieve the Player entity through the TeamPlayer
+     * class.
+     *
+     * @param Name
+     * @return org.bukkit.entity.Player
+     */
+    public Team.TeamPlayer getTeamPlayer(String Name);
 
     /**
      * Will return all players inside of this
@@ -23,32 +35,33 @@ public interface Joinable {
      * UUID in the parameters.
      *
      * @param uuid
-     * @return
+     * @return False if the player is already in a group.
      */
-    public int invitePlayer(UUID uuid);
+    public boolean addPlayer(UUID uuid);
 
     /**
      * If the player is inside the group, they will
      * be kicked from the group.
      *
      * @param uuid
-     * @throws java.lang.NullPointerException
      * @return
+     * @throws java.lang.NullPointerException
      */
-    public boolean kickPlayer(UUID uuid) throws NullPointerException;
+    public boolean kickPlayer(UUID uuid);
 
     /**
      * Sets this team's leader to the online player
      * whose UUID matches the provided parameters.
      *
      * @param uuid
-     * @throws java.lang.NullPointerException
      * @return
+     * @throws java.lang.NullPointerException
      */
-    public boolean setLeader(UUID uuid) throws NullPointerException;
+    public boolean setLeader(UUID uuid);
 
     /**
      * Get the Player who is the leader of the team.
+     *
      * @return
      */
     public Player getLeader();

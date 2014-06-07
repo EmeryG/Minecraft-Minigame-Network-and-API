@@ -1,0 +1,6 @@
+name: HubAPI
+main: main.main
+version: 1.0
+authors: [Ali, WaterNode, Erez, KindKut]
+database: true
+description: Put a good description here.
