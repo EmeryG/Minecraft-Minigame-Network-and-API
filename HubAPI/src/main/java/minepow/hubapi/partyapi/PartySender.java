@@ -31,7 +31,7 @@ public class PartySender {
 
     static public void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
 
-        DataTransferListener.sendData("i=" + p.getName() + " l=" + leader.getName());
+        DataTransferListener.sendData("j=" + p.getName() + " l=" + leader.getName());
 
     }
 
@@ -43,14 +43,14 @@ public class PartySender {
 
     static public void partyLeave(OfflinePlayer p) {
 
-        DataTransferListener.sendData("i=" + p.getName());
+        DataTransferListener.sendData("l=" + p.getName());
 
     }
     //DataTransferListener.sendMessage(message);
 
     static public void partyChat(OfflinePlayer p, OfflinePlayer leader, String text) {
 
-        DataTransferListener.sendData("c=" + p.getName() + " t=" + text);
+        DataTransferListener.sendData("chat=" + p.getName() + " t=" + text);
 
     }
 
