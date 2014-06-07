@@ -31,17 +31,6 @@ public class PartyReciever {
             }
             partyInvite(Bukkit.getOfflinePlayer(message), Bukkit.getOfflinePlayer(leader));
 
-        } else if(message.startsWith("j=")) {
-            message = message.substring(2);
-            message = message.substring(2);
-            String leader = "";
-            for(int i = 0; i < message.length(); i++) {
-                if(message.charAt(i) == ';') {
-                    leader = message.substring(i+1);
-                }
-            }
-            partyJoin(Bukkit.getOfflinePlayer(message), Bukkit.getOfflinePlayer(leader));
-
         } else if(message.startsWith("a=")) {
             message = message.substring(2);
             partyAccept(Bukkit.getOfflinePlayer(message));
@@ -67,23 +56,30 @@ public class PartyReciever {
     }
 
     static void partyDisband(OfflinePlayer leader) {
-
+        Party party = PartyManager.getParty(leader);
+        PartyManager.deleteParty(party);
     }
 
     static void partyCreate(OfflinePlayer leader) {
-
+        Party party = new Party(leader);
     }
 
     static void partyInvite(OfflinePlayer p, OfflinePlayer leader) {
-
-    }
-
-    static void partyJoin(OfflinePlayer p, OfflinePlayer leader) {
-
+        if(PartyManager.invites.containsKey(p)){
+            PartyManager.invites.remove(p);
+            PartyManager.invites.put(p, leader);
+        }
+        else{
+            PartyManager.invites.put(p, leader);
+        }
     }
 
     static void partyAccept(OfflinePlayer p) {
-
+        if(PartyManager.invites.containsKey(p)){
+            Party party = PartyManager.getParty(PartyManager.invites.get(p));
+            party.addMember(p);
+            PartyManager.invites.remove(p);
+        }
     }
 
     static void partyLeave(OfflinePlayer p) {
