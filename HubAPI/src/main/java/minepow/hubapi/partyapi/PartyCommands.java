@@ -1,5 +1,6 @@
 package minepow.hubapi.partyapi;
 
+import minepow.hubapi.Main;
 import org.bukkit.Bukkit;
 
 import org.bukkit.OfflinePlayer;
@@ -9,9 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import org.bukkit.event.Listener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,12 +32,15 @@ public class PartyCommands implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase("create")) {
                 PartySender.partyCreate(player);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CREATE"));
                 return true;
             } else if (args[0].equalsIgnoreCase("disband")) {
                 if(PartyManager.getParty(player) != null) {
                     PartySender.partyDisband(player);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND"));
                     return true;
                 } else {
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_DISBAND_ERROR"));
                     return false;
                 }
             } else if (args[0].equalsIgnoreCase("invite")) {
@@ -46,6 +48,7 @@ public class PartyCommands implements CommandExecutor {
                 OfflinePlayer party = PartyManager.getParty(player).getLeader();
                 if(party != null) {
                     PartySender.partyInvite(target, party);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_INVITE"));
                     return true;
                 }
             } else if (args[0].equalsIgnoreCase("join")) {
@@ -53,12 +56,14 @@ public class PartyCommands implements CommandExecutor {
                 OfflinePlayer leader = PartyManager.getParty(player).getLeader();
                 if(currentParty == null) {
                     PartySender.partyJoin(player, leader);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_JOIN"));
                     return true;
                 }
             } else if (args[0].equalsIgnoreCase("leave")) {
                 Party party = PartyManager.getParty(player);
                 if(party != null) {
                     PartySender.partyLeave(player);
+                    player.sendMessage(Main.plugin.getConfig().getString("PARTY_LEAVE"));
                     return true;
                 }
             } else if (args[0].equalsIgnoreCase("chat")) {
@@ -67,10 +72,12 @@ public class PartyCommands implements CommandExecutor {
                 for(int i = 1; i < args.length; i++) {
                     message += args[i];
                 }
-                PartySender.partyChat(player, leader, message);
+                PartySender.partyChat(player, message);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_CHAT"));
                 return true;
             } else if(args[0].equalsIgnoreCase("kick")){
                 PartySender.partyKick(player);
+                player.sendMessage(Main.plugin.getConfig().getString("PARTY_KICK"));
             } else {
                 return true;
             }

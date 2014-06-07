@@ -16,8 +16,8 @@ public class PlayerDeath implements Listener {
 
     @EventHandler
     public void onPRE(PlayerRespawnEvent e) {
-            Player p = (Player) e;
-            p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
-            p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));
+        Player p = (Player) e;
+        p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
+        p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));
     }
 }
