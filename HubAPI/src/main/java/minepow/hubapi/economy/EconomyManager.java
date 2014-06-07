@@ -34,13 +34,13 @@ public class EconomyManager {
         return false;
     }
 
-    public static void payForPlayer(Player player, Player target, int money) {
+    public static boolean payForPlayer(Player player, Player target, int money) {
         if (canAfford(player, money)) {
             removeMoney(player, money);
             addMoney(target, money);
-            return;
+            return true;
         }
-        return;
+        return false;
     }
 
     public static void removeMoney(Player player, int money) {

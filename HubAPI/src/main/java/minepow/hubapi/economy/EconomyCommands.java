@@ -15,7 +15,6 @@ public class EconomyCommands implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
-        if (cmd.getName().equalsIgnoreCase("money")) {
             if (args.length == 0) {
                 p.sendMessage(ChatColor.RED + "/money balance");
                 p.sendMessage(ChatColor.RED + "/money pay <Amount> <Player>");
@@ -41,7 +40,6 @@ public class EconomyCommands implements CommandExecutor {
                 EconomyManager.payForPlayer(p, t, Integer.parseInt(args[0]));
                 return true;
             }
-        }
         return true;
     }
 }
