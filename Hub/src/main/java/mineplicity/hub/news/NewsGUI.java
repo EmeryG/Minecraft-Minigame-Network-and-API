@@ -13,6 +13,8 @@ import java.util.List;
 public class NewsGUI {
     FileConfiguration config = Main.config;
     boolean keepGoing = true;
+    
+    //why like this?
     public void start(Player player){
         List<String> news = config.getStringList("News");
         while(keepGoing) {

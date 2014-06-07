@@ -66,7 +66,7 @@ abstract public class EconomyManager {
 
         //adding the money and updating the list
         players.put(player.getUniqueId(), currentMoney + money);
-        minepow.hubapi.database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
+        minepow.hubapi.Database.DatabaseWriter.updateMoney(player.getUniqueId(), currentMoney+money);
 
     }
 
