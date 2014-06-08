@@ -5,6 +5,7 @@ import minepow.hubapi.economy.EconomyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -16,6 +17,10 @@ public class ScoreBoardManager {
 	static Scoreboard scoreboard = null;
 	static Objective title = null;
 	private static final String TITLE = ChatColor.GOLD + "MinePow";
+	
+	public static void removeScoreBoard(Player player){
+		player.getScoreboard().clearSlot(DisplaySlot.SIDEBAR);
+	}
 	
 	@SuppressWarnings("deprecation")
 	public static void updateScoreBoard(Player player){
