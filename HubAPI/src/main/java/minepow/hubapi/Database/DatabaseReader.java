@@ -2,7 +2,6 @@ package minepow.hubapi.database;
 
 import com.rethinkdb.RethinkDB;
 import com.rethinkdb.RethinkDBConnection;
-import com.rethinkdb.model.MapObject;
 
 import java.util.List;
 import java.util.Map;

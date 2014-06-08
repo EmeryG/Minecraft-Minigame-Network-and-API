@@ -12,8 +12,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class NewsCommand implements CommandExecutor{
     FileConfiguration config = Main.config;
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        if(label.equalsIgnoreCase("addnews")){
+    public boolean onCommand(CommandSender commandSender, Command cmd, String label, String[] args) {
+        if(cmd.getName().equalsIgnoreCase("addnews")){
             String message = "";
             for(int i = 1; i < args.length; i++){
                 message += args[i];
