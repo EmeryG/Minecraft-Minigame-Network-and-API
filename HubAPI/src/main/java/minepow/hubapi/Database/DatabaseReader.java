@@ -22,15 +22,13 @@ abstract public class DatabaseReader {
 
     public static void init() {
         r = RethinkDB.r;
-        con = RethinkDB.r.connect("localhost", 2000);
-
-        r.db("MinePow");
+        con = RethinkDB.r.connect("107.170.74.107", 28015, "", 10000);
         con.use("MinePow");
     }
 
     public static int getMoney(UUID player) {
-        List<Map<String,Object>> results = (List<Map<String,Object>>) r.table("Players").filter(r.row().field("uuid")
+        List<Map<String,Object>> results = (List<Map<String,Object>>) r.table("Players").filter(user->user.field("uuid")
                 .eq(player.toString())).pluck("money").run(con);
-        return Integer.parseInt(results.get(0).get("money").toString());
+        return (int) Double.parseDouble((results.get(0).get("money").toString()));
     }
 }

@@ -20,21 +20,18 @@ abstract public class DatabaseWriter {
 
     public static void init() {
         r = RethinkDB.r;
-        con = RethinkDB.r.connect("localhost", 2000);
-
-        r.db("MinePow");
+        con = r.connect("107.170.74.107", 28015, "", 10000);
         con.use("MinePow");
     }
 
     public static void updateMoney(UUID player, int money) {
-        r.table("Players").filter(r.row().field("uuid").eq(player.toString()))
+        r.table("Players").filter(user->user.field("uuid").eq(player.toString()))
                 .update(new MapObject().with(("money"), money)).run(con);
     }
 
     public static void addPlayer(UUID player, int money) {
         r.table("Players").insert(
-                        new MapObject().with("uuid", player.toString()),
-                        new MapObject().with("money", money)
+                        new MapObject().with("uuid", player.toString()).with("money", money)
                 ).run(con);
     }
 }

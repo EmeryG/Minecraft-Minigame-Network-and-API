@@ -31,7 +31,6 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
 
-        new ServerConnections().start();
 
         //Printing to Console Information
         plugin = this;
