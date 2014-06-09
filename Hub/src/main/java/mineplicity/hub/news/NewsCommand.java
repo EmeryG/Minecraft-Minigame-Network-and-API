@@ -6,16 +6,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class NewsCommand implements CommandExecutor {
 	
 	Main plugin;
-	FileConfiguration config;
 
     public NewsCommand(Main plugin){
     	this.plugin = plugin;
-    	config = plugin.getConfig();
+    	Main.config = plugin.getConfig();
     }
     
     
@@ -51,7 +49,7 @@ public class NewsCommand implements CommandExecutor {
     }    
   
     public void addNews(String message, int number) {
-    	config.set("News."+number, message);
+    	Main.config.set("News."+number, message);
         Main.config.set("News." + number, message);
         plugin.saveConfig();
     }
