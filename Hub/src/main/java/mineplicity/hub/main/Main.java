@@ -46,7 +46,7 @@ public class Main extends JavaPlugin {
         WeatherChange wc = new WeatherChange();
         Disabler d = new Disabler();
         DoubleJump dj = new DoubleJump(this);
-        NewsListener nl = new NewsListener();
+        NewsListener nl = new NewsListener(this);
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(de, this);
@@ -64,7 +64,7 @@ public class Main extends JavaPlugin {
         getCommand("report").setExecutor(new Reporter());
         getCommand("reports").setExecutor(new Reporter());
         getCommand("timelock").setExecutor(new TimeLockCommand());
-        getCommand("addnews").setExecutor(new NewsCommand());
+        getCommand("addnews").setExecutor(new NewsCommand(this));
 
         //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();

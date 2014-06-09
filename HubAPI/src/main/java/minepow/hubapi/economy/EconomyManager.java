@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import minepow.hubapi.Main;
-import minepow.hubapi.database.DatabaseWriter;
+import minepow.hubapi.Database.DatabaseWriter;
 
 import org.bukkit.entity.Player;
 import org.bukkit.util.io.BukkitObjectInputStream;
