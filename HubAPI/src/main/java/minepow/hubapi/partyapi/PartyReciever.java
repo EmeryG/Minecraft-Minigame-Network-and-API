@@ -4,16 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Emery
- * Date: 6/6/14
- * Time: 6:44 PM
- * To change this template use File | Settings | File Templates.
- */
 abstract public class PartyReciever {
 
     public static void RecieveMessage(String message) {
+
         if (message.startsWith("d=")) {
             message = message.substring(2);
             partyDisband(Bukkit.getOfflinePlayer(message));

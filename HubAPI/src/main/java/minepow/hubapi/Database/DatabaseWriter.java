@@ -6,13 +6,6 @@ import com.rethinkdb.model.MapObject;
 
 import java.util.UUID;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Emery
- * Date: 6/6/14
- * Time: 9:55 PM
- * To change this template use File | Settings | File Templates.
- */
 abstract public class DatabaseWriter {
 
     static RethinkDBConnection con;

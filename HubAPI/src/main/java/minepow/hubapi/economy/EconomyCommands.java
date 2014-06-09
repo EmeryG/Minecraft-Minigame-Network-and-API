@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 public class EconomyCommands implements CommandExecutor {
 
+    //TODO: Convert the else if statments to switch and cases. ~Torn
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Only player can do this command!");
