@@ -13,11 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-<<<<<<< HEAD
 public class NewsListener implements Listener {
-=======
-public class NewsListener implements Listener{
->>>>>>> FETCH_HEAD
 
 	Main plugin;
 	FileConfiguration config;
