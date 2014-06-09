@@ -7,9 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-/**
- * Created by Ali on 06/06/2014.
- */
 public class NewsListener implements Listener{
 
 	Main plugin;

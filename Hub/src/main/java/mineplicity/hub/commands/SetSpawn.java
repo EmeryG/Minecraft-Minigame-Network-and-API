@@ -6,10 +6,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by Ali on 01/06/2014.
- */
 public class SetSpawn implements CommandExecutor {
+
+    Main plugin;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -25,7 +24,7 @@ public class SetSpawn implements CommandExecutor {
                 Main.config.set("Spawn.y", y);
                 Main.config.set("Spawn.z", z);
                 Main.config.set("Spawn.world", world);
-                main.remoteSaveConfig();
+                plugin.saveConfig();
             }
         }
         return false;

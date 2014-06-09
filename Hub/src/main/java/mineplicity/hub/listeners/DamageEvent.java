@@ -11,9 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-/**
- * Created by Ervin on 5/30/2014.
- */
 public class DamageEvent implements Listener {
 
     @EventHandler

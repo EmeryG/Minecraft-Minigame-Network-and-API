@@ -16,10 +16,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.util.Vector;
 
-/**
- * Created by erezcsillag on 6/2/14.
- */
-
 public class DoubleJump implements Listener {
 
     private int force = 2;

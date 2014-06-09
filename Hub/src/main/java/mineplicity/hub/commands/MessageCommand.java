@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 /**
@@ -16,11 +15,9 @@ public class MessageCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
-
-
         if (cmdLabel.equalsIgnoreCase("message")) {
             Player target = Bukkit.getServer().getPlayer(args[0]);
-            //Unreplaced strings(In case of color codes
+            //Unreplaced strings(In case of color codes)
             String senderPrefix = Main.config.getString("Messager.SenderPrefix");
             String recieverPrefix = Main.config.getString("Messager.RecieverPrefix");
             String senderAndRecieverDivider = Main.config.getString("Messager.Divider");
