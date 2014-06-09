@@ -27,6 +27,7 @@ public class NewsGUI {
     
     public void start(final Player player){
         final List<String> news = config.getStringList("News");
+        if(news == null) return;
         while(keepGoing) {
             for (final String jazz : news) {
             	run = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
@@ -35,7 +36,7 @@ public class NewsGUI {
 					public void run() {
 						BarAPI.setMessage(player, jazz, (float) news.indexOf(jazz)/ news.size());
 					}
-				}, config.getInt("news.cooldown") * 20);
+				}, 8 * 20);
             }	
         }
     }

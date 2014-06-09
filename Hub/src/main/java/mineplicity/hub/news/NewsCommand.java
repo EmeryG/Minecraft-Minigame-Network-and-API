@@ -24,7 +24,6 @@ public class NewsCommand implements CommandExecutor{
     
     @Override
     public boolean onCommand(CommandSender commandSender, Command cmd, String label, String[] args) {
-        if(cmd.getName().equalsIgnoreCase("addnews")){
         	if(args.length < 2){
         		commandSender.sendMessage(ChatColor.RED + "/addnews <Number> <Message>");
         		return true;
@@ -47,8 +46,6 @@ public class NewsCommand implements CommandExecutor{
             }
             addNews(message, num);
             return true;
-        }
-        return false;
     }
 
     public void addNews(String message, int number) {
