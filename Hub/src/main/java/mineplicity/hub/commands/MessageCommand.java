@@ -19,13 +19,12 @@ public class MessageCommand implements CommandExecutor {
 
 
         if (cmdLabel.equalsIgnoreCase("message")) {
-            FileConfiguration config = Main.config;
             Player target = Bukkit.getServer().getPlayer(args[0]);
             //Unreplaced strings(In case of color codes
-            String senderPrefix = config.getString("Messager.SenderPrefix");
-            String recieverPrefix = config.getString("Messager.RecieverPrefix");
-            String senderAndRecieverDivider = config.getString("Messager.Divider");
-            String messageColor = config.getString("Messager.MessageColor");
+            String senderPrefix = Main.config.getString("Messager.SenderPrefix");
+            String recieverPrefix = Main.config.getString("Messager.RecieverPrefix");
+            String senderAndRecieverDivider = Main.config.getString("Messager.Divider");
+            String messageColor = Main.config.getString("Messager.MessageColor");
             String message = "";
             for (int i = 1; i <= args.length; i++) {
                 message = message + args[i];

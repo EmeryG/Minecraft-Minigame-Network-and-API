@@ -1,6 +1,5 @@
 package mineplicity.hub.commands;
 
-
 import mineplicity.hub.main.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -18,6 +18,7 @@ public class DamageEvent implements Listener {
 
     @EventHandler
     public void onEDE(EntityDamageEvent event) {
+        //Teleports player to the spawn if they take damage from the void.
         if (event.getEntity() instanceof Player) {
             Player p = (Player) event.getEntity();
             if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
@@ -28,6 +29,8 @@ public class DamageEvent implements Listener {
                 World world = Bukkit.getWorld(config.getString("Spawn.world"));
 
                 p.teleport(new Location(world, x, y, z));
+                p.setHealth(20);
+                event.setCancelled(true);
             }
             event.setCancelled(true);
         }

@@ -1,7 +1,5 @@
 package mineplicity.hub.main;
 
-import java.util.HashMap;
-
 import mineplicity.hub.commands.MessageCommand;
 import mineplicity.hub.commands.Reporter;
 import mineplicity.hub.commands.SetSpawn;
@@ -15,12 +13,9 @@ import mineplicity.hub.listeners.PlayerJoin;
 import mineplicity.hub.listeners.WeatherChange;
 import mineplicity.hub.news.NewsCommand;
 import mineplicity.hub.news.NewsListener;
-import minepow.hubapi.economy.EconomyCommands;
-import minepow.hubapi.partyapi.PartyCommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -37,9 +32,7 @@ public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
 
-    public static HashMap<Player, Player> invites = new HashMap<Player, Player>();
-
-    public Main plugin;
+    public static Main plugin;
 
     public void onEnable() {
 
@@ -55,7 +48,6 @@ public class Main extends JavaPlugin {
         DoubleJump dj = new DoubleJump(this);
         NewsListener nl = new NewsListener();
 
-
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(de, this);
         pm.registerEvents(pj, this);
@@ -66,8 +58,6 @@ public class Main extends JavaPlugin {
         pm.registerEvents(nl, this);
 
         //Commands
-        getCommand("money").setExecutor(new EconomyCommands());
-        getCommand("party").setExecutor(new PartyCommands());
         getCommand("weatherlock").setExecutor(new WeatherChangeCommand());
         getCommand("message").setExecutor(new MessageCommand());
         getCommand("setspawn").setExecutor(new SetSpawn());
@@ -84,7 +74,6 @@ public class Main extends JavaPlugin {
         //Runnable
         BukkitRunnable timeLock = new TimeLock();
         timeLock.runTaskTimer(this, 20L, 0L);
-
     }
 
     public void onDisable() {
@@ -92,7 +81,6 @@ public class Main extends JavaPlugin {
         //Printing to Console Infomation
         PluginDescriptionFile pluginFile = this.getDescription();
         getLogger().info(pluginFile.getName() + " is now disabled.");
-
     }
 
     public void remoteSaveConfig() {

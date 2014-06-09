@@ -16,6 +16,8 @@ public class PlayerDeath implements Listener {
 
     @EventHandler
     public void onPRE(PlayerRespawnEvent e) {
+
+        //When a player respawns, adds potion effects
         Player p = (Player) e;
         p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
         p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));

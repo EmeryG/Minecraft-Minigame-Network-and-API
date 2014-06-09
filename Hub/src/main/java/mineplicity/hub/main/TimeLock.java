@@ -12,8 +12,7 @@ public class TimeLock extends BukkitRunnable {
 
     @Override
     public void run() {
-        FileConfiguration config = Main.config;
-        World world = Bukkit.getWorld(config.getString("Spawn.world"));
-        world.setTime(config.getLong("TimeLock.lockedTime"));
+        World world = Bukkit.getWorld(Main.config.getString("Spawn.world"));
+        world.setTime(Main.config.getLong("TimeLock.lockedTime"));
     }
 }

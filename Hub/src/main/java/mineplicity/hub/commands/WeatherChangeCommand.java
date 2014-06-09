@@ -6,15 +6,12 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 /**
  * Created by Ali on 01/06/2014.
  */
 public class WeatherChangeCommand implements CommandExecutor {
-
-    FileConfiguration config = Main.config;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
@@ -30,11 +27,11 @@ public class WeatherChangeCommand implements CommandExecutor {
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("disable")) {
                         player.sendMessage(ChatColor.GREEN + "WeatherLock has been disabled");
-                        config.set("WeatherLock.enabled", false);
+                        Main.config.set("WeatherLock.enabled", false);
                         main.remoteSaveConfig();
                     } else if (args[0].equalsIgnoreCase("enable")) {
                         player.sendMessage(ChatColor.GREEN + "WeatherLock has been enabled");
-                        config.set("WeatherLock.enabled", true);
+                        Main.config.set("WeatherLock.enabled", true);
                         main.remoteSaveConfig();
                     }
 
@@ -60,9 +57,9 @@ public class WeatherChangeCommand implements CommandExecutor {
 
     private void setWeather(String string, World world) {
         //Gets config before it is altered
-        boolean oldEnabled = config.getBoolean("WeatherLock.enabled");
+        boolean oldEnabled = Main.config.getBoolean("WeatherLock.enabled");
         //Disables the listener so it doesnt cancel the weather change
-        config.set("WeatherLock.enabled", false);
+        Main.config.set("WeatherLock.enabled", false);
         if (string.equals("sun")) {
             world.setStorm(false);
 
@@ -71,6 +68,6 @@ public class WeatherChangeCommand implements CommandExecutor {
 
         }
         //Resets the config to the way it was
-        config.set("WeatherLock.enabled", oldEnabled);
+        Main.config.set("WeatherLock.enabled", oldEnabled);
     }
 }

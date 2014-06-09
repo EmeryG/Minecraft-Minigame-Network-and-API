@@ -16,6 +16,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
  * Created by Ali on 01/06/2014.
  */
 public class Disabler implements Listener {
+
     @EventHandler
     public void onPlayerDoAnyPvP(EntityDamageByEntityEvent e) {
         Player player = (Player) e.getDamager();
