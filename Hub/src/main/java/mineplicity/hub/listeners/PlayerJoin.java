@@ -7,14 +7,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 
-/**
- * Created by Ervin on 5/31/2014.
- */
 public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e) {
-        Player p = (Player) e.getPlayer();
+
+        //When player joins, adds potion effects
+        Player p = e.getPlayer();
         p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.SPEED, 2));
         p.addPotionEffect(new InfinitePotionEffect(PotionEffectType.JUMP, 2));
     }

@@ -7,13 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Emery
- * Date: 6/6/14
- * Time: 9:56 PM
- * To change this template use File | Settings | File Templates.
- */
 abstract public class DatabaseReader {
 
     static RethinkDBConnection con;
@@ -26,7 +19,7 @@ abstract public class DatabaseReader {
     }
 
     public static int getMoney(UUID player) {
-        List<Map<String,Object>> results = (List<Map<String,Object>>) r.table("Players").filter(user->user.field("uuid")
+        List<Map<String, Object>> results = (List<Map<String, Object>>) r.table("Players").filter(user -> user.field("uuid")
                 .eq(player.toString())).pluck("money").run(con);
         return (int) Double.parseDouble((results.get(0).get("money").toString()));
     }

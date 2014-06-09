@@ -12,14 +12,6 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Emery
- * Date: 6/6/14
- * Time: 6:44 PM
- * To change this template use File | Settings | File Templates.
- */
-
 public class PartyCommands implements CommandExecutor {
 
     public Map<Player, Party> invites = new HashMap<Player, Party>();

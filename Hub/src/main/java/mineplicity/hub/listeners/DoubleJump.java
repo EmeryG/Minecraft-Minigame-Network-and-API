@@ -16,68 +16,71 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.util.Vector;
 
-/**
- * Created by erezcsillag on 6/2/14.
- */
-
 public class DoubleJump implements Listener {
 
-	Main plugin;
+    private int force = 2;
+    private boolean allowDoubleJump = true;
 
-	private int force = 2;
-	private boolean allowDoubleJump = true;
+    public DoubleJump(Main p) {
+        Main.plugin = p;
+    }
 
-	public DoubleJump(Main p) {
-		plugin = p;
-	}
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void onPlayerWalk(PlayerMoveEvent e) {
+        //When a player walks
+        Player p = e.getPlayer();
+        //If they can double jump
+        if (allowDoubleJump) {
+            //Checks the main world
+            if (p.getWorld() == Bukkit.getWorld(Main.config.getString("Spawn.world"))) {
+                //If the player is in creative or is on the group
+                if (p.getGameMode() != GameMode.CREATIVE && p.isOnGround()) {
+                    p.setAllowFlight(true);
+                }
+            }
+        }
+        return;
+    }
 
-	@SuppressWarnings("deprecation")
-	@EventHandler
-	public void onPlayerWalk(PlayerMoveEvent e) {
-		Player p = e.getPlayer();
-		if (allowDoubleJump) {
-			if (p.getWorld() == Bukkit.getWorld(plugin.getConfig().getString("Spawn.world"))) {
-				if (p.getGameMode() != GameMode.CREATIVE && p.isOnGround()) {
-					p.setAllowFlight(true);
-				}
-			}
-		}
-		return;
-	}
+    @EventHandler
+    public void onPlayerFall(EntityDamageEvent e) {
+        //If the entity is a player
+        if (e.getEntity() instanceof Player) {
+            //If the cause of damage is a fall
+            if (e.getCause() == DamageCause.FALL) {
+                //Cancels event
+                e.setCancelled(true);
+            }
+        }
+    }
 
-	@EventHandler
-	public void onPlayerFall(EntityDamageEvent e) {
-		if (e.getEntity() instanceof Player) {
-			if (e.getCause() == DamageCause.FALL) {
-				e.setCancelled(true);
-			}
-		}
-	}
+    @EventHandler
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
+        //If the player is allowed to double jump
+        if (allowDoubleJump) {
+            //Checks the main world
+            Player p = e.getPlayer();
+            if (p.getWorld() == Bukkit.getWorld(Main.config.getString("Spawn.world"))) {
 
-	@EventHandler
-	public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
-		if (allowDoubleJump) {
-			Player p = e.getPlayer();
-			if (p.getWorld() == Bukkit.getWorld(plugin.getConfig().getString("Spawn.world"))) {
+                //If they are in creative
+                if (p.getGameMode() == GameMode.CREATIVE)
+                    return;
+                e.setCancelled(true);
 
-				if (p.getGameMode() == GameMode.CREATIVE)
-					return;
-				e.setCancelled(true);
+                p.setAllowFlight(false);
+                p.setFlying(false);
 
-				p.setAllowFlight(false);
-				p.setFlying(false);
+                // Vectors
+                p.setVelocity(new Vector(p.getLocation().getX(), 1.00, p.getLocation().getZ()));
+                p.setVelocity(p.getLocation().getDirection().multiply(force));
 
-				// vectors
-				p.setVelocity(new Vector(p.getLocation().getX(), 1.00, p.getLocation().getZ()));
-				p.setVelocity(p.getLocation().getDirection().multiply(force));
+                // Sounds
+                p.playSound(p.getLocation(), Sound.GHAST_FIREBALL, 0.2F, 1F);
+                Location loc = new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getY() + 1, p.getLocation().getZ());
+                p.getWorld().playEffect(loc, Effect.GHAST_SHOOT, 1);
 
-				// sounds
-				p.playSound(p.getLocation(), Sound.GHAST_FIREBALL, 0.2F, 1F);
-				Location loc = new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getY() + 1, p.getLocation().getZ());
-				p.getWorld().playEffect(loc, Effect.GHAST_SHOOT, 1);
-
-			}
-		}
-	}
-
+            }
+        }
+    }
 }
