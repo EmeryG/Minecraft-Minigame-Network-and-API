@@ -11,4 +11,15 @@ public class Slots {
         this.currentPlayers = currentPlayers;
     }
 
+    public int getMaxPlayers(){
+        return maxPlayers;
+    }
+
+    public int getCurrentPlayers(){
+        return currentPlayers;
+    }
+
+    public void setMaxPlayers(int maxPlayers){
+        this.maxPlayers = maxPlayers;
+    }
 }
