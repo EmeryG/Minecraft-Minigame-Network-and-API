@@ -1,4 +1,5 @@
 import lilypad.client.connect.api.Connect;
+import lombok.Getter;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,13 +12,15 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin{
 
-    InstanceListener messageListener = new InstanceListener();
+    @Getter
+    static Main main;
+
     Connect connect = this.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
     public void onEnable() {
-        connect.registerEvents(messageListener);
+        this.main = this;
     }
     public void onDisable() {
-        connect.unregisterEvents(messageListener);
+
     }
 
 }
