@@ -13,19 +13,19 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class LobbyMain {
-    ArrayList<PlayerInput> inputListeners = new ArrayList<PlayerInput>();
+    static ArrayList<PlayerInput> inputListeners = new ArrayList<PlayerInput>();
 
     public void registerListener(PlayerInput listener) {
         inputListeners.add(listener);
     }
 
-    void onVoteFinish(String category, String winner) {
+    public static void onVoteFinish(String category, String winner) {
         for(PlayerInput ip : inputListeners) {
             ip.onVoteFinish(category, winner);
         }
     }
 
-    void onSelect(Player p, String category, String selection) {
+    public static void onSelect(Player p, String category, String selection) {
         for(PlayerInput ip : inputListeners) {
             ip.onSelect(p, category, selection);
         }

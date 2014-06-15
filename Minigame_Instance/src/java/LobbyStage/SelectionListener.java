@@ -37,12 +37,16 @@ public class SelectionListener implements Listener {
 
     @EventHandler
     public void onICE(InventoryClickEvent e){
-        //Stuff
+        ItemStack is = e.getCurrentItem();
+        String name = e.getInventory().getName();
+        LobbyMain.onSelect((Player) e.getWhoClicked(), name, is.getItemMeta().getDisplayName());
+        e.setCancelled(true);
+        e.getWhoClicked().closeInventory();
     }
 
     private void openGUI(Selection s, Player player) {
         int size = s.names.size() / 9 + 1 * 9;
-        Inventory inv = Bukkit.createInventory(null, size);
+        Inventory inv = Bukkit.createInventory(null, size, s.category);
 
         for(int I = 0; I < s.ids.size(); I++){
             ItemStack is = new ItemStack(s.ids.get(I));
