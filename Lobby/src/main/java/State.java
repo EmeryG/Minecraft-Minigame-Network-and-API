@@ -6,13 +6,13 @@ import lombok.Setter;
  */
 public class State {
 
-    @Getter
+    @Getter @Setter
     int maxPlayers;
 
-    @Getter
+    @Getter @Setter
     int currentPlayers;
 
-    @Getter
+    @Getter @Setter
     boolean lazy;
 
     public State(int currentPlayers, int maxPlayers, boolean l){

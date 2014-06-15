@@ -11,11 +11,46 @@ public class InstanceListener {
 
     static HashMap<String, State> instances = new HashMap<String, State>();
 
+    // The format for @onMessage is info:cur:{number}max:{number}lazy:{0 or 1}
+    // 0 means not lazy, 1 means lazy
     @EventListener
     public void onMessage(MessageEvent messageEvent) {
         String sender = messageEvent.getSender();
         try {
             String messageAsString = messageEvent.getMessageAsString();
+            if(messageAsString.startsWith("info:")) {
+                messageAsString = messageAsString.substring(5);
+
+                // Getting value from min
+                if(messageAsString.startsWith("cur:")) {
+                    messageAsString = messageAsString.substring(4);
+                    String cur = "";
+                    while(!messageAsString.startsWith("cur:")) {
+                        cur += messageAsString.charAt(0);
+                        messageAsString = messageAsString.substring(1);
+                    }
+
+                    // Getting value from main
+                    messageAsString = messageAsString.substring(4);
+                    String max = "";
+                    while(!messageAsString.startsWith("working:")) {
+                        max += messageAsString.charAt(0);
+                        messageAsString = messageAsString.substring(1);
+                    }
+
+                    // Getting value from working
+                    messageAsString = messageAsString.substring(8);
+
+                    // Updating the values
+                    instances.get(sender).setCurrentPlayers(Integer.parseInt(cur));
+                    instances.get(sender).setMaxPlayers(Integer.parseInt(max));
+                    if(messageAsString.equals("0")) {
+                        instances.get(sender).setLazy(false);
+                    } else {
+                        instances.get(sender).setLazy(true);
+                    }
+                }
+            }
         } catch(UnsupportedEncodingException exception) {
             //ignore
         }
