@@ -21,7 +21,7 @@ public class ArenaManager {
 		if (name == null)
 			return;
 		switch (arenaType) {
-		
+		//adding based on the type
 		case SURVIVALGAMES_ARENA:
 			SurvivalGamesArena arena = new SurvivalGamesArena(name, plugin);
 			arenas.add(arena);
