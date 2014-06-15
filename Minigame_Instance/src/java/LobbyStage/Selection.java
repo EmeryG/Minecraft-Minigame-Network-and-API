@@ -11,12 +11,14 @@ public class Selection {
 
     ArrayList<String> names;
     ArrayList<Material> ids;
-    Material category;
+    Material categoryItem;
+    String category;
 
-    public Selection(Material category, ArrayList<String> names, ArrayList<Material> Ids){
+    public Selection(String category, Material categoryItem, ArrayList<String> names, ArrayList<Material> Ids){
 
         this.names = names;
         this.ids = Ids;
+        this.categoryItem = categoryItem;
         this.category = category;
 
     }

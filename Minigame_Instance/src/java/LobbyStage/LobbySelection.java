@@ -15,6 +15,7 @@ import java.util.List;
 public class LobbySelection {
 
     public static List<Selection> selections = new ArrayList<Selection>();
+    public static List<Material> selectionMaterial = new ArrayList<Material>();
 
     public static void addSelection(Material categoryItem, String category, ArrayList<String> options, ArrayList<Material> optionIds){
         Player[] players = Bukkit.getOnlinePlayers();
@@ -28,9 +29,10 @@ public class LobbySelection {
             p.getInventory().addItem(is);
         }
 
-        Selection s = new Selection(categoryItem, options, optionIds);
+        Selection s = new Selection(category,categoryItem, options, optionIds);
 
         selections.add(s);
+        selectionMaterial.add(categoryItem);
 
     }
 
