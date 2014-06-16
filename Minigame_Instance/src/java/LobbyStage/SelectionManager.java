@@ -13,22 +13,27 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Ali on 15/06/2014.
  */
-public class SelectionListener implements Listener {
+public class SelectionManager implements Listener {
+
+    public static List<Selection> selections = new ArrayList<Selection>();
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        for(Material m : LobbySelection.selectionMaterial){
-            p.getInventory().addItem(new ItemStack(m));
+        for(Selection s : selections){
+            p.getInventory().addItem(new ItemStack(s.categoryItem));
         }
     }
 
     @EventHandler
     public void onPIE(PlayerInteractEvent e){
-        for(Selection s : LobbySelection.selections){
+        for(Selection s : selections){
             if(s.categoryItem == e.getMaterial()){
                 openGUI(s, e.getPlayer());
             }
@@ -53,6 +58,8 @@ public class SelectionListener implements Listener {
             is.getItemMeta().setDisplayName(s.names.get(I));
             inv.addItem(is);
         }
+
+        player.openInventory(inv);
     }
 
 }
