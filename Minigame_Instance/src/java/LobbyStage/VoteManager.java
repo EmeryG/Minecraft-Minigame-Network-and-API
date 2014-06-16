@@ -37,6 +37,12 @@ public class VoteManager {
     public void onICE(InventoryClickEvent e){
         if(e.getInventory().getName().equalsIgnoreCase(displayItem.getItemMeta().getDisplayName())){
             addVote(e.getCurrentItem().getItemMeta().getDisplayName());
+            e.getWhoClicked().closeInventory();
+            for(ItemStack is : e.getWhoClicked().getInventory().getContents()){
+                if(is.getItemMeta().getDisplayName().equalsIgnoreCase(displayItem.getItemMeta().getDisplayName())){
+                    is.setType(Material.AIR);
+                }
+            }
         }
     }
 
@@ -55,5 +61,23 @@ public class VoteManager {
                 v.votedFor++;
             }
         }
+        int totalVotes = 0;
+        for(Vote v : votes){
+            totalVotes += v.votedFor;
+        }
+        if(totalVotes == Bukkit.getServer().getOnlinePlayers().length){
+            LobbyMain.onVoteFinish(displayItem.getItemMeta().getDisplayName(), findWinner());
+        }
+    }
+
+    private String findWinner(){
+        int votedForTimes = 0;
+        Vote currentWinner = votes.get(0);
+        for(Vote v : votes){
+            if(votedForTimes < v.votedFor){
+                currentWinner = v;
+            }
+        }
+        return  currentWinner.name;
     }
 }
