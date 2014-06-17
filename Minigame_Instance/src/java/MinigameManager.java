@@ -6,5 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 public class MinigameManager {
+    public static void start(){
 
+    }
 }
