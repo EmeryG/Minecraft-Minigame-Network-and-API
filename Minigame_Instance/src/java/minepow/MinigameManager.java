@@ -1,3 +1,5 @@
+package minepow;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Emery

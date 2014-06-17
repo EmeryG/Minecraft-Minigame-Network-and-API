@@ -1,3 +1,5 @@
+package minepow;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -5,8 +7,11 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin {
 
+    public static Main main;
+
     @Override
     public void onEnable(){
+        main = this;
     }
 
     @Override

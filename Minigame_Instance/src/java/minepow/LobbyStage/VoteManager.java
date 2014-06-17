@@ -1,4 +1,4 @@
-package LobbyStage;
+package minepow.LobbyStage;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
