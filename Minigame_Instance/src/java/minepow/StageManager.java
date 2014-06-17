@@ -9,13 +9,19 @@ import lombok.Getter;
  * Time: 11:24 AM
  * To change this template use File | Settings | File Templates.
  */
-public class MinigameManager {
+public class StageManager {
 
     @Getter
     static State state;
 
-    public static void start(){
-
+    public static void change(){
+        if(state == State.PRE) {
+            state = State.DURING;
+        } else if(state == State.DURING) {
+            state = State.AFTER;
+        } else {
+            state = State.PRE;
+        }
     }
 
     public enum State{

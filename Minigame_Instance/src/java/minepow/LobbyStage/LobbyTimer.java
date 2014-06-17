@@ -1,6 +1,6 @@
 package minepow.LobbyStage;
 
-import minepow.MinigameManager;
+import minepow.StageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +22,7 @@ public class LobbyTimer extends BukkitRunnable implements Listener {
 
 
     public void run() {
-        if(MinigameManager.getState() != MinigameManager.State.PRE) {
+        if(StageManager.getState() != StageManager.State.PRE) {
             seconds = -1;
         }
 
@@ -37,16 +37,16 @@ public class LobbyTimer extends BukkitRunnable implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         if(Bukkit.getOnlinePlayers().length > 2
-                && MinigameManager.getState() == MinigameManager.State.PRE
+                && StageManager.getState() == StageManager.State.PRE
                 && seconds == -1) {
-            seconds += 120;
+            seconds += interval;
         }
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
         if(Bukkit.getOnlinePlayers().length < 2
-                && MinigameManager.getState() == MinigameManager.State.PRE
+                && StageManager.getState() == StageManager.State.PRE
                 && seconds != -1) {
             seconds = -1;
         }
