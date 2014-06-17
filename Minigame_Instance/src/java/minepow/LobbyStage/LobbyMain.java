@@ -25,7 +25,7 @@ public class LobbyMain {
 
     public static void registerListener(Listener listener) {
         listeners.add(listener);
-        Bukkit.getPluginManager().registerEvents(listener, Main.main);
+        Bukkit.getPluginManager().registerEvents(listener, Main.getMain());
     }
 
     public static void onVoteFinish(String category, String winner) {
