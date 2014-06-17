@@ -1,4 +1,4 @@
-package listeners;
+package minepow.listeners;
 
 import org.bukkit.entity.Player;
 
