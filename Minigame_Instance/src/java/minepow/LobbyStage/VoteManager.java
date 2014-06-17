@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Created by Ali on 15/06/2014.
  */
-public class VoteManager {
+public class VoteManager implements Listener{
 
     public static List<Vote> votes = new ArrayList<Vote>();
     public static ItemStack displayItem;
