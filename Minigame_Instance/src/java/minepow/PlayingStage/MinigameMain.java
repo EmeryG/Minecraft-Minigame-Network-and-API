@@ -34,6 +34,10 @@ public class MinigameMain {
         spectators.add(spectator);
     }
 
+    public static ArrayList<Player> getSpecators() {
+        return (ArrayList<Player>) spectators.clone();
+    }
+
     public static void finish() {
         for(Listener l : listeners) {
             HandlerList.unregisterAll(l);
