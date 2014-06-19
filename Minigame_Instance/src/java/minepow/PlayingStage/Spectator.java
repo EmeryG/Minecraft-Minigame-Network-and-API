@@ -20,7 +20,6 @@ public class Spectator implements Listener {
             Player player = ((Player) event).getPlayer();
             if (MinigameMain.getSpecators().contains(player)) {
                 event.setCancelled(true);
-                player.sendMessage("You are a Spectator silly");
             }
         }
     }
@@ -31,7 +30,6 @@ public class Spectator implements Listener {
             Player player = event.getPlayer();
             if (MinigameMain.getSpecators().contains(player)) {
                 event.setCancelled(true);
-                player.sendMessage("You are a Spectator silly");
             }
         }
     }
@@ -52,7 +50,6 @@ public class Spectator implements Listener {
             Player player = event.getPlayer();
             if (MinigameMain.getSpecators().contains(player)) {
                 event.setCancelled(true);
-                player.sendMessage("You are a Spectator silly");
             }
         }
     }
