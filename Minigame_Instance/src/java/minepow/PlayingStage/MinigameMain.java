@@ -32,6 +32,13 @@ public class MinigameMain {
 
     public static void setSpecator(Player spectator) {
         spectators.add(spectator);
+
+        spectator.setAllowFlight(true);
+        spectator.setFlying(true);
+
+        for (Player pl : Bukkit.getOnlinePlayers()) {
+            pl.hidePlayer(spectator);
+        }
     }
 
     public static ArrayList<Player> getSpecators() {
@@ -39,11 +46,11 @@ public class MinigameMain {
     }
 
     public static void finish() {
-        for(Listener l : listeners) {
+        for (Listener l : listeners) {
             HandlerList.unregisterAll(l);
         }
         listeners.clear();
-        for(BukkitRunnable thread : threads) {
+        for (BukkitRunnable thread : threads) {
             thread.cancel();
         }
         threads.clear();
