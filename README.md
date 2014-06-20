@@ -65,14 +65,14 @@ MinigameMain.setSpectator(player)
 <p>So, you can set and get spectators.</p>
 ```java
 // To get all Maps:
-Set<String> maps = HashMap<String, HashMap<Integer, Location>> getMapInfo().keySet();
+Set<String> maps = Config.getMapInfo().keySet();
 
 // To get Map:
-HashMap<Integer, Location> getMapInfo().get(mapName).get(pointType);
+HashMap<Integer, Location> Config.getMapInfo().get(mapName).get(pointType);
 
 // To get Map Point Sets: 
-HashMap<Integer, Location> getMapInfo().get(mapName).get(pointType);
+HashMap<Integer, Location> Config.getMapInfo().get(mapName).get(pointType);
 
 // To get Map Point: 
-Location getMapInfo().get(mapName).get(pointType).get(pointNumber);
+Location Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
 ```
