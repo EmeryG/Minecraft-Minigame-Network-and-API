@@ -1,6 +1,7 @@
 <h1>Minigame API Usage</h1>
 <h2>Listeners</h2>
 <p>For listening to voting selection and player option selections in the lobby do something like this:</p>
+<p>For retartds like Torn and Ali</p>
 <code>
 
 public class PlayerEntryListener {
