@@ -1,6 +1,7 @@
 package minepow.PlayingStage;
 
 import minepow.Main;
+import minepow.StageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -45,7 +46,7 @@ public class MinigameMain {
         return (ArrayList<Player>) spectators.clone();
     }
 
-    public static void finish() {
+    public static void finish(ArrayList<Player> winners) {
         for (Listener l : listeners) {
             HandlerList.unregisterAll(l);
         }
@@ -54,5 +55,6 @@ public class MinigameMain {
             thread.cancel();
         }
         threads.clear();
+        StageManager.toEnd(winners);
     }
 }

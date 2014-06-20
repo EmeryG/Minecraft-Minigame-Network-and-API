@@ -1,11 +1,16 @@
 package minepow.LobbyStage;
 
+import minepow.config.Config;
 import minepow.listeners.PlayerInput;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import minepow.Main;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffect;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +20,7 @@ import java.util.ArrayList;
  * Time: 11:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public class LobbyMain {
+public class LobbyMain implements Listener {
     static ArrayList<PlayerInput> inputListeners = new ArrayList<PlayerInput>();
     static ArrayList<Listener> listeners = new ArrayList<Listener>();
 
@@ -46,5 +51,22 @@ public class LobbyMain {
             HandlerList.unregisterAll(l);
         }
         listeners.clear();
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        e.setJoinMessage("");
+        Player p = e.getPlayer();
+
+        p.teleport(Config.getMapInfo().get("lobby").get("spawn").get(1));
+        p.setFlying(false);
+
+        for (Player pl : Bukkit.getOnlinePlayers()) {
+            pl.showPlayer(p);
+        }
+
+        for(PotionEffect effect : p.getActivePotionEffects()) {
+            p.removePotionEffect(effect.getType());
+        }
     }
 }
