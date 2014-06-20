@@ -9,4 +9,7 @@ public class Manager {
 
     public static void startLobby() {
     }
+
+    public static void enterPlayersIntoMap(){
+    }
 }
