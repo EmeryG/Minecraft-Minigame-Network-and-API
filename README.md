@@ -51,7 +51,7 @@ public class StateListener extends States {
 
 <p>Add a state listener (always register this in your onEnable()) like so:</p>
 ```java
-State<amager.registerListener(States listener)
+StateManager.registerListener(States listener)
 ```
 
 <h2>onLobby Recommendations</h2>
