@@ -68,11 +68,11 @@ MinigameMain.setSpectator(player)
 Set<String> maps = Config.getMapInfo().keySet();
 
 // To get Map:
-HashMap<Integer, Location> Config.getMapInfo().get(mapName).get(pointType);
+HashMap<String, HashMap<Integer, Location>>map = Config.getMapInfo().get(mapName).get(pointType);
 
 // To get Map Point Sets: 
-HashMap<Integer, Location> Config.getMapInfo().get(mapName).get(pointType);
+HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName);
 
 // To get Map Point: 
-Location Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
+Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
 ```
