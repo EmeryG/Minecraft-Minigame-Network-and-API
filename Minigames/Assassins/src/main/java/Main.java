@@ -7,7 +7,6 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable(){
-        Manager.start();
     }
     @Override
     public void onDisable(){

@@ -3,7 +3,10 @@
  */
 public class Manager {
 
-    public static void start(){
+    public static void startMinigame(){
+        Targeting.registerTargeting();
     }
 
+    public static void startLobby() {
+    }
 }

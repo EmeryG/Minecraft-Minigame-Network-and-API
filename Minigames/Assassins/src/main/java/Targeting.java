@@ -20,4 +20,10 @@ public class Targeting {
             }
         }
     }
+
+    public static void assignNewTarget(Player player){
+        Player oldTarget = targetList.get(player);
+        Player newTarget = targetList.get(oldTarget);
+        targetList.replace(player, oldTarget, newTarget);
+    }
 }
