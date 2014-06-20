@@ -20,65 +20,68 @@ import java.util.List;
 public class VoteManager implements Listener{
 
     public static List<Vote> votes = new ArrayList<Vote>();
-    public static ItemStack displayItem;
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e){
-        e.getPlayer().getInventory().addItem(new ItemStack(displayItem));
+        Player p = e.getPlayer();
+        for(Selection s : votes){
+            p.getInventory().addItem(new ItemStack(s.categoryItem));
+        }
     }
 
     @EventHandler
     public void onPIE(PlayerInteractEvent e){
-        if(e.getItem() == displayItem){
-            openGUI(e.getPlayer());
+        for(Selection s : votes){
+            if(s.categoryItem == e.getMaterial()){
+                openGUI(s, e.getPlayer());
+            }
         }
     }
 
     @EventHandler
     public void onICE(InventoryClickEvent e){
-        if(e.getInventory().getName().equalsIgnoreCase(displayItem.getItemMeta().getDisplayName())){
-            addVote(e.getCurrentItem().getItemMeta().getDisplayName());
-            e.getWhoClicked().closeInventory();
-            for(ItemStack is : e.getWhoClicked().getInventory().getContents()){
-                if(is.getItemMeta().getDisplayName().equalsIgnoreCase(displayItem.getItemMeta().getDisplayName())){
-                    is.setType(Material.AIR);
-                }
+        ItemStack is = e.getCurrentItem();
+        String name = e.getInventory().getName();
+        for(Vote s : votes){
+            if(s.categoryItem == e.getCurrentItem().getType()){
+                addVote(s, e.getCurrentItem().getType());
             }
+        }
+        e.setCancelled(true);
+        e.getWhoClicked().closeInventory();
+    }
+
+    private void openGUI(Selection s, Player player) {
+        int size = s.names.size() / 9 + 1 * 9;
+        Inventory inv = Bukkit.createInventory(null, size, s.category);
+
+        for(int I = 0; I < s.ids.size(); I++){
+            ItemStack is = new ItemStack(s.ids.get(I));
+            is.getItemMeta().setDisplayName(s.names.get(I));
+            inv.addItem(is);
+        }
+
+        player.openInventory(inv);
+    }
+
+    private void addVote(Vote v, Material type){
+        String option = v.names.get(v.ids.indexOf(type));
+        v.votes.replace(option, v.votes.get(option)+1);
+        v.total++;
+        if(v.total <= Bukkit.getServer().getOnlinePlayers().length){
+            LobbyMain.onVoteFinish(v.category, findWinner(v));
         }
     }
 
-    private void openGUI(Player p) {
-        int math = votes.size() / 9 + 1 * 9;
-        Inventory inv = Bukkit.createInventory(null, math, displayItem.getItemMeta().getDisplayName());
-        for(Vote v : votes){
-            inv.addItem(new ItemStack(v.displayItem));
-        }
-        p.openInventory(inv);
-    }
-
-    private void addVote(String name){
-        for(Vote v : votes){
-            if(v.name.equalsIgnoreCase(name)){
-                v.votedFor++;
+    private String findWinner(Vote v){
+        String currentWinner = (String) v.votes.keySet().toArray()[0];
+        int currentWinnerVotes = v.votes.get(currentWinner);
+        for(String s : v.votes.keySet()) {
+            if(v.votes.get(s) < currentWinnerVotes) {
+                currentWinner = s;
+                currentWinnerVotes = v.votes.get(s);
             }
         }
-        int totalVotes = 0;
-        for(Vote v : votes){
-            totalVotes += v.votedFor;
-        }
-        if(totalVotes == Bukkit.getServer().getOnlinePlayers().length){
-            LobbyMain.onVoteFinish(displayItem.getItemMeta().getDisplayName(), findWinner());
-        }
-    }
-
-    private String findWinner(){
-        int votedForTimes = 0;
-        Vote currentWinner = votes.get(0);
-        for(Vote v : votes){
-            if(votedForTimes < v.votedFor){
-                currentWinner = v;
-            }
-        }
-        return  currentWinner.name;
+        return currentWinner;
     }
 }
