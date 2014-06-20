@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class SelectionManager implements Listener {
 
-    public static List<Selection> selections = new ArrayList<Selection>();
+    public List<Selection> selections = new ArrayList<Selection>();
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e){
