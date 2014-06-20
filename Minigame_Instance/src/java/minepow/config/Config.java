@@ -39,6 +39,7 @@ public class Config {
                     }
                     points.put(pointType, pointSet);
                 }
+
                 mapInfo.put(map, points);
             }
             return mapInfo;

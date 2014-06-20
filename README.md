@@ -54,4 +54,25 @@ public class StateListener extends States {
 StateManager.registerListener(States listener)
 ```
 
-<h2>onLobby Recommendations</h2>
+<h2>Spectators</h2>
+<p>So, you can set and get spectators.</p>
+```java
+ArrayList<Player> MinigameMain.getSpecators()
+MinigameMain.setSpectator(player)
+```
+
+<h2>Config</h2>
+<p>So, you can set and get spectators.</p>
+```java
+// To get all Maps:
+Set<String> maps = Config.getMapInfo().keySet();
+
+// To get Map:
+HashMap<String, HashMap<Integer, Location>> map = Config.getMapInfo().get(mapName);
+
+// To get Map Point Sets: 
+HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName).get(pointType);
+
+// To get Map Point: 
+Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
+```
