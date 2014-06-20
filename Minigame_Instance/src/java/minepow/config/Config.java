@@ -24,7 +24,7 @@ public class Config {
                             HashMap<Integer, Location>>> mapInfo = new HashMap<String, HashMap<String, HashMap<Integer, Location>>>();
 
             FileConfiguration config = Main.getMain().getConfig();
-
+            
             for(String map : config.getStringList("points")) {
                 HashMap<String, HashMap<Integer, Location>> points = new HashMap<String, HashMap<Integer, Location>>();
                 for(String pointType : config.getStringList("points." + map)) {
@@ -39,6 +39,7 @@ public class Config {
                     }
                     points.put(pointType, pointSet);
                 }
+
                 mapInfo.put(map, points);
             }
             return mapInfo;
