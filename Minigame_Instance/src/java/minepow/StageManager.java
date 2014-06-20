@@ -1,6 +1,7 @@
 package minepow;
 
 import lombok.Getter;
+import minepow.LobbyStage.LobbyMain;
 import minepow.listeners.States;
 import org.bukkit.entity.Player;
 
@@ -27,6 +28,7 @@ public class StageManager {
 
     public static void toLobby() {
         state = State.PRE;
+        LobbyMain.start();
         for(States listener : stateListeners) {
             listener.onLobby();
         }

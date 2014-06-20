@@ -62,7 +62,6 @@ MinigameMain.setSpectator(player)
 ```
 
 <h2>Config</h2>
-<p>So, you can set and get spectators.</p>
 ```java
 // To get all Maps:
 Set<String> maps = Config.getMapInfo().keySet();
@@ -70,9 +69,28 @@ Set<String> maps = Config.getMapInfo().keySet();
 // To get Map:
 HashMap<String, HashMap<Integer, Location>> map = Config.getMapInfo().get(mapName);
 
-// To get Map Point Sets: 
+// To get a Map Point Set: 
 HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName).get(pointType);
 
-// To get Map Point: 
+// To get a Map Point: 
 Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
+```
+
+<h2>Selections</h2>
+<p>So you can make votes and selections to the Lobby to get what the player wants to play, such as maps, kits, etc. A selection is an individual thing where players can select what they want to play with such as a kit. But voting is where all players contribute to one choice, like a map.</p>
+```java
+// To add a selection:
+LobbyMain.getSelectionManager().selections.add(new Selection(String category, Material categoryItem, ArrayList<String> names, ArrayList<Material> Ids));
+/* 
+    The catagory item is item is shown in the inventory before the player clicks it, and the category is it's item name.
+    The ids are the items for selection, and names, of course, are their item names. 
+    Make sure that items that are named a specific something are at the same place on both lists.
+*/
+
+// To add a vote:
+LobbyMain.getVoteManager().votes.add(new Vote(String category, Material categoryItem, ArrayList<String> names, ArrayList<Material> Ids));
+/* 
+    Votes have the same property as collections, so everything said about votes are the same. 
+	But, you don't get the results of the vote every time a player votes, only when the voting time is up or when all players vote.
+*/
 ```

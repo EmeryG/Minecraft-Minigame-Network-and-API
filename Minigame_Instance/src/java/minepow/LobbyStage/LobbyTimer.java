@@ -18,7 +18,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class LobbyTimer extends BukkitRunnable implements Listener {
 
     int seconds = -1;
-    int interval = 120;
 
 
     public void run() {
@@ -36,16 +35,16 @@ public class LobbyTimer extends BukkitRunnable implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if(Bukkit.getOnlinePlayers().length > 2
+        if(Bukkit.getOnlinePlayers().length > LobbyMain.getMinimumPlayers()-1
                 && StageManager.getState() == StageManager.State.PRE
                 && seconds == -1) {
-            seconds += interval;
+            seconds += LobbyMain.getInterval();
         }
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        if(Bukkit.getOnlinePlayers().length < 2
+        if(Bukkit.getOnlinePlayers().length < LobbyMain.getMinimumPlayers()
                 && StageManager.getState() == StageManager.State.PRE
                 && seconds != -1) {
             seconds = -1;

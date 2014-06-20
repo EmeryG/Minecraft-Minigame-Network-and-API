@@ -1,5 +1,7 @@
 package minepow.LobbyStage;
 
+import lombok.Getter;
+import lombok.Setter;
 import minepow.config.Config;
 import minepow.listeners.PlayerInput;
 import org.bukkit.Bukkit;
@@ -24,6 +26,18 @@ public class LobbyMain implements Listener {
     static ArrayList<PlayerInput> inputListeners = new ArrayList<PlayerInput>();
     static ArrayList<Listener> listeners = new ArrayList<Listener>();
 
+    @Getter @Setter
+    static int minimumPlayers = 3;
+
+    @Getter @Setter
+    static int interval = 120;
+
+    @Getter
+    static VoteManager voteManager = new VoteManager();
+
+    @Getter
+    static SelectionManager selectionManager = new SelectionManager();
+
     public static void registerListener(PlayerInput listener) {
         inputListeners.add(listener);
     }
@@ -45,12 +59,19 @@ public class LobbyMain implements Listener {
         }
     }
 
+    public static  void start() {
+        Bukkit.getPluginManager().registerEvents(voteManager, Main.getMain());
+        Bukkit.getPluginManager().registerEvents(selectionManager, Main.getMain());
+    }
+
     public static void finish() {
         inputListeners.clear();
         for(Listener l : listeners) {
             HandlerList.unregisterAll(l);
         }
         listeners.clear();
+        HandlerList.unregisterAll(voteManager);
+        HandlerList.unregisterAll(selectionManager);
     }
 
     @EventHandler

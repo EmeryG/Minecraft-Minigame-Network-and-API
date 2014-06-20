@@ -1,5 +1,6 @@
 package minepow.LobbyStage;
 
+import minepow.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,8 +19,7 @@ import java.util.List;
  * Created by Ali on 15/06/2014.
  */
 public class VoteManager implements Listener{
-
-    public static List<Vote> votes = new ArrayList<Vote>();
+    public List<Vote> votes = new ArrayList<Vote>();
 
     @EventHandler
     public void onPJE(PlayerJoinEvent e){
@@ -51,6 +51,13 @@ public class VoteManager implements Listener{
         e.getWhoClicked().closeInventory();
     }
 
+    public void finish() {
+        for(Vote v : votes) {
+            LobbyMain.onVoteFinish(v.category, findWinner(v));
+            votes.remove(v);
+        }
+    }
+
     private void openGUI(Selection s, Player player) {
         int size = s.names.size() / 9 + 1 * 9;
         Inventory inv = Bukkit.createInventory(null, size, s.category);
@@ -70,6 +77,7 @@ public class VoteManager implements Listener{
         v.total++;
         if(v.total <= Bukkit.getServer().getOnlinePlayers().length){
             LobbyMain.onVoteFinish(v.category, findWinner(v));
+            votes.remove(v);
         }
     }
 
