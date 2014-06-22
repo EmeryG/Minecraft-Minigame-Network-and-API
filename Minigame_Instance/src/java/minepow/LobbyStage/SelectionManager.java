@@ -1,6 +1,7 @@
 package minepow.LobbyStage;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -58,5 +59,4 @@ public class SelectionManager implements Listener {
 
         player.openInventory(inv);
     }
-
 }

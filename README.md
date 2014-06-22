@@ -47,7 +47,7 @@ public class StateListener extends States {
 	
 }
 ```
-<p>Basically, when these events trigger, you do stuff in your minigame. So when it goes toLobby(), add listeners to Lobby accordingly and add selections and such. Or when it goes toMinigame() you have to add your threads and listeners to the minigame and do your minigame init. Or toEnd, you award the winners and clean up any mess that you made via maps.</p>
+<p>Basically, when these events trigger, you do stuff in your minigame. So when it goes ooLobby(), add listeners to Lobby accordingly and add selections and such. Or when it goes ooMinigame() you have to add your threads and listeners to the minigame and do your minigame init. Or onEnd, you award the winners and clean up any mess that you made via maps.</p>
 
 <p>Add a state listener (always register this in your onEnable()) like so:</p>
 ```java
@@ -94,3 +94,15 @@ LobbyMain.getVoteManager().votes.add(new Vote(String category, Material category
 	But, you don't get the results of the vote every time a player votes, only when the voting time is up or when all players vote.
 */
 ```
+
+<h2>Adding listeners and threads to the Minigame</h2>
+```java
+MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread)
+MinigameMain.registerListener(org.bukkit.event.Listener listener)
+```
+
+<h2>Ending the minigame</h2>
+```java
+MinigameMain.finish(ArrayList<Player> winners)
+```
+<p>You can put on player in the arraylist, or several, it doesn't matter, but this will automatically unregister all your threads and listeners that you entered for the minigame.</p>
