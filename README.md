@@ -7,7 +7,7 @@
 public class PlayerEntryListener extends PlayerInput {
 
     @Override
-	public void onVoteFinish(String category, String winner) {
+	public void onVoteFinish(String category, String mostVotedFor) {
 	    // code
 	}
 	

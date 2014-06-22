@@ -10,6 +10,6 @@ import org.bukkit.entity.Player;
  * To change this template use File | Settings | File Templates.
  */
 public interface PlayerInput {
-    public void onVoteFinish(String category, String winner);
+    public void onVoteFinish(String category, String mostVotedFor);
     public void onSelect(Player p, String category, String selection);
 }

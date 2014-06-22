@@ -15,6 +15,7 @@ public class Main extends JavaPlugin{
     @Override
     public void onEnable(){
         main = this;
+        StageManager.toLobby();
         LobbyTimer timer = new LobbyTimer();
         timer.runTaskTimer(this, 0L, 20L);
         this.getServer().getPluginManager().registerEvents(timer, this);
