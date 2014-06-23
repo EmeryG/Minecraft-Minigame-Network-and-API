@@ -19,11 +19,12 @@ import java.util.Set;
 /**
  * Created by Ali on 20/06/2014.
  */
-public class StatesListener  extends PlayerInput implements States{
+public class StatesListener implements States, PlayerInput{
     String mapChosen;
     @Override
     public void onLobby() {
-        ArrayList<String> maps = Config.getMapInfo().keySet();
+        LobbyMain.registerListener(this);
+        ArrayList<String> maps = Config.getMaps();
         ArrayList<Material> Ids = new ArrayList<Material>();
 
         for(int i = 0; i < maps.size(); i++){
@@ -37,7 +38,7 @@ public class StatesListener  extends PlayerInput implements States{
     public void onMinigame() {
         MinigameMain.registerListener(new GameListeners());
         Targeting.registerTargeting();
-        enterPlayersIntoMap(Config.getMapInfo().get(map).get("border").get(1), Config.getMapInfo().get(map).get("border").get(2));
+        enterPlayersIntoMap(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
     }
 
     @Override
