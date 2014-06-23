@@ -1,4 +1,5 @@
 
+import minepow.config.Config;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -16,9 +17,9 @@ import java.util.Random;
  */
 public class Manager {
 
-    public static void startMinigame(){
+    public static void startMinigame(String map){
         Targeting.registerTargeting();
-        enterPlayersIntoMap();
+        enterPlayersIntoMap(Config.getMapInfo().get(map).get("border").get(1), Config.getMapInfo().get(map).get("border").get(2));
     }
 
     public static void startLobby() {
