@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import minepow.Main;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 public class LobbyMain implements Listener {
     static ArrayList<PlayerInput> inputListeners = new ArrayList<PlayerInput>();
     static ArrayList<Listener> listeners = new ArrayList<Listener>();
+    static ArrayList<BukkitRunnable> threads = new ArrayList<BukkitRunnable>();
 
     @Getter @Setter
     static int minimumPlayers = 3;
@@ -47,6 +49,10 @@ public class LobbyMain implements Listener {
         Bukkit.getPluginManager().registerEvents(listener, Main.getMain());
     }
 
+    public static void registerThread(BukkitRunnable thread) {
+        threads.add(thread);
+    }
+
     public static void onVoteFinish(String category, String winner) {
         for(PlayerInput ip : inputListeners) {
             ip.onVoteFinish(category, winner);
@@ -65,6 +71,10 @@ public class LobbyMain implements Listener {
     }
 
     public static void finish() {
+        for (BukkitRunnable thread : threads) {
+            thread.cancel();
+        }
+        threads.clear();
         inputListeners.clear();
         for(Listener l : listeners) {
             HandlerList.unregisterAll(l);

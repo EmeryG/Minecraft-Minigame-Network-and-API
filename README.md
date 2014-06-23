@@ -1,6 +1,6 @@
 <h1>Minigame API Usage</h1>
 
-<h2>Lobby Listeners</h2>
+<h2>Lobby Registration</h2>
 
 <p>For listening to voting selection and player option selections in the lobby do something like this:</p>
 ```java
@@ -98,7 +98,7 @@ LobbyMain.getVoteManager().votes.add(new Vote(String category, Material category
 */
 ```
 
-<h2>Minigame Listeners</h2>
+<h2>Minigame Registration</h2>
 ```java
 MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread)
 MinigameMain.registerListener(org.bukkit.event.Listener listener)
