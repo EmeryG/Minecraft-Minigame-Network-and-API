@@ -7,8 +7,6 @@ import java.util.HashMap;
  */
 public class Manager {
 
-    public static HashMap<Player, Integer> points = new HashMap<Player, Integer>();
-
     public static void startMinigame(){
         Targeting.registerTargeting();
         enterPlayersIntoMap();
