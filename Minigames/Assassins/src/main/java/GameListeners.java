@@ -21,7 +21,7 @@ public class GameListeners implements Listener{
     //Handles Assassinating
     public void onEDBEE(EntityDamageByEntityEvent e){
         if(checkPlayerSaftey(e.getEntity()) && e.getDamager() instanceof Player) {
-            if (e.getEntity().getUniqueId() == Targeting.targetList.get(e.getDamager().getUniqueId())) {
+            if (e.getEntity() == Targeting.targetList.get(e.getDamager())) {
                 Player player = (Player) e.getDamager();
                 e.setCancelled(true);
                 if (player.getInventory().getItemInHand() == new ItemStack(Material.GOLD_SWORD)) {
@@ -47,8 +47,8 @@ public class GameListeners implements Listener{
     @EventHandler
     public void onPDE(PlayerDeathEvent e){
         MinigameMain.setSpecator(e.getEntity());
-        UUID newTarget = Targeting.targetList.get(e.getEntity().getUniqueId());
-        Targeting.targetList.replace(e.getEntity().getKiller().getUniqueId(), newTarget);
+        Player newTarget = Targeting.targetList.get(e.getEntity());
+        Targeting.targetList.replace(e.getEntity().getKiller(), newTarget);
 
         int alivePlayers = Bukkit.getOnlinePlayers().length - MinigameMain.getSpecators().size();
         if(alivePlayers == 1){

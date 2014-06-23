@@ -37,7 +37,11 @@ public class StatesListener implements States, PlayerInput {
     @Override
     public void onMinigame() {
         MinigameMain.registerListener(new GameListener());
+        spawnTreasure();
         enterPlayersIntoMap(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
+    }
+
+    private void spawnTreasure() {
     }
 
     @Override
