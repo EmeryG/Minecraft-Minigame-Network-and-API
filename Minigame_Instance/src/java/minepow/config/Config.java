@@ -1,10 +1,12 @@
 package minepow.config;
 
+import lombok.Getter;
 import minepow.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +16,9 @@ import java.util.List;
 public class Config {
 
     static HashMap<String, HashMap<String, HashMap<Integer, Location>>> config = null;
+
+    @Getter
+    static ArrayList<String> maps = new ArrayList<String>(Main.getMain().getConfig().getStringList("points"));
 
     public static HashMap<String, HashMap<String, HashMap<Integer, Location>>> getMapInfo() {
         if(config == null) {
