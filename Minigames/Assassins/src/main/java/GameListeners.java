@@ -59,6 +59,7 @@ public class GameListeners implements Listener{
                     break;
                 }
             }
+            MinigameMain.finish(winner);
         }
     }
 }
