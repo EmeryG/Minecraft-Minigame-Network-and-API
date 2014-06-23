@@ -51,7 +51,7 @@ public class StateListener extends States {
 
 <p>Add a state listener (always register this in your onEnable()) like so:</p>
 ```java
-StateManager.registerListener(States listener)
+StageManager.registerListener(States listener)
 ```
 
 <h2>Spectators</h2>
