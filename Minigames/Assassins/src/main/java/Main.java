@@ -6,12 +6,19 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin {
 
+    static Main main;
+
     @Override
     public void onEnable(){
         StageManager.registerListener(new StatesListener());
+        main = this;
     }
     @Override
     public void onDisable(){
+    }
+
+    public static Main getMain(){
+        return main;
     }
 
 }

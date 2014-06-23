@@ -38,6 +38,9 @@ public class StatesListener implements States, PlayerInput{
     public void onMinigame() {
         MinigameMain.registerListener(new GameListeners());
         Targeting.registerTargeting();
+        CompassTarget target = new CompassTarget();
+        target.runTaskTimer(Main.getMain(), 200, 20);
+        MinigameMain.registerThread(new CompassTarget());
         enterPlayersIntoMap(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
     }
 
