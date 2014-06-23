@@ -41,43 +41,12 @@ public class StatesListener implements States, PlayerInput{
         CompassTarget target = new CompassTarget();
         target.runTaskTimer(Main.getMain(), 200, 20);
         MinigameMain.registerThread(new CompassTarget());
-        enterPlayersIntoMap(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
+        MinigameMain.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
     }
 
     @Override
     public void onEnd(ArrayList<Player> players) {
 
-    }
-
-    public static void enterPlayersIntoMap(Location borderPoint1, Location borderPoint2) {
-        boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
-        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
-
-        Location tp = new Location(borderPoint1.getWorld(), 0, 200, 0);
-        Random r = new Random();
-
-        ArrayList<PotionEffect> effects = new ArrayList<PotionEffect>();
-        effects.add(new PotionEffect(PotionEffectType.INVISIBILITY, 100, 0));
-        effects.add(new PotionEffect(PotionEffectType.SLOW, 100, 7));
-        effects.add(new PotionEffect(PotionEffectType.WEAKNESS, 100, 20));
-        effects.add(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 100, 5));
-
-        for(Player p : Bukkit.getOnlinePlayers()) {
-            if(isOneXGreater) {
-                tp.setX(r.nextInt(borderPoint1.getBlockX() - borderPoint2.getBlockX()));
-            } else {
-                tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
-            }
-
-            if(isOneYGreater) {
-                tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
-            } else {
-                tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
-            }
-
-            p.addPotionEffects(effects);
-            p.teleport(tp);
-        }
     }
 
     @Override
