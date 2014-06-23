@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-=======
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -11,7 +10,6 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.Random;
->>>>>>> a6c94b1e9f31aa960838fc384a2c5e5fe919e865
 
 /**
  * Created by Ali on 20/06/2014.
