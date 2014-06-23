@@ -4,7 +4,7 @@
 
 <p>For listening to voting selection and player option selections in the lobby do something like this:</p>
 ```java
-public class PlayerEntryListener extends PlayerInput {
+public class PlayerEntryListener implements PlayerInput {
 
     @Override
 	public void onVoteFinish(String category, String mostVotedFor) {
@@ -28,7 +28,7 @@ LobbyMain.registerListener(org.bukkit.event.Listener listener)
 <h3>For listening to when the server changes states:</h3>
 <p>This is the most important class to make your Minigame go round:</p>
 ```java
-public class StateListener extends States {
+public class StateListener implements States {
 
     @Override
 	public void onLobby() {
