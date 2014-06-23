@@ -1,6 +1,6 @@
 <h1>Minigame API Usage</h1>
 
-<h2>Listeners</h2>
+<h2>Lobby Listeners</h2>
 
 <p>For listening to voting selection and player option selections in the lobby do something like this:</p>
 ```java
@@ -32,22 +32,25 @@ public class StateListener extends States {
 
     @Override
 	public void onLobby() {
-	    // code
+	    // add lobby listeners
+		// code
 	}
 	
 	@Override
 	public void onMinigame() {
-	    // code
+	    // add minigame listeners
+		// code
 	}
 	
 	@Override
 	public void onEnd(ArrayList<Player> winners) {
-	    // code
+	    // give winner(s) an award
+		// code
 	}
 	
 }
 ```
-<p>Basically, when these events trigger, you do stuff in your minigame. So when it goes ooLobby(), add listeners to Lobby accordingly and add selections and such. Or when it goes ooMinigame() you have to add your threads and listeners to the minigame and do your minigame init. Or onEnd, you award the winners and clean up any mess that you made via maps.</p>
+<p>Basically, when these events trigger, you do stuff in your minigame. So when it goes onLobby(), add listeners to Lobby accordingly and add selections and such. Or when it goes onMinigame() you have to add your threads and listeners to the minigame and do your minigame init. Or onEnd, you award the winners and clean up any mess that you made via maps.</p>
 
 <p>Add a state listener (always register this in your onEnable()) like so:</p>
 ```java
@@ -61,7 +64,7 @@ ArrayList<Player> MinigameMain.getSpecators()
 MinigameMain.setSpectator(player)
 ```
 
-<h2>Config</h2>
+<h2>Maps</h2>
 ```java
 // To get all Maps:
 Set<String> maps = Config.getMapInfo().keySet();
@@ -76,7 +79,7 @@ HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName).get(point
 Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
 ```
 
-<h2>Selections</h2>
+<h2>Votes/Selections</h2>
 <p>So you can make votes and selections to the Lobby to get what the player wants to play, such as maps, kits, etc. A selection is an individual thing where players can select what they want to play with such as a kit. But voting is where all players contribute to one choice, like a map.</p>
 ```java
 // To add a selection:
@@ -95,7 +98,7 @@ LobbyMain.getVoteManager().votes.add(new Vote(String category, Material category
 */
 ```
 
-<h2>Adding listeners and threads to the Minigame</h2>
+<h2>Minigame Listeners</h2>
 ```java
 MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread)
 MinigameMain.registerListener(org.bukkit.event.Listener listener)
