@@ -67,7 +67,7 @@ MinigameMain.setSpectator(player)
 <h2>Maps</h2>
 ```java
 // To get all Maps:
-Set<String> maps = Config.getMapInfo().keySet();
+ArrayList<String> maps = Config.getMaps();
 
 // To get Map:
 HashMap<String, HashMap<Integer, Location>> map = Config.getMapInfo().get(mapName);
