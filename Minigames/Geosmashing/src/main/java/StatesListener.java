@@ -37,11 +37,35 @@ public class StatesListener implements States, PlayerInput {
     @Override
     public void onMinigame() {
         MinigameMain.registerListener(new GameListener());
-        spawnTreasure();
+        spawnTreasure(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
         enterPlayersIntoMap(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
     }
 
-    private void spawnTreasure() {
+    private void spawnTreasure(Location borderPoint1, Location borderPoint2) {
+        boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
+        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+
+        Location treasure = new Location(borderPoint1.getWorld(), 0, 0, 0);
+        Random r = new Random();
+
+        ArrayList<PotionEffect> effects = new ArrayList<PotionEffect>();
+        effects.add(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 5));
+
+         if(isOneXGreater) {
+             treasure.setX(r.nextInt(borderPoint1.getBlockX() - borderPoint2.getBlockX()));
+         } else {
+             treasure.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
+         }
+
+         if(isOneYGreater) {
+            treasure.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+         } else {
+            treasure.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+         }
+
+         treasure.setY(r.nextInt(55)+6);
+
+         treasure.getBlock().setType(Material.GOLD_BLOCK);
     }
 
     @Override
