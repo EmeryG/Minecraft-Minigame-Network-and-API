@@ -47,8 +47,7 @@ public class GameListeners implements Listener{
     @EventHandler
     public void onPDE(PlayerDeathEvent e){
         MinigameMain.setSpecator(e.getEntity());
-        Player newTarget = Targeting.targetList.get(e.getEntity());
-        Targeting.targetList.replace(e.getEntity().getKiller(), newTarget);
+        Targeting.assignNewTarget(e.getEntity().getKiller());
 
         int alivePlayers = Bukkit.getOnlinePlayers().length - MinigameMain.getSpecators().size();
         if(alivePlayers == 1){
