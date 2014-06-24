@@ -79,6 +79,18 @@ HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName).get(point
 Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
 ```
 
+<h2>Config</h2>
+```java
+// To get the config
+FileConfiguration config = Config.getConfig();
+
+// To save the config
+Config.saveConfig();
+
+// When first running your minigame, this is to check if configuration options for your own minigame is there
+Config.contains(String thing);
+```
+
 <h2>Votes/Selections</h2>
 <p>So you can make votes and selections to the Lobby to get what the player wants to play, such as maps, kits, etc. A selection is an individual thing where players can select what they want to play with such as a kit. But voting is where all players contribute to one choice, like a map.</p>
 ```java

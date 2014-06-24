@@ -53,14 +53,24 @@ public class Config {
         }
     }
 
-    /*
+    public static FileConfiguration getConfig() {
+        return Main.getMain().getConfig();
+    }
 
-       To get Map: HashMap<String,
-                       HashMap<Integer, Location>> getMapInfo().get(mapName);
+    public static void saveConfig() {
+        Main.getMain().getConfig();
+    }
 
-       To get Map Point Sets: HashMap<Integer, Location> getMapInfo().get(mapName).get(pointType);
+    public static void reloadConfig() {
+        Main.getMain().reloadConfig();
+    }
 
-       To get Map Point: Location getMapInfo().get(mapName).get(pointType).get(pointNumber);
-
-     */
+    public static boolean contains(String thing) {
+        try {
+            Main.getMain().getConfig().get(thing);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
