@@ -19,10 +19,11 @@ public class PlayerEntryListener implements PlayerInput {
 }
 ```
 
-<p>Then register Bukkit and custom listeners with the api like so:</p>
+<p>Then register Threads, Bukkit listeners, and custom listeners with the api like so:</p>
 ```java
 LobbyMain.registerListener(PlayerInput listener)
 LobbyMain.registerListener(org.bukkit.event.Listener listener)
+LobbyMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread)
 ```
 
 <h3>For listening to when the server changes states:</h3>
@@ -112,7 +113,8 @@ LobbyMain.getVoteManager().votes.add(new Vote(String category, Material category
 
 <h2>Minigame Registration</h2>
 ```java
-MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread)
+MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread, Long delay)
+MinigameMain.registerThread(org.bukkit.scheduler.BukkitRunnable thread, Long delay, Long ticksBetweenRunning)
 MinigameMain.registerListener(org.bukkit.event.Listener listener)
 ```
 
