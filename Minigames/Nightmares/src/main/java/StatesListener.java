@@ -47,7 +47,7 @@ public class StatesListener implements States, PlayerInput{
 
         NetherStarDropper nsd = new NetherStarDropper();
         nsd.runTaskTimer(Main.getMain(), 200, 200);
-        MinigameMain.registerThread(new NetherStarDropper());
+        MinigameMain.registerThread(new NetherStarDropper(), 200L, 200L);
     }
 
     private void giveSleepersEffects() {
