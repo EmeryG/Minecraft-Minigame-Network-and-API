@@ -19,7 +19,7 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  */
 public class Util {
-    public static Location dropItem(Location borderPoint1, Location borderPoint2, ItemStack item){
+    public static Location dropItemRandonmly(Location borderPoint1, Location borderPoint2, ItemStack item){
         boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
         boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
 
@@ -75,7 +75,7 @@ public class Util {
         }
     }
 
-    public static void spawnPlayerRandomly(Player p, Location borderPoint1, Location borderPoint2){
+    public static Location spawnPlayerRandomly(Player p, Location borderPoint1, Location borderPoint2){
         boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
         boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
 
@@ -103,5 +103,6 @@ public class Util {
         p.addPotionEffects(effects);
         p.teleport(tp);
 
+        return tp;
     }
 }
