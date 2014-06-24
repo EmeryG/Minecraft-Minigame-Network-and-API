@@ -1,6 +1,7 @@
 import minepow.LobbyStage.LobbyMain;
 import minepow.LobbyStage.Vote;
 import minepow.PlayingStage.MinigameMain;
+import minepow.PlayingStage.Util;
 import minepow.config.Config;
 import minepow.listeners.PlayerInput;
 import minepow.listeners.States;
@@ -10,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +42,7 @@ public class StatesListener implements States, PlayerInput{
         sleepers = Arrays.asList(Bukkit.getOnlinePlayers());
         MinigameMain.registerListener(new GameListeners());
         chooseBeginningNightmare();
-        MinigameMain.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
+        Util.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
         giveSleepersEffects();
 
         NetherStarDropper nsd = new NetherStarDropper();

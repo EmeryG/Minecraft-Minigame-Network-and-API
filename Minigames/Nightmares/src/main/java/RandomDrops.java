@@ -6,6 +6,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class RandomDrops extends BukkitRunnable {
     @Override
     public void run() {
-        
+
     }
 }

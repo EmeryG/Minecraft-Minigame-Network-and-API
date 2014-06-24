@@ -1,6 +1,7 @@
 import minepow.LobbyStage.LobbyMain;
 import minepow.LobbyStage.Vote;
 import minepow.PlayingStage.MinigameMain;
+import minepow.PlayingStage.Util;
 import minepow.config.Config;
 import minepow.listeners.PlayerInput;
 import minepow.listeners.States;
@@ -38,10 +39,8 @@ public class StatesListener implements States, PlayerInput{
     public void onMinigame() {
         MinigameMain.registerListener(new GameListeners());
         Targeting.registerTargeting();
-        CompassTarget target = new CompassTarget();
-        target.runTaskTimer(Main.getMain(), 200, 20);
         MinigameMain.registerThread(new CompassTarget(),200L, 20L);
-        MinigameMain.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
+        Util.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
     }
 
     @Override
