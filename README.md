@@ -123,3 +123,15 @@ MinigameMain.registerListener(org.bukkit.event.Listener listener)
 MinigameMain.finish(ArrayList<Player> winners)
 ```
 <p>You can put on player in the arraylist, or several, it doesn't matter, but this will automatically unregister all your threads and listeners that you entered for the minigame.</p>
+
+<h2>Util</h2>
+```java
+// Spawn a player randomly
+Location dropped = Util.spawnPlayerRandomly(Player p, Location borderPoint1, Location borderPoint2);
+
+// Spawn all players randomly
+spawnPlayersRandomly(Player p, Location borderPoint1, Location borderPoint2)
+
+// Drop an itemstack randomly
+Location dropped = Util.dropItemRandonmly(Location borderPoint1, Location borderPoint2, ItemStack item)
+```
