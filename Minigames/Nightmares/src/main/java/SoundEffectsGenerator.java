@@ -15,11 +15,11 @@ public class SoundEffectsGenerator extends BukkitRunnable{
 
     @Override
     public void run() {
-        Location rL = Util.getRandomLocation(Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(1), Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(2));
+        Location rL = Util.getRandomLocation(Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(1), Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(2), 70);
 
         List<String> sounds = Config.getConfig().getStringList("sounds");
         Collections.shuffle(sounds);
 
-        Bukkit.getWorld(Config.getConfig().getString("world")).playSound(rl, Sound.valueOf(sounds.get(0)));
+        Bukkit.getWorld(Config.getConfig().getString("world")).playSound(rL, Sound.valueOf(sounds.get(0)),1.0F, 10.0F);
     }
 }

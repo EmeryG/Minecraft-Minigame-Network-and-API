@@ -77,7 +77,7 @@ public class Util {
 
     public static Location spawnPlayerRandomly(Player p, Location borderPoint1, Location borderPoint2){
         boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
-        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+        boolean isOneZGreater = borderPoint1.getBlockZ() > borderPoint2.getBlockZ();
 
         Location tp = new Location(borderPoint1.getWorld(), 0, 200, 0);
         Random r = new Random();
@@ -94,10 +94,10 @@ public class Util {
             tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
         }
 
-        if(isOneYGreater) {
-            tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+        if(isOneZGreater) {
+            tp.setZ(r.nextInt(borderPoint1.getBlockZ() - borderPoint2.getBlockZ()));
         } else {
-            tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+            tp.setZ(r.nextInt(borderPoint2.getBlockZ() - borderPoint1.getBlockZ()));
         }
 
         p.addPotionEffects(effects);
@@ -108,7 +108,7 @@ public class Util {
 
     public static Location getRandomLocation(Location borderPoint1, Location borderPoint2){
         boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
-        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+        boolean isOneZGreater = borderPoint1.getBlockZ() > borderPoint2.getBlockZ();
 
         Location tp = new Location(borderPoint1.getWorld(), 0, 200, 0);
         Random r = new Random();
@@ -119,10 +119,10 @@ public class Util {
             tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
         }
 
-        if(isOneYGreater) {
-            tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+        if(isOneZGreater) {
+            tp.setZ(r.nextInt(borderPoint1.getBlockZ() - borderPoint2.getBlockZ()));
         } else {
-            tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+            tp.setZ(r.nextInt(borderPoint2.getBlockZ() - borderPoint1.getBlockZ()));
         }
 
         return tp;
@@ -130,7 +130,7 @@ public class Util {
 
     public static Location getRandomLocation(Location borderPoint1, Location borderPoint2, int y){
         boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
-        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+        boolean isOneZGreater = borderPoint1.getBlockZ() > borderPoint2.getBlockZ();
 
         Location tp = new Location(borderPoint1.getWorld(), 0, y, 0);
         Random r = new Random();
@@ -141,10 +141,10 @@ public class Util {
             tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
         }
 
-        if(isOneYGreater) {
-            tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+        if(isOneZGreater) {
+            tp.setZ(r.nextInt(borderPoint1.getBlockZ() - borderPoint2.getBlockZ()));
         } else {
-            tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+            tp.setZ(r.nextInt(borderPoint2.getBlockZ() - borderPoint1.getBlockZ()));
         }
 
         return tp;
