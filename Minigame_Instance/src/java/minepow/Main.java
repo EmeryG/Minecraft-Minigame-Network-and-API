@@ -2,6 +2,7 @@ package minepow;
 
 import lombok.Getter;
 import minepow.LobbyStage.LobbyTimer;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -24,8 +25,24 @@ public class Main extends JavaPlugin{
     @Override
     public void onDisable(){ }
 
-    public static Main getMain(){
-        return main;
+    public static FileConfiguration getMainConfig() {
+        return main.getConfig();
     }
 
+    public static void saveMainConfig() {
+        main.getConfig();
+    }
+
+    public static void reloadMainConfig() {
+        main.reloadConfig();
+    }
+
+    public static boolean contains(String thing) {
+        try {
+            main.getConfig().get(thing);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

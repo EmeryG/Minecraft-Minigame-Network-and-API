@@ -29,10 +29,10 @@ public class LobbyMain implements Listener {
     static ArrayList<BukkitRunnable> threads = new ArrayList<BukkitRunnable>();
 
     @Getter @Setter
-    static int minimumPlayers = 3;
+    static int minimumPlayers = Main.getMainConfig().getInt("minimumPlayers");;
 
     @Getter @Setter
-    static int interval = 120;
+    static int interval = Main.getMainConfig().getInt("lobbyTime");
 
     @Getter
     static VoteManager voteManager = new VoteManager();
@@ -75,11 +75,14 @@ public class LobbyMain implements Listener {
             thread.cancel();
         }
         threads.clear();
+
         inputListeners.clear();
+
         for(Listener l : listeners) {
             HandlerList.unregisterAll(l);
         }
         listeners.clear();
+
         HandlerList.unregisterAll(voteManager);
         HandlerList.unregisterAll(selectionManager);
     }

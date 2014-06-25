@@ -80,16 +80,31 @@ HashMap<Integer, Location> pointSet = Config.getMapInfo().get(mapName).get(point
 Location point = Config.getMapInfo().get(mapName).get(pointType).get(pointNumber);
 ```
 
+<h2>Kits</h2>
+```java
+// To get a kit
+Kit kit = Config.getKit(String kit);
+
+// To give the player the kit
+kit.givePlayerItems(Player p);
+
+// To get the armor inside the kit
+ItemStack[] armor = kit.getArmor();
+
+// To get the items inside the kit
+ArrayList<ItemStack> items = kit.getItems();
+```
+
 <h2>Config</h2>
 ```java
 // To get the config
-FileConfiguration config = Config.getConfig();
+FileConfiguration config = Main.getMainConfig();
 
 // To save the config
-Config.saveConfig();
+Main.saveMainConfig();
 
 // When first running your minigame, this is to check if configuration options for your own minigame is there
-Config.contains(String thing);
+Main.contains(String thing);
 ```
 
 <h2>Votes/Selections</h2>
@@ -134,4 +149,7 @@ spawnPlayersRandomly(Player p, Location borderPoint1, Location borderPoint2)
 
 // Drop an itemstack randomly
 Location dropped = Util.dropItemRandonmly(Location borderPoint1, Location borderPoint2, ItemStack item)
+
+// Get a random location
+Location dropped = Util.getRandomLocation(Location borderPoint1, Location borderPoint2, int y)
 ```
