@@ -105,4 +105,48 @@ public class Util {
 
         return tp;
     }
+
+    public static Location getRandomLocation(Location borderPoint1, Location borderPoint2){
+        boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
+        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+
+        Location tp = new Location(borderPoint1.getWorld(), 0, 200, 0);
+        Random r = new Random();
+
+        if(isOneXGreater) {
+            tp.setX(r.nextInt(borderPoint1.getBlockX() - borderPoint2.getBlockX()));
+        } else {
+            tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
+        }
+
+        if(isOneYGreater) {
+            tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+        } else {
+            tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+        }
+
+        return tp;
+    }
+
+    public static Location getRandomLocation(Location borderPoint1, Location borderPoint2, int y){
+        boolean isOneXGreater = borderPoint1.getBlockX() > borderPoint2.getBlockX();
+        boolean isOneYGreater = borderPoint1.getBlockY() > borderPoint2.getBlockY();
+
+        Location tp = new Location(borderPoint1.getWorld(), 0, y, 0);
+        Random r = new Random();
+
+        if(isOneXGreater) {
+            tp.setX(r.nextInt(borderPoint1.getBlockX() - borderPoint2.getBlockX()));
+        } else {
+            tp.setX(r.nextInt(borderPoint2.getBlockX() - borderPoint1.getBlockX()));
+        }
+
+        if(isOneYGreater) {
+            tp.setX(r.nextInt(borderPoint1.getBlockY() - borderPoint2.getBlockY()));
+        } else {
+            tp.setX(r.nextInt(borderPoint2.getBlockY() - borderPoint1.getBlockY()));
+        }
+
+        return tp;
+    }
 }

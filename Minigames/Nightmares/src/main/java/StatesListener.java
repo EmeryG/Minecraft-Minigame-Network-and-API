@@ -22,8 +22,8 @@ import java.util.Random;
  */
 public class StatesListener implements States, PlayerInput{
     public static String mapChosen;
-    static List<Player> sleepers;
-    static List<Player> nightmares;
+    static ArrayList<Player> sleepers;
+    static ArrayList<Player> nightmares;
     @Override
     public void onLobby() {
         LobbyMain.registerListener(this);
@@ -39,7 +39,7 @@ public class StatesListener implements States, PlayerInput{
 
     @Override
     public void onMinigame() {
-        sleepers = Arrays.asList(Bukkit.getOnlinePlayers());
+        sleepers = (ArrayList<Player>) Arrays.asList(Bukkit.getOnlinePlayers());
         MinigameMain.registerListener(new GameListeners());
         chooseBeginningNightmare();
         Util.spawnPlayersRandomly(Config.getMapInfo().get(mapChosen).get("border").get(1), Config.getMapInfo().get(mapChosen).get("border").get(2));
@@ -59,7 +59,7 @@ public class StatesListener implements States, PlayerInput{
     private void chooseBeginningNightmare() {
         Random r = new Random();
         Player n = sleepers.get(r.nextInt(sleepers.size()));
-        nightmares.add(n);
+        nightmares.add(0,n);
         sleepers.remove(n);
         Main.ghostFactory.setGhost(n, true);
 
