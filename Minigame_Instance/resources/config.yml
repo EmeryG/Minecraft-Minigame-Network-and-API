@@ -1,0 +1,25 @@
+minimumPlayers: 3
+
+# In seconds
+lobbyTime: 120
+
+points:
+    lobby:
+        spawnpoint:
+            1:
+                x: 0
+                y: 0
+                z: 0
+                world: lobby
+
+
+# Put armor in order from head to boots, put items in inventory in order from what you want it to be.
+kits:
+    default:
+        armor:
+            - diamond_helmet
+            - diamond_chestplate
+            - diamond_leggings
+            - diamond_boots
+        items:
+            - diamond_sword

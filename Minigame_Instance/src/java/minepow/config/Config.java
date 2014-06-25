@@ -4,7 +4,9 @@ import lombok.Getter;
 import minepow.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,20 +17,19 @@ import java.util.List;
  */
 public class Config {
 
-    static HashMap<String, HashMap<String, HashMap<Integer, Location>>> config = null;
+    static HashMap<String, HashMap<String, HashMap<Integer, Location>>> mapInfo = null;
+    static HashMap<String, Kit> kits = null;
 
     @Getter
-    static ArrayList<String> maps = new ArrayList<String>(Main.getMain().getConfig().getStringList("points"));
+    static ArrayList<String> maps = new ArrayList<String>(Main.getMainConfig().getStringList("points"));
+
 
     public static HashMap<String, HashMap<String, HashMap<Integer, Location>>> getMapInfo() {
-        if(config == null) {
+        if(mapInfo == null) {
 
+            mapInfo = new HashMap<String, HashMap<String, HashMap<Integer, Location>>>();
 
-            HashMap<String,
-                    HashMap<String,
-                            HashMap<Integer, Location>>> mapInfo = new HashMap<String, HashMap<String, HashMap<Integer, Location>>>();
-
-            FileConfiguration config = Main.getMain().getConfig();
+            FileConfiguration config = Main.getMainConfig();
 
             for(String map : config.getStringList("points")) {
                 HashMap<String, HashMap<Integer, Location>> points = new HashMap<String, HashMap<Integer, Location>>();
@@ -39,38 +40,40 @@ public class Config {
                                 new Location(
                                         Bukkit.getWorld(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "world")),
                                         Double.parseDouble(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "x")),
-                                        Double.parseDouble(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "x")),
-                                        Double.parseDouble(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "x"))));
+                                        Double.parseDouble(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "y")),
+                                        Double.parseDouble(config.getString("points." + map + "." + pointType + "." + pointNumber + "." + "z"))));
                     }
                     points.put(pointType, pointSet);
                 }
 
                 mapInfo.put(map, points);
             }
-            return mapInfo;
-        } else {
-            return config;
         }
+
+        return mapInfo;
     }
 
-    public static FileConfiguration getConfig() {
-        return Main.getMain().getConfig();
-    }
+    public Kit getKit(String kit) {
+        if(kits == null) {
+            FileConfiguration config = Main.getMain().getConfig();
+            kits = new HashMap<String, Kit>();
 
-    public static void saveConfig() {
-        Main.getMain().getConfig();
-    }
+            for(String kt : config.getStringList("kits")) {
+                ItemStack[] armor = new ItemStack[3];
+                ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-    public static void reloadConfig() {
-        Main.getMain().reloadConfig();
-    }
+                for(int i = 0; i < 4; i++) {
+                    armor[i] = new ItemStack(Material.getMaterial(config.getStringList("kits." + kt + "armor").get(i)));
+                }
 
-    public static boolean contains(String thing) {
-        try {
-            Main.getMain().getConfig().get(thing);
-            return true;
-        } catch (Exception e) {
-            return false;
+                for(String item : config.getStringList("kits." + kt + "items")) {
+                    items.add(new ItemStack(Material.getMaterial(item)));
+                }
+
+                kits.put(kt, new Kit(armor, items));
+            }
         }
+
+        return kits.get(kit);
     }
 }
