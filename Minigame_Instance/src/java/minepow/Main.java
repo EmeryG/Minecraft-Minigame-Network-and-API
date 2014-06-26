@@ -45,4 +45,8 @@ public class Main extends JavaPlugin{
             return false;
         }
     }
+
+    public static Main getMain(){
+        return main;
+    }
 }

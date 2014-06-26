@@ -1,4 +1,6 @@
 import minepow.PlayingStage.MinigameMain;
+import minepow.config.Config;
+import minepow.config.Kit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,9 +20,13 @@ public class GameListener implements Listener{
                     if (StatesListener.bodyguards.contains(e.getEntity())) {
                         StatesListener.bodyguards.remove(e.getEntity());
                         StatesListener.rebels.add((org.bukkit.entity.Player) e.getEntity());
+                        Kit kit = Config.getKit("rebel");
+                        kit.givePlayerItems((Player) e.getEntity());
                     } else if (StatesListener.rebels.contains(e.getEntity())) {
                         StatesListener.rebels.remove(e.getEntity());
                         StatesListener.silverfish.add((org.bukkit.entity.Player) e.getEntity());
+                        Kit kit = Config.getKit("silverfish");
+                        kit.givePlayerItems((Player) e.getEntity());
                     }
                 }else{
                     if(StatesListener.bodyguards.size() < 1){

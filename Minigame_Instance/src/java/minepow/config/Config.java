@@ -53,7 +53,7 @@ public class Config {
         return mapInfo;
     }
 
-    public Kit getKit(String kit) {
+    public static Kit getKit(String kit) {
         if(kits == null) {
             FileConfiguration config = Main.getMain().getConfig();
             kits = new HashMap<String, Kit>();

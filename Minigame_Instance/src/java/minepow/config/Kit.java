@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 public class Kit {
     @Getter
-    ItemStack[] armor;
+    static ItemStack[] armor;
 
     @Getter
-    ArrayList<ItemStack> items;
+    static ArrayList<ItemStack> items;
 
     public Kit(ItemStack[] a, ArrayList<ItemStack> is) {
         armor = a;

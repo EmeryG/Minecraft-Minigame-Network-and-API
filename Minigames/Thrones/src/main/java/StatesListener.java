@@ -3,6 +3,7 @@ import minepow.LobbyStage.Vote;
 import minepow.PlayingStage.MinigameMain;
 import minepow.PlayingStage.Util;
 import minepow.config.Config;
+import minepow.config.Kit;
 import minepow.listeners.PlayerInput;
 import minepow.listeners.States;
 import org.bukkit.Bukkit;
@@ -56,12 +57,14 @@ public class StatesListener implements States, PlayerInput{
         Location l = Util.getRandomLocation(Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(1), Config.getMapInfo().get(StatesListener.mapChosen).get("border").get(2));
         for(Player p : bodyguards){
             p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 5));
+            Kit kit = Config.getKit("bodyguard");
+            kit.givePlayerItems(p);
             p.teleport(l);
         }
     }
 
     private void spawnEmperor() {
-        emperor = Bukkit.getWorld(Config.getConfig().getString("world")).spawnEntity(bodyguards.get(0).getLocation(), EntityType.VILLAGER);
+        emperor = Bukkit.getWorld(minepow.Main.getMainConfig().getString("world")).spawnEntity(bodyguards.get(0).getLocation(), EntityType.VILLAGER);
     }
 
     private void spawnRebels(){
@@ -76,7 +79,9 @@ public class StatesListener implements States, PlayerInput{
         }
 
         for(Player p : rebels) {
-                p.teleport(l);
+            p.teleport(l);
+            Kit kit = Config.getKit("rebel");
+            kit.givePlayerItems(p);
         }
     }
 
