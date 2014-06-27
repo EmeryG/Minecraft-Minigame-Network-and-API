@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +48,8 @@ public class GameListener implements Listener{
     }
 
     public void onPQE(PlayerQuitEvent e){
-        e.getPlayer().getActivePotionEffects().clear();
+        for(PotionEffect type : e.getPlayer().getActivePotionEffects()){
+            e.getPlayer().removePotionEffect(type.getType());
+        }
     }
 }
