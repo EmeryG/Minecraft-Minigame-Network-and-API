@@ -1,3 +1,9 @@
+<h1>Minecraft Minigame Network and API</h1>
+
+Made in Java and MongoDB for the Spigot and Bungee framework. There a key components connecting several servers while creating an API for a consistent system flow between servers and speeding up minigame development time by creating an API to structure events in-game. There are several minigames included as well.
+
+
+==================================================================================
 <h1>Minigame API Usage</h1>
 
 <h2>Lobby Registration</h2>
